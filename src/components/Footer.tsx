@@ -29,7 +29,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="py-12 px-4 bg-black border-t border-white/10">
+    <footer className="py-12 px-4" style={{ backgroundColor: '#000000', borderTop: '1px solid rgba(247, 44, 79, 0.1)' }}>
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-center mb-8">
           <motion.div
@@ -69,11 +69,12 @@ const Footer = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="border-t border-white/10 pt-8"
+          className="pt-8"
+          style={{ borderTop: '1px solid rgba(247, 44, 79, 0.1)' }}
         >
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400 flex items-center justify-center gap-2 mb-4 md:mb-0">
-              Made with <Heart size={16} className="text-red-500 animate-pulse" /> by Parthik Modi
+              Made with <Heart size={16} style={{ color: '#f72c4f' }} className="animate-pulse" /> by Parthik Modi
             </p>
             
             <div className="flex items-center gap-6">

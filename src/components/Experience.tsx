@@ -64,7 +64,7 @@ const Experience = () => {
   };
 
   return (
-    <section id="experience" className="py-20 px-4 bg-gradient-to-b from-gray-900 to-gray-800">
+    <section id="experience" className="py-20 px-4" style={{ background: 'linear-gradient(to bottom, #060606, #0a0a0a)' }}>
       <div className="max-w-7xl mx-auto">
         <motion.div
           ref={ref}
@@ -84,7 +84,7 @@ const Experience = () => {
           
           <div className="relative max-w-4xl mx-auto">
             {/* Timeline line */}
-            <div className="absolute left-8 top-0 bottom-0 w-1 bg-gradient-to-b from-indigo-500 to-purple-600 rounded-full hidden md:block" />
+            <div className="absolute left-8 top-0 bottom-0 w-1 rounded-full hidden md:block" style={{ background: 'linear-gradient(to bottom, #f72c4f, #e91e63)' }} />
             
             <div className="space-y-12">
               {experiences.map((exp, index) => (
@@ -95,7 +95,8 @@ const Experience = () => {
                 >
                   {/* Timeline dot */}
                   <motion.div 
-                    className="absolute left-6 top-8 w-6 h-6 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full hidden md:block pulse-glow"
+                    className="absolute left-6 top-8 w-6 h-6 rounded-full hidden md:block pulse-glow"
+                    style={{ background: 'linear-gradient(135deg, #f72c4f, #e91e63)' }}
                     whileHover={{ scale: 1.2 }}
                   />
                   
@@ -112,7 +113,8 @@ const Experience = () => {
                       </div>
                       {exp.current && (
                         <motion.span 
-                          className="inline-block px-4 py-2 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-full text-sm font-medium pulse-glow"
+                          className="inline-block px-4 py-2 text-white rounded-full text-sm font-medium pulse-glow"
+                          style={{ background: 'linear-gradient(135deg, #f72c4f, #e91e63)' }}
                           animate={{ scale: [1, 1.05, 1] }}
                           transition={{ duration: 2, repeat: Infinity }}
                         >
@@ -123,11 +125,11 @@ const Experience = () => {
                     
                     <div className="flex flex-wrap gap-6 mb-6 text-gray-400">
                       <div className="flex items-center gap-2">
-                        <Calendar size={18} className="text-indigo-400" />
+                        <Calendar size={18} style={{ color: '#f72c4f' }} />
                         <span>{exp.period}</span>
                       </div>
                       <div className="flex items-center gap-2">
-                        <MapPin size={18} className="text-indigo-400" />
+                        <MapPin size={18} style={{ color: '#f72c4f' }} />
                         <span>{exp.location}</span>
                       </div>
                     </div>
@@ -138,13 +140,13 @@ const Experience = () => {
 
                     <div>
                       <h5 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-                        <Briefcase size={18} className="text-indigo-400" />
+                        <Briefcase size={18} style={{ color: '#f72c4f' }} />
                         Key Achievements
                       </h5>
                       <ul className="space-y-2">
                         {exp.achievements.map((achievement, achIndex) => (
                           <li key={achIndex} className="flex items-start gap-3 text-gray-300">
-                            <ArrowRight size={16} className="text-indigo-400 mt-1 flex-shrink-0" />
+                            <ArrowRight size={16} className="mt-1 flex-shrink-0" style={{ color: '#f72c4f' }} />
                             <span>{achievement}</span>
                           </li>
                         ))}

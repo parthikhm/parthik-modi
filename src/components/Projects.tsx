@@ -116,7 +116,7 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="py-20 px-4 bg-gradient-to-b from-gray-800 to-gray-900">
+    <section id="projects" className="py-20 px-4" style={{ background: 'linear-gradient(to bottom, #0a0a0a, #060606)' }}>
       <div className="max-w-7xl mx-auto">
         <motion.div
           ref={ref}
@@ -144,9 +144,10 @@ const Projects = () => {
                 whileTap={{ scale: 0.95 }}
                 className={`flex items-center gap-2 px-6 py-3 rounded-full transition-all duration-300 ${
                   filter === filterItem.key
-                    ? 'gradient-bg text-white pulse-glow'
+                    ? 'text-white pulse-glow'
                     : 'glass-effect text-gray-300 hover:text-white'
                 }`}
+                style={filter === filterItem.key ? { background: 'linear-gradient(135deg, #f72c4f, #e91e63)' } : {}}
               >
                 <filterItem.icon size={18} />
                 <span className="font-medium">{filterItem.label}</span>
@@ -178,9 +179,9 @@ const Projects = () => {
                         alt={project.title}
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
                       {project.featured && (
-                        <div className="absolute top-4 right-4 px-3 py-1 gradient-bg rounded-full text-xs font-medium">
+                        <div className="absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-medium text-white" style={{ background: 'linear-gradient(135deg, #f72c4f, #e91e63)' }}>
                           Featured
                         </div>
                       )}

@@ -86,7 +86,7 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-20 px-4 bg-gradient-to-b from-gray-900 to-black">
+    <section id="contact" className="py-20 px-4" style={{ background: 'linear-gradient(to bottom, #060606, #000000)' }}>
       <div className="max-w-7xl mx-auto">
         <motion.div
           ref={ref}
@@ -122,7 +122,7 @@ const Contact = () => {
                       whileHover={{ scale: 1.02, x: 10 }}
                       className="flex items-center gap-4 p-4 glass-effect rounded-xl hover:pulse-glow transition-all duration-300 group"
                     >
-                      <div className={`w-14 h-14 bg-gradient-to-r ${info.color} rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+                      <div className="w-14 h-14 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300" style={{ background: 'linear-gradient(135deg, #f72c4f, #e91e63)' }}>
                         <info.icon size={24} className="text-white" />
                       </div>
                       <div>
@@ -182,7 +182,8 @@ const Contact = () => {
                         placeholder="Your Name"
                         value={formData.name}
                         onChange={handleChange}
-                        className="w-full pl-12 pr-4 py-4 glass-effect border border-white/10 rounded-xl focus:outline-none focus:border-indigo-500 focus:pulse-glow transition-all duration-300 text-white placeholder-gray-400"
+                        className="w-full pl-12 pr-4 py-4 glass-effect rounded-xl focus:outline-none focus:pulse-glow transition-all duration-300 text-white placeholder-gray-400"
+                        style={{ border: '1px solid rgba(247, 44, 79, 0.1)', backgroundColor: 'rgba(247, 44, 79, 0.05)' }}
                         required
                       />
                     </div>
@@ -194,7 +195,8 @@ const Contact = () => {
                         placeholder="Your Email"
                         value={formData.email}
                         onChange={handleChange}
-                        className="w-full pl-12 pr-4 py-4 glass-effect border border-white/10 rounded-xl focus:outline-none focus:border-indigo-500 focus:pulse-glow transition-all duration-300 text-white placeholder-gray-400"
+                        className="w-full pl-12 pr-4 py-4 glass-effect rounded-xl focus:outline-none focus:pulse-glow transition-all duration-300 text-white placeholder-gray-400"
+                        style={{ border: '1px solid rgba(247, 44, 79, 0.1)', backgroundColor: 'rgba(247, 44, 79, 0.05)' }}
                         required
                       />
                     </div>
@@ -208,7 +210,8 @@ const Contact = () => {
                       placeholder="Subject"
                       value={formData.subject}
                       onChange={handleChange}
-                      className="w-full pl-12 pr-4 py-4 glass-effect border border-white/10 rounded-xl focus:outline-none focus:border-indigo-500 focus:pulse-glow transition-all duration-300 text-white placeholder-gray-400"
+                      className="w-full pl-12 pr-4 py-4 glass-effect rounded-xl focus:outline-none focus:pulse-glow transition-all duration-300 text-white placeholder-gray-400"
+                      style={{ border: '1px solid rgba(247, 44, 79, 0.1)', backgroundColor: 'rgba(247, 44, 79, 0.05)' }}
                       required
                     />
                   </div>
@@ -221,7 +224,8 @@ const Contact = () => {
                       value={formData.message}
                       onChange={handleChange}
                       rows={6}
-                      className="w-full pl-12 pr-4 py-4 glass-effect border border-white/10 rounded-xl focus:outline-none focus:border-indigo-500 focus:pulse-glow transition-all duration-300 text-white placeholder-gray-400 resize-none"
+                      className="w-full pl-12 pr-4 py-4 glass-effect rounded-xl focus:outline-none focus:pulse-glow transition-all duration-300 text-white placeholder-gray-400 resize-none"
+                      style={{ border: '1px solid rgba(247, 44, 79, 0.1)', backgroundColor: 'rgba(247, 44, 79, 0.05)' }}
                       required
                     />
                   </div>
@@ -231,7 +235,8 @@ const Contact = () => {
                     disabled={isSubmitting}
                     whileHover={{ scale: 1.02, y: -2 }}
                     whileTap={{ scale: 0.98 }}
-                    className="w-full py-4 gradient-bg font-semibold rounded-xl hover:pulse-glow transition-all duration-300 flex items-center justify-center gap-3 group disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full py-4 font-semibold rounded-xl hover:pulse-glow transition-all duration-300 flex items-center justify-center gap-3 group disabled:opacity-50 disabled:cursor-not-allowed text-white"
+                    style={{ background: 'linear-gradient(135deg, #f72c4f, #e91e63)' }}
                   >
                     {isSubmitting ? (
                       <>
