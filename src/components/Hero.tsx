@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Mail, Phone, Download, ArrowDown } from 'lucide-react';
+import { Github, Linkedin, Mail, Phone, Download, ArrowDown, Code2, Sparkles, Zap } from 'lucide-react';
 
 const Hero = () => {
   const [currentRole, setCurrentRole] = useState(0);
@@ -41,120 +41,237 @@ const Hero = () => {
     }
   };
 
+  const imageVariants = {
+    hidden: { scale: 0.8, opacity: 0 },
+    visible: {
+      scale: 1,
+      opacity: 1,
+      transition: {
+        duration: 1.2,
+        ease: "easeOut"
+      }
+    }
+  };
+
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Animated Background */}
+      {/* Enhanced Animated Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900">
         <div className="particle-bg">
-          {[...Array(50)].map((_, i) => (
+          {[...Array(60)].map((_, i) => (
             <div
               key={i}
               className="particle"
               style={{
                 left: `${Math.random() * 100}%`,
-                width: `${Math.random() * 4 + 2}px`,
-                height: `${Math.random() * 4 + 2}px`,
+                width: `${Math.random() * 6 + 2}px`,
+                height: `${Math.random() * 6 + 2}px`,
                 animationDelay: `${Math.random() * 20}s`,
-                animationDuration: `${Math.random() * 10 + 15}s`
+                animationDuration: `${Math.random() * 15 + 10}s`
               }}
             />
           ))}
         </div>
+        
+        {/* Geometric shapes */}
+        <div className="absolute top-20 left-10 w-20 h-20 border border-indigo-500/30 rounded-full animate-pulse"></div>
+        <div className="absolute top-40 right-20 w-16 h-16 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-lg rotate-45 floating-animation"></div>
+        <div className="absolute bottom-40 left-20 w-12 h-12 border-2 border-cyan-500/40 rotate-12 floating-animation" style={{ animationDelay: '2s' }}></div>
       </div>
 
       <motion.div
-        className="relative z-10 text-center px-4 max-w-6xl mx-auto"
+        className="relative z-10 px-4 max-w-7xl mx-auto"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
-        <motion.div variants={itemVariants} className="mb-8">
-          <motion.h1 
-            className="text-6xl md:text-8xl lg:text-9xl font-bold mb-6"
-            initial={{ scale: 0.5, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-          >
-            <span className="gradient-text">Parthik</span>
-            <br />
-            <span className="text-white">Modi</span>
-          </motion.h1>
-          
-          <div className="h-20 flex items-center justify-center">
-            <motion.h2 
-              key={currentRole}
-              className="text-2xl md:text-4xl lg:text-5xl font-light text-gray-300 typewriter"
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -50 }}
-              transition={{ duration: 0.5 }}
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          {/* Left Content */}
+          <motion.div variants={itemVariants} className="text-center lg:text-left">
+            <motion.div className="mb-6">
+              <motion.div 
+                className="inline-flex items-center gap-2 px-4 py-2 glass-effect rounded-full mb-6"
+                whileHover={{ scale: 1.05 }}
+              >
+                <Sparkles size={16} className="text-yellow-400" />
+                <span className="text-sm font-medium text-gray-300">Available for Projects</span>
+                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+              </motion.div>
+
+              <motion.h1 
+                className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight"
+                initial={{ scale: 0.5, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 1, ease: "easeOut" }}
+              >
+                <span className="text-white">Hi, I'm</span>
+                <br />
+                <span className="gradient-text">Parthik</span>
+              </motion.h1>
+              
+              <div className="h-16 flex items-center justify-center lg:justify-start mb-6">
+                <motion.h2 
+                  key={currentRole}
+                  className="text-xl md:text-2xl lg:text-3xl font-light text-gray-300 flex items-center gap-3"
+                  initial={{ opacity: 0, x: 50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -50 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <Code2 size={28} className="text-indigo-400" />
+                  {roles[currentRole]}
+                </motion.h2>
+              </div>
+            </motion.div>
+
+            <motion.p 
+              variants={itemVariants}
+              className="text-lg md:text-xl text-gray-400 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed"
             >
-              {roles[currentRole]}
-            </motion.h2>
+              Crafting robust web applications and intelligent automation solutions with 
+              <span className="gradient-text font-semibold"> 2.5+ years</span> of experience. 
+              Specializing in Laravel backends, Shopify integrations, and n8n workflows.
+            </motion.p>
+
+            <motion.div 
+              variants={itemVariants}
+              className="flex flex-wrap justify-center lg:justify-start gap-4 mb-8"
+            >
+              <motion.a 
+                href="mailto:parthikmodi43@gmail.com"
+                whileHover={{ scale: 1.05, y: -3 }}
+                whileTap={{ scale: 0.95 }}
+                className="flex items-center gap-3 px-6 py-3 gradient-bg rounded-full hover:shadow-2xl transition-all duration-300 group"
+              >
+                <Mail size={20} />
+                <span className="font-medium">Let's Talk</span>
+                <Zap size={16} className="group-hover:rotate-12 transition-transform duration-300" />
+              </motion.a>
+              
+              <motion.a 
+                href="tel:+919173281097"
+                whileHover={{ scale: 1.05, y: -3 }}
+                whileTap={{ scale: 0.95 }}
+                className="flex items-center gap-3 px-6 py-3 glass-effect rounded-full hover:pulse-glow transition-all duration-300"
+              >
+                <Phone size={20} />
+                <span className="font-medium">Call Now</span>
+              </motion.a>
+            </motion.div>
+
+            <motion.div 
+              variants={itemVariants}
+              className="flex justify-center lg:justify-start gap-4"
+            >
+              {[
+                { icon: Github, href: 'https://github.com/parthikhm', label: 'GitHub', color: 'hover:text-gray-300' },
+                { icon: Linkedin, href: 'https://www.linkedin.com/in/parthikhm/', label: 'LinkedIn', color: 'hover:text-blue-400' },
+                { icon: Mail, href: 'mailto:parthikmodi43@gmail.com', label: 'Email', color: 'hover:text-red-400' }
+              ].map((social, index) => (
+                <motion.a
+                  key={index}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.2, rotate: 5, y: -5 }}
+                  whileTap={{ scale: 0.9 }}
+                  className={`w-12 h-12 glass-effect rounded-full flex items-center justify-center hover:pulse-glow transition-all duration-300 ${social.color}`}
+                >
+                  <social.icon size={20} />
+                </motion.a>
+              ))}
+            </motion.div>
+          </motion.div>
+
+          {/* Right Content - Developer Image */}
+          <motion.div 
+            variants={imageVariants}
+            className="relative flex justify-center lg:justify-end"
+          >
+            <div className="relative">
+              {/* Background decorative elements */}
+              <div className="absolute -inset-4 bg-gradient-to-r from-indigo-500/20 to-purple-600/20 rounded-full blur-2xl"></div>
+              <div className="absolute -top-8 -right-8 w-32 h-32 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-full blur-xl"></div>
+              <div className="absolute -bottom-8 -left-8 w-24 h-24 bg-gradient-to-r from-pink-500/10 to-purple-500/10 rounded-full blur-xl"></div>
+              
+              {/* Main image container */}
+              <motion.div 
+                className="relative w-80 h-80 lg:w-96 lg:h-96 glass-effect rounded-full p-2 hover:pulse-glow transition-all duration-500"
+                whileHover={{ scale: 1.05, rotate: 2 }}
+              >
+                <div className="w-full h-full rounded-full overflow-hidden bg-gradient-to-br from-indigo-500/20 to-purple-600/20 flex items-center justify-center">
+                  <img 
+                    src="https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=800"
+                    alt="Parthik Modi - Laravel Developer"
+                    className="w-full h-full object-cover rounded-full"
+                  />
+                </div>
+                
+                {/* Floating tech icons */}
+                <motion.div 
+                  className="absolute -top-4 -right-4 w-16 h-16 glass-effect rounded-full flex items-center justify-center"
+                  animate={{ y: [-10, 10, -10] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  <Code2 size={24} className="text-indigo-400" />
+                </motion.div>
+                
+                <motion.div 
+                  className="absolute -bottom-4 -left-4 w-14 h-14 glass-effect rounded-full flex items-center justify-center"
+                  animate={{ y: [10, -10, 10] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                >
+                  <Zap size={20} className="text-yellow-400" />
+                </motion.div>
+                
+                <motion.div 
+                  className="absolute top-1/2 -right-6 w-12 h-12 glass-effect rounded-full flex items-center justify-center"
+                  animate={{ x: [-5, 5, -5] }}
+                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+                >
+                  <Sparkles size={18} className="text-purple-400" />
+                </motion.div>
+              </motion.div>
+
+              {/* Stats floating cards */}
+              <motion.div 
+                className="absolute -left-8 top-16 glass-effect p-4 rounded-xl"
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 1.5, duration: 0.8 }}
+                whileHover={{ scale: 1.05, y: -5 }}
+              >
+                <div className="text-center">
+                  <div className="text-2xl font-bold gradient-text">2.5+</div>
+                  <div className="text-xs text-gray-400">Years Exp</div>
+                </div>
+              </motion.div>
+
+              <motion.div 
+                className="absolute -right-8 bottom-16 glass-effect p-4 rounded-xl"
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 1.8, duration: 0.8 }}
+                whileHover={{ scale: 1.05, y: -5 }}
+              >
+                <div className="text-center">
+                  <div className="text-2xl font-bold gradient-text">25+</div>
+                  <div className="text-xs text-gray-400">Projects</div>
+                </div>
+              </motion.div>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Scroll indicator */}
+        <motion.div 
+          variants={itemVariants}
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 floating-animation"
+        >
+          <div className="flex flex-col items-center gap-2">
+            <span className="text-sm text-gray-400 font-medium">Scroll to explore</span>
+            <ArrowDown size={24} className="text-gray-400" />
           </div>
-        </motion.div>
-
-        <motion.p 
-          variants={itemVariants}
-          className="text-lg md:text-xl lg:text-2xl text-gray-400 mb-12 max-w-4xl mx-auto leading-relaxed"
-        >
-          Crafting robust web applications and automation solutions with 2.5+ years of experience. 
-          Specializing in Laravel backends, Shopify integrations, and intelligent automation workflows.
-        </motion.p>
-
-        <motion.div 
-          variants={itemVariants}
-          className="flex flex-wrap justify-center gap-6 mb-16"
-        >
-          <motion.a 
-            href="mailto:parthikmodi43@gmail.com"
-            whileHover={{ scale: 1.05, y: -5 }}
-            whileTap={{ scale: 0.95 }}
-            className="flex items-center gap-3 px-8 py-4 glass-effect rounded-full hover:pulse-glow transition-all duration-300"
-          >
-            <Mail size={20} />
-            <span className="font-medium">Get In Touch</span>
-          </motion.a>
-          
-          <motion.a 
-            href="tel:+919173281097"
-            whileHover={{ scale: 1.05, y: -5 }}
-            whileTap={{ scale: 0.95 }}
-            className="flex items-center gap-3 px-8 py-4 gradient-bg rounded-full hover:shadow-lg transition-all duration-300"
-          >
-            <Phone size={20} />
-            <span className="font-medium">Call Now</span>
-          </motion.a>
-        </motion.div>
-
-        <motion.div 
-          variants={itemVariants}
-          className="flex justify-center gap-6 mb-16"
-        >
-          {[
-            { icon: Github, href: 'https://github.com/parthikhm', label: 'GitHub' },
-            { icon: Linkedin, href: 'https://www.linkedin.com/in/parthikhm/', label: 'LinkedIn' },
-            { icon: Mail, href: 'mailto:parthikmodi43@gmail.com', label: 'Email' }
-          ].map((social, index) => (
-            <motion.a
-              key={index}
-              href={social.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.2, rotate: 5 }}
-              whileTap={{ scale: 0.9 }}
-              className="w-14 h-14 glass-effect rounded-full flex items-center justify-center hover:pulse-glow transition-all duration-300"
-            >
-              <social.icon size={24} />
-            </motion.a>
-          ))}
-        </motion.div>
-
-        <motion.div 
-          variants={itemVariants}
-          className="floating-animation"
-        >
-          <ArrowDown size={32} className="text-gray-400 mx-auto" />
         </motion.div>
       </motion.div>
     </section>
