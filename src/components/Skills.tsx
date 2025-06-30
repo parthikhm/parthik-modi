@@ -12,7 +12,7 @@ const Skills = () => {
     {
       title: 'Backend Development',
       skills: [
-        { name: 'Laravel', level: 95, color: 'from-red-500 to-orange-500' },
+        { name: 'Laravel', level: 95, color: 'from-red-500 to-pink-500' },
         { name: 'PHP', level: 92, color: 'from-blue-500 to-purple-500' },
         { name: 'MySQL', level: 88, color: 'from-green-500 to-teal-500' },
         { name: 'APIs', level: 93, color: 'from-yellow-500 to-red-500' }
@@ -61,7 +61,7 @@ const Skills = () => {
   };
 
   return (
-    <section id="skills" className="py-20 px-4 bg-gradient-to-b from-gray-800 to-gray-900">
+    <section id="skills" className="py-20 px-4" style={{ background: 'linear-gradient(to bottom, #0a0a0a, #060606)' }}>
       <div className="max-w-7xl mx-auto">
         <motion.div
           ref={ref}
@@ -102,9 +102,10 @@ const Skills = () => {
                         </span>
                       </div>
                       
-                      <div className="w-full bg-gray-700 rounded-full h-3 overflow-hidden">
+                      <div className="w-full rounded-full h-3 overflow-hidden" style={{ backgroundColor: '#1a1a1a' }}>
                         <motion.div
-                          className={`h-full bg-gradient-to-r ${skill.color} rounded-full relative`}
+                          className="h-full rounded-full relative"
+                          style={{ background: 'linear-gradient(135deg, #f72c4f, #e91e63)' }}
                           initial={{ width: 0 }}
                           animate={inView ? { width: `${skill.level}%` } : { width: 0 }}
                           transition={{ 

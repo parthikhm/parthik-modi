@@ -54,9 +54,9 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{ backgroundColor: '#060606' }}>
       {/* Enhanced Animated Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900">
+      <div className="absolute inset-0" style={{ backgroundColor: '#060606' }}>
         <div className="particle-bg">
           {[...Array(60)].map((_, i) => (
             <div
@@ -67,16 +67,17 @@ const Hero = () => {
                 width: `${Math.random() * 6 + 2}px`,
                 height: `${Math.random() * 6 + 2}px`,
                 animationDelay: `${Math.random() * 20}s`,
-                animationDuration: `${Math.random() * 15 + 10}s`
+                animationDuration: `${Math.random() * 15 + 10}s`,
+                background: 'rgba(247, 44, 79, 0.3)'
               }}
             />
           ))}
         </div>
         
         {/* Geometric shapes */}
-        <div className="absolute top-20 left-10 w-20 h-20 border border-indigo-500/30 rounded-full animate-pulse"></div>
-        <div className="absolute top-40 right-20 w-16 h-16 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-lg rotate-45 floating-animation"></div>
-        <div className="absolute bottom-40 left-20 w-12 h-12 border-2 border-cyan-500/40 rotate-12 floating-animation" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-20 left-10 w-20 h-20 rounded-full animate-pulse" style={{ border: '1px solid rgba(247, 44, 79, 0.3)' }}></div>
+        <div className="absolute top-40 right-20 w-16 h-16 rounded-lg rotate-45 floating-animation" style={{ background: 'linear-gradient(135deg, rgba(247, 44, 79, 0.2), rgba(233, 30, 99, 0.2))' }}></div>
+        <div className="absolute bottom-40 left-20 w-12 h-12 rotate-12 floating-animation" style={{ border: '2px solid rgba(247, 44, 79, 0.4)', animationDelay: '2s' }}></div>
       </div>
 
       <motion.div
@@ -93,9 +94,9 @@ const Hero = () => {
                 className="inline-flex items-center gap-2 px-4 py-2 glass-effect rounded-full mb-6"
                 whileHover={{ scale: 1.05 }}
               >
-                <Sparkles size={16} className="text-yellow-400" />
+                <Sparkles size={16} style={{ color: '#f72c4f' }} />
                 <span className="text-sm font-medium text-gray-300">Available for Projects</span>
-                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                <div className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: '#f72c4f' }}></div>
               </motion.div>
 
               <motion.h1 
@@ -118,7 +119,7 @@ const Hero = () => {
                   exit={{ opacity: 0, x: -50 }}
                   transition={{ duration: 0.5 }}
                 >
-                  <Code2 size={28} className="text-indigo-400" />
+                  <Code2 size={28} style={{ color: '#f72c4f' }} />
                   {roles[currentRole]}
                 </motion.h2>
               </div>
@@ -141,7 +142,7 @@ const Hero = () => {
                 href="mailto:parthikmodi43@gmail.com"
                 whileHover={{ scale: 1.05, y: -3 }}
                 whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-3 px-6 py-3 gradient-bg rounded-full hover:shadow-2xl transition-all duration-300 group"
+                className="flex items-center gap-3 px-6 py-3 gradient-bg rounded-full hover:shadow-2xl transition-all duration-300 group text-white"
               >
                 <Mail size={20} />
                 <span className="font-medium">Let's Talk</span>
@@ -190,16 +191,16 @@ const Hero = () => {
           >
             <div className="relative">
               {/* Background decorative elements */}
-              <div className="absolute -inset-4 bg-gradient-to-r from-indigo-500/20 to-purple-600/20 rounded-full blur-2xl"></div>
-              <div className="absolute -top-8 -right-8 w-32 h-32 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-full blur-xl"></div>
-              <div className="absolute -bottom-8 -left-8 w-24 h-24 bg-gradient-to-r from-pink-500/10 to-purple-500/10 rounded-full blur-xl"></div>
+              <div className="absolute -inset-4 rounded-full blur-2xl" style={{ background: 'linear-gradient(135deg, rgba(247, 44, 79, 0.2), rgba(233, 30, 99, 0.2))' }}></div>
+              <div className="absolute -top-8 -right-8 w-32 h-32 rounded-full blur-xl" style={{ background: 'linear-gradient(135deg, rgba(247, 44, 79, 0.1), rgba(233, 30, 99, 0.1))' }}></div>
+              <div className="absolute -bottom-8 -left-8 w-24 h-24 rounded-full blur-xl" style={{ background: 'linear-gradient(135deg, rgba(247, 44, 79, 0.1), rgba(233, 30, 99, 0.1))' }}></div>
               
               {/* Main image container */}
               <motion.div 
                 className="relative w-80 h-80 lg:w-96 lg:h-96 glass-effect rounded-full p-2 hover:pulse-glow transition-all duration-500"
                 whileHover={{ scale: 1.05, rotate: 2 }}
               >
-                <div className="w-full h-full rounded-full overflow-hidden bg-gradient-to-br from-indigo-500/20 to-purple-600/20 flex items-center justify-center">
+                <div className="w-full h-full rounded-full overflow-hidden flex items-center justify-center" style={{ background: 'linear-gradient(135deg, rgba(247, 44, 79, 0.2), rgba(233, 30, 99, 0.2))' }}>
                   <img 
                     src="https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=800"
                     alt="Parthik Modi - Laravel Developer"
@@ -213,7 +214,7 @@ const Hero = () => {
                   animate={{ y: [-10, 10, -10] }}
                   transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                 >
-                  <Code2 size={24} className="text-indigo-400" />
+                  <Code2 size={24} style={{ color: '#f72c4f' }} />
                 </motion.div>
                 
                 <motion.div 
@@ -221,7 +222,7 @@ const Hero = () => {
                   animate={{ y: [10, -10, 10] }}
                   transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1 }}
                 >
-                  <Zap size={20} className="text-yellow-400" />
+                  <Zap size={20} style={{ color: '#f72c4f' }} />
                 </motion.div>
                 
                 <motion.div 
@@ -229,7 +230,7 @@ const Hero = () => {
                   animate={{ x: [-5, 5, -5] }}
                   transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 2 }}
                 >
-                  <Sparkles size={18} className="text-purple-400" />
+                  <Sparkles size={18} style={{ color: '#f72c4f' }} />
                 </motion.div>
               </motion.div>
 

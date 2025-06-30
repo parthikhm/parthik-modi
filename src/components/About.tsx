@@ -38,7 +38,7 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-20 px-4 bg-gradient-to-b from-gray-900 to-gray-800">
+    <section id="about" className="py-20 px-4" style={{ background: 'linear-gradient(to bottom, #060606, #0a0a0a)' }}>
       <div className="max-w-7xl mx-auto">
         <motion.div
           ref={ref}
@@ -74,7 +74,7 @@ const About = () => {
                     whileHover={{ scale: 1.05, y: -5 }}
                     className="glass-effect p-6 rounded-xl text-center hover:pulse-glow transition-all duration-300"
                   >
-                    <stat.icon size={32} className="mx-auto mb-3 text-indigo-400" />
+                    <stat.icon size={32} className="mx-auto mb-3" style={{ color: '#f72c4f' }} />
                     <div className="text-2xl font-bold gradient-text">{stat.value}</div>
                     <div className="text-sm text-gray-400">{stat.label}</div>
                   </motion.div>
@@ -87,16 +87,16 @@ const About = () => {
                 <h3 className="text-2xl font-bold mb-6 gradient-text">Education & Achievements</h3>
                 
                 <div className="space-y-6">
-                  <div className="border-l-4 border-indigo-500 pl-6">
+                  <div className="border-l-4 pl-6" style={{ borderColor: '#f72c4f' }}>
                     <h4 className="text-xl font-semibold text-white mb-2">Master of Computer Applications</h4>
                     <p className="text-gray-400 mb-1">HNGU University</p>
-                    <p className="text-indigo-400 font-semibold">CGPA: 9.00</p>
+                    <p className="font-semibold" style={{ color: '#f72c4f' }}>CGPA: 9.00</p>
                   </div>
                   
-                  <div className="border-l-4 border-purple-500 pl-6">
+                  <div className="border-l-4 pl-6" style={{ borderColor: '#e91e63' }}>
                     <h4 className="text-xl font-semibold text-white mb-2">Bachelor of Computer Applications</h4>
                     <p className="text-gray-400 mb-1">HNGU University</p>
-                    <p className="text-purple-400 font-semibold">CGPA: 7.50</p>
+                    <p className="font-semibold" style={{ color: '#e91e63' }}>CGPA: 7.50</p>
                   </div>
                 </div>
               </div>
@@ -106,15 +106,15 @@ const About = () => {
                 
                 <div className="space-y-4">
                   <div className="flex items-center gap-3 text-gray-300">
-                    <Calendar size={20} className="text-indigo-400" />
+                    <Calendar size={20} style={{ color: '#f72c4f' }} />
                     <span>2.5+ Years Professional Experience</span>
                   </div>
                   <div className="flex items-center gap-3 text-gray-300">
-                    <MapPin size={20} className="text-indigo-400" />
+                    <MapPin size={20} style={{ color: '#f72c4f' }} />
                     <span>Available for Remote Work Worldwide</span>
                   </div>
                   <div className="flex items-center gap-3 text-gray-300">
-                    <Award size={20} className="text-indigo-400" />
+                    <Award size={20} style={{ color: '#f72c4f' }} />
                     <span>Top Academic Performance (9.00 CGPA)</span>
                   </div>
                 </div>

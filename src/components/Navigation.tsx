@@ -30,6 +30,7 @@ const Navigation = () => {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled ? 'glass-effect shadow-lg' : 'bg-transparent'
       }`}
+      style={{ backgroundColor: scrolled ? 'rgba(6, 6, 6, 0.9)' : 'transparent' }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
@@ -51,7 +52,7 @@ const Navigation = () => {
                 className="text-gray-300 hover:text-white transition-colors duration-300 relative group"
               >
                 {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-indigo-500 to-purple-600 group-hover:w-full transition-all duration-300"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300" style={{ background: 'linear-gradient(135deg, #f72c4f, #e91e63)' }}></span>
               </motion.a>
             ))}
           </div>

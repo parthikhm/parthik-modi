@@ -11,7 +11,7 @@ import './App.css';
 
 function App() {
   return (
-    <div className="bg-gray-900 text-white overflow-x-hidden">
+    <div className="bg-primary text-white overflow-x-hidden" style={{ backgroundColor: '#060606' }}>
       <Navigation />
       <Hero />
       <About />
