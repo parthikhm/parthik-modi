@@ -202,7 +202,7 @@ const Hero = () => {
               >
                 <div className="w-full h-full rounded-full overflow-hidden flex items-center justify-center" style={{ background: 'linear-gradient(135deg, rgba(247, 44, 79, 0.2), rgba(233, 30, 99, 0.2))' }}>
                   <img 
-                    src="https://drive.google.com/uc?export=view&id=1GIXZI-kia1S-C9Qio1eOtDcFnDjQ0uAC"
+                    src="https://drive.google.com/file/d/1GIXZI-kia1S-C9Qio1eOtDcFnDjQ0uAC/view?cs=tinysrgb&w=800"
                     alt="Parthik Modi - Laravel Developer"
                     className="w-full h-full object-cover rounded-full"
                   />
