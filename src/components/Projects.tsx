@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { ExternalLink, Github, Globe, Code, Zap, Database } from 'lucide-react';
+import InteractiveCard from './InteractiveCard';
 
 const Projects = () => {
   const [ref, inView] = useInView({
@@ -170,60 +171,61 @@ const Projects = () => {
                   key={`${filter}-${index}`}
                   variants={itemVariants}
                   whileHover={{ y: -10, scale: 1.02 }}
-                  className="glass-effect rounded-2xl overflow-hidden hover:pulse-glow transition-all duration-300 group"
                 >
-                  {project.image && (
-                    <div className="relative overflow-hidden h-48">
-                      <img 
-                        src={project.image} 
-                        alt={project.title}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-                      {project.featured && (
-                        <div className="absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-medium text-white" style={{ background: 'linear-gradient(135deg, #f72c4f, #e91e63)' }}>
-                          Featured
-                        </div>
-                      )}
-                    </div>
-                  )}
-                  
-                  <div className="p-6">
-                    <div className="flex justify-between items-start mb-4">
-                      <h3 className="text-xl font-bold text-white group-hover:gradient-text transition-all duration-300">
-                        {project.title}
-                      </h3>
-                      <div className="flex gap-2">
-                        {project.url && (
-                          <motion.a
-                            href={project.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            whileHover={{ scale: 1.1, rotate: 5 }}
-                            className="p-2 glass-effect rounded-full hover:pulse-glow transition-all duration-300"
-                          >
-                            <ExternalLink size={16} />
-                          </motion.a>
+                  <InteractiveCard className="overflow-hidden group">
+                    {project.image && (
+                      <div className="relative overflow-hidden h-48 -m-5 mb-5">
+                        <img 
+                          src={project.image} 
+                          alt={project.title}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+                        {project.featured && (
+                          <div className="absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-medium text-white" style={{ background: 'linear-gradient(135deg, #f72c4f, #e91e63)' }}>
+                            Featured
+                          </div>
                         )}
                       </div>
-                    </div>
+                    )}
                     
-                    <p className="text-gray-300 mb-6 leading-relaxed text-sm">
-                      {project.description}
-                    </p>
-                    
-                    <div className="flex flex-wrap gap-2">
-                      {project.tech.map((tech, techIndex) => (
-                        <motion.span
-                          key={techIndex}
-                          whileHover={{ scale: 1.05 }}
-                          className="px-3 py-1 glass-effect text-gray-300 rounded-full text-xs font-medium hover:gradient-text transition-all duration-300"
-                        >
-                          {tech}
-                        </motion.span>
-                      ))}
+                    <div>
+                      <div className="flex justify-between items-start mb-4">
+                        <h3 className="text-xl font-bold text-white group-hover:gradient-text transition-all duration-300">
+                          {project.title}
+                        </h3>
+                        <div className="flex gap-2">
+                          {project.url && (
+                            <motion.a
+                              href={project.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              whileHover={{ scale: 1.1, rotate: 5 }}
+                              className="p-2 glass-effect rounded-full hover:pulse-glow transition-all duration-300"
+                            >
+                              <ExternalLink size={16} />
+                            </motion.a>
+                          )}
+                        </div>
+                      </div>
+                      
+                      <p className="text-gray-300 mb-6 leading-relaxed text-sm">
+                        {project.description}
+                      </p>
+                      
+                      <div className="flex flex-wrap gap-2">
+                        {project.tech.map((tech, techIndex) => (
+                          <motion.span
+                            key={techIndex}
+                            whileHover={{ scale: 1.05 }}
+                            className="px-3 py-1 glass-effect text-gray-300 rounded-full text-xs font-medium hover:gradient-text transition-all duration-300"
+                          >
+                            {tech}
+                          </motion.span>
+                        ))}
+                      </div>
                     </div>
-                  </div>
+                  </InteractiveCard>
                 </motion.div>
               ))}
             </motion.div>

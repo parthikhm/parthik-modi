@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Award, Calendar, MapPin, Code, Zap, Users } from 'lucide-react';
+import InteractiveCard from './InteractiveCard';
 
 const About = () => {
   const [ref, inView] = useInView({
@@ -55,7 +56,7 @@ const About = () => {
 
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div variants={itemVariants} className="space-y-8">
-              <div className="glass-effect p-8 rounded-2xl">
+              <InteractiveCard>
                 <h3 className="text-3xl font-bold mb-6 gradient-text">My Story</h3>
                 <p className="text-lg text-gray-300 leading-relaxed mb-6">
                   Dedicated and skilled Laravel Developer with 2.5 years of experience in building robust web applications. 
@@ -65,25 +66,23 @@ const About = () => {
                   Passionate about crafting scalable tools and modern solutions that drive business growth. 
                   I thrive on turning complex problems into elegant, efficient code that makes a real difference.
                 </p>
-              </div>
+              </InteractiveCard>
 
               <div className="grid grid-cols-3 gap-6">
                 {stats.map((stat, index) => (
-                  <motion.div
-                    key={index}
-                    whileHover={{ scale: 1.05, y: -5 }}
-                    className="glass-effect p-6 rounded-xl text-center hover:pulse-glow transition-all duration-300"
-                  >
-                    <stat.icon size={32} className="mx-auto mb-3" style={{ color: '#f72c4f' }} />
-                    <div className="text-2xl font-bold gradient-text">{stat.value}</div>
-                    <div className="text-sm text-gray-400">{stat.label}</div>
+                  <motion.div key={index} whileHover={{ scale: 1.05, y: -5 }}>
+                    <InteractiveCard className="p-6 text-center">
+                      <stat.icon size={32} className="mx-auto mb-3" style={{ color: '#f72c4f' }} />
+                      <div className="text-2xl font-bold gradient-text">{stat.value}</div>
+                      <div className="text-sm text-gray-400">{stat.label}</div>
+                    </InteractiveCard>
                   </motion.div>
                 ))}
               </div>
             </motion.div>
 
             <motion.div variants={itemVariants} className="space-y-6">
-              <div className="glass-effect p-8 rounded-2xl hover:pulse-glow transition-all duration-300">
+              <InteractiveCard>
                 <h3 className="text-2xl font-bold mb-6 gradient-text">Education & Achievements</h3>
                 
                 <div className="space-y-6">
@@ -99,9 +98,9 @@ const About = () => {
                     <p className="font-semibold" style={{ color: '#e91e63' }}>CGPA: 7.50</p>
                   </div>
                 </div>
-              </div>
+              </InteractiveCard>
 
-              <div className="glass-effect p-8 rounded-2xl hover:pulse-glow transition-all duration-300">
+              <InteractiveCard>
                 <h3 className="text-2xl font-bold mb-6 gradient-text">Quick Facts</h3>
                 
                 <div className="space-y-4">
@@ -118,7 +117,7 @@ const About = () => {
                     <span>Top Academic Performance (9.00 CGPA)</span>
                   </div>
                 </div>
-              </div>
+              </InteractiveCard>
             </motion.div>
           </div>
         </motion.div>

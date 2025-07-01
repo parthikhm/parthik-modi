@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Calendar, MapPin, Briefcase, ArrowRight } from 'lucide-react';
+import InteractiveCard from './InteractiveCard';
 
 const Experience = () => {
   const [ref, inView] = useInView({
@@ -100,58 +101,57 @@ const Experience = () => {
                     whileHover={{ scale: 1.2 }}
                   />
                   
-                  <motion.div 
-                    className="md:ml-20 glass-effect p-8 rounded-2xl hover:pulse-glow transition-all duration-300 group"
-                    whileHover={{ scale: 1.02, y: -5 }}
-                  >
-                    <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-6">
-                      <div>
-                        <h3 className="text-2xl font-bold text-white mb-2 group-hover:gradient-text transition-all duration-300">
-                          {exp.title}
-                        </h3>
-                        <h4 className="text-xl text-gray-300 mb-3">{exp.company}</h4>
+                  <motion.div className="md:ml-20" whileHover={{ scale: 1.02, y: -5 }}>
+                    <InteractiveCard>
+                      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-6">
+                        <div>
+                          <h3 className="text-2xl font-bold text-white mb-2 group-hover:gradient-text transition-all duration-300">
+                            {exp.title}
+                          </h3>
+                          <h4 className="text-xl text-gray-300 mb-3">{exp.company}</h4>
+                        </div>
+                        {exp.current && (
+                          <motion.span 
+                            className="inline-block px-4 py-2 text-white rounded-full text-sm font-medium pulse-glow"
+                            style={{ background: 'linear-gradient(135deg, #f72c4f, #e91e63)' }}
+                            animate={{ scale: [1, 1.05, 1] }}
+                            transition={{ duration: 2, repeat: Infinity }}
+                          >
+                            Current Position
+                          </motion.span>
+                        )}
                       </div>
-                      {exp.current && (
-                        <motion.span 
-                          className="inline-block px-4 py-2 text-white rounded-full text-sm font-medium pulse-glow"
-                          style={{ background: 'linear-gradient(135deg, #f72c4f, #e91e63)' }}
-                          animate={{ scale: [1, 1.05, 1] }}
-                          transition={{ duration: 2, repeat: Infinity }}
-                        >
-                          Current Position
-                        </motion.span>
-                      )}
-                    </div>
-                    
-                    <div className="flex flex-wrap gap-6 mb-6 text-gray-400">
-                      <div className="flex items-center gap-2">
-                        <Calendar size={18} style={{ color: '#f72c4f' }} />
-                        <span>{exp.period}</span>
+                      
+                      <div className="flex flex-wrap gap-6 mb-6 text-gray-400">
+                        <div className="flex items-center gap-2">
+                          <Calendar size={18} style={{ color: '#f72c4f' }} />
+                          <span>{exp.period}</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <MapPin size={18} style={{ color: '#f72c4f' }} />
+                          <span>{exp.location}</span>
+                        </div>
                       </div>
-                      <div className="flex items-center gap-2">
-                        <MapPin size={18} style={{ color: '#f72c4f' }} />
-                        <span>{exp.location}</span>
-                      </div>
-                    </div>
-                    
-                    <p className="text-gray-300 leading-relaxed mb-6">
-                      {exp.description}
-                    </p>
+                      
+                      <p className="text-gray-300 leading-relaxed mb-6">
+                        {exp.description}
+                      </p>
 
-                    <div>
-                      <h5 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-                        <Briefcase size={18} style={{ color: '#f72c4f' }} />
-                        Key Achievements
-                      </h5>
-                      <ul className="space-y-2">
-                        {exp.achievements.map((achievement, achIndex) => (
-                          <li key={achIndex} className="flex items-start gap-3 text-gray-300">
-                            <ArrowRight size={16} className="mt-1 flex-shrink-0" style={{ color: '#f72c4f' }} />
-                            <span>{achievement}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                      <div>
+                        <h5 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                          <Briefcase size={18} style={{ color: '#f72c4f' }} />
+                          Key Achievements
+                        </h5>
+                        <ul className="space-y-2">
+                          {exp.achievements.map((achievement, achIndex) => (
+                            <li key={achIndex} className="flex items-start gap-3 text-gray-300">
+                              <ArrowRight size={16} className="mt-1 flex-shrink-0" style={{ color: '#f72c4f' }} />
+                              <span>{achievement}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </InteractiveCard>
                   </motion.div>
                 </motion.div>
               ))}

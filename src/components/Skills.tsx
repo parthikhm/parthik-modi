@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import InteractiveCard from './InteractiveCard';
 
 const Skills = () => {
   const [ref, inView] = useInView({
@@ -81,54 +82,49 @@ const Skills = () => {
           
           <div className="grid lg:grid-cols-3 gap-8">
             {skillCategories.map((category, categoryIndex) => (
-              <motion.div
-                key={categoryIndex}
-                variants={itemVariants}
-                className="glass-effect p-8 rounded-2xl hover:pulse-glow transition-all duration-300"
-              >
-                <h3 className="text-2xl font-bold mb-8 gradient-text text-center">
-                  {category.title}
-                </h3>
-                
-                <div className="space-y-6">
-                  {category.skills.map((skill, skillIndex) => (
-                    <div key={skillIndex} className="group">
-                      <div className="flex justify-between items-center mb-3">
-                        <span className="text-lg font-medium text-white group-hover:gradient-text transition-all duration-300">
-                          {skill.name}
-                        </span>
-                        <span className="text-sm text-gray-400 font-semibold">
-                          {skill.level}%
-                        </span>
+              <motion.div key={categoryIndex} variants={itemVariants}>
+                <InteractiveCard>
+                  <h3 className="text-2xl font-bold mb-8 gradient-text text-center">
+                    {category.title}
+                  </h3>
+                  
+                  <div className="space-y-6">
+                    {category.skills.map((skill, skillIndex) => (
+                      <div key={skillIndex} className="group">
+                        <div className="flex justify-between items-center mb-3">
+                          <span className="text-lg font-medium text-white group-hover:gradient-text transition-all duration-300">
+                            {skill.name}
+                          </span>
+                          <span className="text-sm text-gray-400 font-semibold">
+                            {skill.level}%
+                          </span>
+                        </div>
+                        
+                        <div className="w-full rounded-full h-3 overflow-hidden" style={{ backgroundColor: '#1a1a1a' }}>
+                          <motion.div
+                            className="h-full rounded-full relative"
+                            style={{ background: 'linear-gradient(135deg, #f72c4f, #e91e63)' }}
+                            initial={{ width: 0 }}
+                            animate={inView ? { width: `${skill.level}%` } : { width: 0 }}
+                            transition={{ 
+                              duration: 1.5, 
+                              delay: categoryIndex * 0.2 + skillIndex * 0.1,
+                              ease: "easeOut"
+                            }}
+                          >
+                            <div className="absolute inset-0 bg-white/20 animate-pulse"></div>
+                          </motion.div>
+                        </div>
                       </div>
-                      
-                      <div className="w-full rounded-full h-3 overflow-hidden" style={{ backgroundColor: '#1a1a1a' }}>
-                        <motion.div
-                          className="h-full rounded-full relative"
-                          style={{ background: 'linear-gradient(135deg, #f72c4f, #e91e63)' }}
-                          initial={{ width: 0 }}
-                          animate={inView ? { width: `${skill.level}%` } : { width: 0 }}
-                          transition={{ 
-                            duration: 1.5, 
-                            delay: categoryIndex * 0.2 + skillIndex * 0.1,
-                            ease: "easeOut"
-                          }}
-                        >
-                          <div className="absolute inset-0 bg-white/20 animate-pulse"></div>
-                        </motion.div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+                    ))}
+                  </div>
+                </InteractiveCard>
               </motion.div>
             ))}
           </div>
 
-          <motion.div 
-            variants={itemVariants}
-            className="mt-16 text-center"
-          >
-            <div className="glass-effect p-8 rounded-2xl max-w-4xl mx-auto">
+          <motion.div variants={itemVariants} className="mt-16 text-center">
+            <InteractiveCard className="max-w-4xl mx-auto">
               <h3 className="text-2xl font-bold mb-6 gradient-text">Additional Technologies</h3>
               <div className="flex flex-wrap justify-center gap-4">
                 {['Supabase', 'Zoho', 'Bootstrap', 'Retell AI', 'IVR Design', 'SEO', 'Prompt Engineering', 'GitHub'].map((tech, index) => (
@@ -141,7 +137,7 @@ const Skills = () => {
                   </motion.span>
                 ))}
               </div>
-            </div>
+            </InteractiveCard>
           </motion.div>
         </motion.div>
       </div>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Github, Linkedin, Mail, Phone, Download, ArrowDown, Code2, Sparkles, Zap } from 'lucide-react';
+import InteractiveCard from './InteractiveCard';
 
 const Hero = () => {
   const [currentRole, setCurrentRole] = useState(0);
@@ -184,7 +185,7 @@ const Hero = () => {
             </motion.div>
           </motion.div>
 
-          {/* Right Content - Developer Image */}
+          {/* Right Content - Developer Image with Interactive Card */}
           <motion.div 
             variants={imageVariants}
             className="relative flex justify-center lg:justify-end"
@@ -195,70 +196,72 @@ const Hero = () => {
               <div className="absolute -top-8 -right-8 w-32 h-32 rounded-full blur-xl" style={{ background: 'linear-gradient(135deg, rgba(247, 44, 79, 0.1), rgba(233, 30, 99, 0.1))' }}></div>
               <div className="absolute -bottom-8 -left-8 w-24 h-24 rounded-full blur-xl" style={{ background: 'linear-gradient(135deg, rgba(247, 44, 79, 0.1), rgba(233, 30, 99, 0.1))' }}></div>
               
-              {/* Main image container */}
-              <motion.div 
-                className="relative w-80 h-80 lg:w-96 lg:h-96 glass-effect rounded-full p-2 hover:pulse-glow transition-all duration-500"
-                whileHover={{ scale: 1.05, rotate: 2 }}
+              {/* Main image container with Interactive Card */}
+              <InteractiveCard 
+                className="w-80 h-80 lg:w-96 lg:h-96 p-2"
+                style={{ borderRadius: '50%' }}
               >
                 <div className="w-full h-full rounded-full overflow-hidden flex items-center justify-center" style={{ background: 'linear-gradient(135deg, rgba(247, 44, 79, 0.2), rgba(233, 30, 99, 0.2))' }}>
                   <img 
-                    src="https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=800"
+                    src="/1732172836245.jpeg"
                     alt="Parthik Modi - Laravel Developer"
                     className="w-full h-full object-cover rounded-full"
                   />
                 </div>
+              </InteractiveCard>
                 
-                {/* Floating tech icons */}
-                <motion.div 
-                  className="absolute -top-4 -right-4 w-16 h-16 glass-effect rounded-full flex items-center justify-center"
-                  animate={{ y: [-10, 10, -10] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                >
-                  <Code2 size={24} style={{ color: '#f72c4f' }} />
-                </motion.div>
-                
-                <motion.div 
-                  className="absolute -bottom-4 -left-4 w-14 h-14 glass-effect rounded-full flex items-center justify-center"
-                  animate={{ y: [10, -10, 10] }}
-                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                >
-                  <Zap size={20} style={{ color: '#f72c4f' }} />
-                </motion.div>
-                
-                <motion.div 
-                  className="absolute top-1/2 -right-6 w-12 h-12 glass-effect rounded-full flex items-center justify-center"
-                  animate={{ x: [-5, 5, -5] }}
-                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-                >
-                  <Sparkles size={18} style={{ color: '#f72c4f' }} />
-                </motion.div>
+              {/* Floating tech icons */}
+              <motion.div 
+                className="absolute -top-4 -right-4 w-16 h-16 glass-effect rounded-full flex items-center justify-center"
+                animate={{ y: [-10, 10, -10] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <Code2 size={24} style={{ color: '#f72c4f' }} />
+              </motion.div>
+              
+              <motion.div 
+                className="absolute -bottom-4 -left-4 w-14 h-14 glass-effect rounded-full flex items-center justify-center"
+                animate={{ y: [10, -10, 10] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+              >
+                <Zap size={20} style={{ color: '#f72c4f' }} />
+              </motion.div>
+              
+              <motion.div 
+                className="absolute top-1/2 -right-6 w-12 h-12 glass-effect rounded-full flex items-center justify-center"
+                animate={{ x: [-5, 5, -5] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+              >
+                <Sparkles size={18} style={{ color: '#f72c4f' }} />
               </motion.div>
 
-              {/* Stats floating cards */}
+              {/* Stats floating cards with Interactive Cards */}
               <motion.div 
-                className="absolute -left-8 top-16 glass-effect p-4 rounded-xl"
+                className="absolute -left-8 top-16"
                 initial={{ opacity: 0, x: -50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 1.5, duration: 0.8 }}
-                whileHover={{ scale: 1.05, y: -5 }}
               >
-                <div className="text-center">
-                  <div className="text-2xl font-bold gradient-text">2.5+</div>
-                  <div className="text-xs text-gray-400">Years Exp</div>
-                </div>
+                <InteractiveCard className="p-4">
+                  <div className="text-center">
+                    <div className="text-2xl font-bold gradient-text">2.5+</div>
+                    <div className="text-xs text-gray-400">Years Exp</div>
+                  </div>
+                </InteractiveCard>
               </motion.div>
 
               <motion.div 
-                className="absolute -right-8 bottom-16 glass-effect p-4 rounded-xl"
+                className="absolute -right-8 bottom-16"
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 1.8, duration: 0.8 }}
-                whileHover={{ scale: 1.05, y: -5 }}
               >
-                <div className="text-center">
-                  <div className="text-2xl font-bold gradient-text">25+</div>
-                  <div className="text-xs text-gray-400">Projects</div>
-                </div>
+                <InteractiveCard className="p-4">
+                  <div className="text-center">
+                    <div className="text-2xl font-bold gradient-text">25+</div>
+                    <div className="text-xs text-gray-400">Projects</div>
+                  </div>
+                </InteractiveCard>
               </motion.div>
             </div>
           </motion.div>

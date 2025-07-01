@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Send, Mail, Phone, MapPin, MessageCircle, User, FileText } from 'lucide-react';
+import InteractiveCard from './InteractiveCard';
 
 const Contact = () => {
   const [ref, inView] = useInView({
@@ -107,7 +108,7 @@ const Contact = () => {
           <div className="grid lg:grid-cols-2 gap-16">
             {/* Contact Info */}
             <motion.div variants={itemVariants} className="space-y-8">
-              <div className="glass-effect p-8 rounded-2xl">
+              <InteractiveCard>
                 <h3 className="text-3xl font-bold mb-8 gradient-text">Get In Touch</h3>
                 <p className="text-lg text-gray-300 mb-8 leading-relaxed">
                   I'm always open to discussing new opportunities, creative projects, or potential collaborations. 
@@ -136,37 +137,36 @@ const Contact = () => {
                     </motion.a>
                   ))}
                 </div>
-              </div>
+              </InteractiveCard>
 
-              <motion.div 
-                className="glass-effect p-8 rounded-2xl"
-                whileHover={{ scale: 1.02 }}
-              >
-                <h4 className="text-xl font-bold mb-4 gradient-text">Why Work With Me?</h4>
-                <ul className="space-y-3 text-gray-300">
-                  <li className="flex items-center gap-3">
-                    <div className="w-2 h-2 gradient-bg rounded-full"></div>
-                    <span>2.5+ years of professional experience</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <div className="w-2 h-2 gradient-bg rounded-full"></div>
-                    <span>Expertise in Laravel, Shopify, and automation</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <div className="w-2 h-2 gradient-bg rounded-full"></div>
-                    <span>Fast turnaround and reliable communication</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <div className="w-2 h-2 gradient-bg rounded-full"></div>
-                    <span>Scalable and maintainable code solutions</span>
-                  </li>
-                </ul>
+              <motion.div whileHover={{ scale: 1.02 }}>
+                <InteractiveCard>
+                  <h4 className="text-xl font-bold mb-4 gradient-text">Why Work With Me?</h4>
+                  <ul className="space-y-3 text-gray-300">
+                    <li className="flex items-center gap-3">
+                      <div className="w-2 h-2 gradient-bg rounded-full"></div>
+                      <span>2.5+ years of professional experience</span>
+                    </li>
+                    <li className="flex items-center gap-3">
+                      <div className="w-2 h-2 gradient-bg rounded-full"></div>
+                      <span>Expertise in Laravel, Shopify, and automation</span>
+                    </li>
+                    <li className="flex items-center gap-3">
+                      <div className="w-2 h-2 gradient-bg rounded-full"></div>
+                      <span>Fast turnaround and reliable communication</span>
+                    </li>
+                    <li className="flex items-center gap-3">
+                      <div className="w-2 h-2 gradient-bg rounded-full"></div>
+                      <span>Scalable and maintainable code solutions</span>
+                    </li>
+                  </ul>
+                </InteractiveCard>
               </motion.div>
             </motion.div>
             
             {/* Contact Form */}
             <motion.div variants={itemVariants}>
-              <div className="glass-effect p-8 rounded-2xl">
+              <InteractiveCard>
                 <h3 className="text-2xl font-bold mb-8 gradient-text flex items-center gap-3">
                   <MessageCircle size={28} />
                   Send Message
@@ -251,7 +251,7 @@ const Contact = () => {
                     )}
                   </motion.button>
                 </form>
-              </div>
+              </InteractiveCard>
             </motion.div>
           </div>
         </motion.div>
