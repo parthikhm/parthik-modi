@@ -11,21 +11,17 @@ const Skills = () => {
   });
 
   const developmentSkills = [
-    { name: 'Laravel', level: 95 },
-    { name: 'PHP', level: 92 },
-    { name: 'Shopify', level: 88 },
-    { name: 'MySQL', level: 87 },
-    { name: 'JavaScript', level: 85 },
-    { name: 'API Integration', level: 93 }
+    { name: 'Laravel', level: 93 },
+    { name: 'MySQL', level: 76 },
+    { name: 'JavaScript & Ajax', level: 72 },
+    { name: 'API Integration', level: 88 }
   ];
 
   const automationSkills = [
-    { name: 'n8n Automation', level: 90 },
-    { name: 'OpenAI Integration', level: 88 },
-    { name: 'Workflow Design', level: 93 },
-    { name: 'Process Optimization', level: 88 },
+    { name: 'n8n Automation', level: 70 },
+    { name: 'Workflow Design', level: 81 },
     { name: 'AI Implementation', level: 85 },
-    { name: 'System Integration', level: 87 }
+    { name: 'System Integration', level: 88 }
   ];
 
   const containerVariants = {
@@ -114,12 +110,12 @@ const Skills = () => {
               </InteractiveCard>
             </motion.div>
 
-            {/* Automation Skills */}
+            {/* API Integration Skills */}
             <motion.div variants={itemVariants}>
               <InteractiveCard>
                 <div className="flex items-center gap-3 mb-8">
                   <Zap size={28} style={{ color: '#f72c4f' }} />
-                  <h3 className="text-2xl font-bold gradient-text">Automation Skills</h3>
+                  <h3 className="text-2xl font-bold gradient-text">API Integration</h3>
                 </div>
                 
                 <div className="space-y-6">
