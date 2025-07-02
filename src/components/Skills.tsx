@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Code, Zap, Users, Award } from 'lucide-react';
+import { Code, Zap } from 'lucide-react';
 import InteractiveCard from './InteractiveCard';
 
 const Skills = () => {
@@ -10,53 +10,22 @@ const Skills = () => {
     threshold: 0.1
   });
 
-  const stats = [
-    {
-      number: '2.5+',
-      label: 'Years Of Experience',
-      description: 'Professional development experience building robust web applications and automation solutions',
-      icon: Award,
-      gradient: 'from-pink-500 to-red-500'
-    },
-    {
-      number: '25+',
-      label: 'Projects Complete',
-      description: 'Successfully delivered projects ranging from e-commerce platforms to automation systems',
-      icon: Code,
-      gradient: 'from-blue-500 to-purple-500'
-    },
-    {
-      number: '15+',
-      label: 'Happy Clients',
-      description: 'Satisfied clients across various industries with ongoing partnerships and referrals',
-      icon: Users,
-      gradient: 'from-green-500 to-teal-500'
-    },
-    {
-      number: '100%',
-      label: 'Project Success Rate',
-      description: 'Consistent delivery of high-quality solutions meeting all project requirements',
-      icon: Zap,
-      gradient: 'from-yellow-500 to-orange-500'
-    }
-  ];
-
   const developmentSkills = [
     { name: 'Laravel', level: 95 },
     { name: 'PHP', level: 92 },
     { name: 'Shopify', level: 88 },
-    { name: 'n8n Automation', level: 90 },
-    { name: 'OpenAI Integration', level: 85 },
-    { name: 'Database Design', level: 87 }
+    { name: 'MySQL', level: 87 },
+    { name: 'JavaScript', level: 85 },
+    { name: 'API Integration', level: 93 }
   ];
 
   const automationSkills = [
+    { name: 'n8n Automation', level: 90 },
+    { name: 'OpenAI Integration', level: 88 },
     { name: 'Workflow Design', level: 93 },
-    { name: 'API Integration', level: 90 },
     { name: 'Process Optimization', level: 88 },
     { name: 'AI Implementation', level: 85 },
-    { name: 'System Integration', level: 87 },
-    { name: 'Performance Tuning', level: 89 }
+    { name: 'System Integration', level: 87 }
   ];
 
   const containerVariants = {
@@ -98,33 +67,6 @@ const Skills = () => {
             <p className="text-xl text-gray-400 mt-6 max-w-3xl mx-auto">
               Expertise in modern development technologies and automation solutions that drive business growth.
             </p>
-          </motion.div>
-
-          {/* Stats Grid */}
-          <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-            {stats.map((stat, index) => (
-              <motion.div
-                key={index}
-                whileHover={{ scale: 1.05, y: -5 }}
-                className="relative"
-              >
-                <InteractiveCard className="text-center h-full">
-                  <div className="mb-4">
-                    <stat.icon size={32} className="mx-auto mb-3" style={{ color: '#f72c4f' }} />
-                  </div>
-                  <motion.div
-                    className="text-4xl font-bold gradient-text mb-2"
-                    initial={{ scale: 0 }}
-                    animate={inView ? { scale: 1 } : { scale: 0 }}
-                    transition={{ delay: index * 0.2, duration: 0.5 }}
-                  >
-                    {stat.number}
-                  </motion.div>
-                  <h3 className="text-lg font-semibold text-white mb-3">{stat.label}</h3>
-                  <p className="text-sm text-gray-400 leading-relaxed">{stat.description}</p>
-                </InteractiveCard>
-              </motion.div>
-            ))}
           </motion.div>
 
           {/* Skills Progress Bars */}

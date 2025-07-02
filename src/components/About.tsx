@@ -39,24 +39,6 @@ const About = () => {
     { icon: TrendingUp, value: '100%', label: 'Success Rate' }
   ];
 
-  const impactProjects = [
-    {
-      name: 'AfroBiz Finders',
-      impact: 'Transformed local business discovery with advanced search capabilities and SEO optimization',
-      result: 'Increased business visibility by 300% for African entrepreneurs'
-    },
-    {
-      name: 'Irish Holidays Platform',
-      impact: 'Built comprehensive booking system with real-time availability and payment integration',
-      result: 'Streamlined operations and reduced booking time by 60%'
-    },
-    {
-      name: 'Automation Solutions',
-      impact: 'Developed intelligent n8n workflows and AI-powered systems for multiple clients',
-      result: 'Reduced manual processes by 80% and improved operational efficiency'
-    }
-  ];
-
   return (
     <section id="about" className="py-20 px-4" style={{ background: 'linear-gradient(to bottom, #060606, #0a0a0a)' }}>
       <div className="max-w-7xl mx-auto">
@@ -103,33 +85,6 @@ const About = () => {
                 </div>
               </InteractiveCard>
 
-              {/* Key Impact Projects */}
-              <InteractiveCard>
-                <h3 className="text-2xl font-bold mb-6 gradient-text">Key Impact Projects</h3>
-                
-                <div className="space-y-6">
-                  {impactProjects.map((project, index) => (
-                    <motion.div 
-                      key={index}
-                      className="border-l-4 pl-6 group"
-                      style={{ borderColor: '#f72c4f' }}
-                      whileHover={{ x: 5 }}
-                    >
-                      <h4 className="text-xl font-semibold text-white mb-2 group-hover:gradient-text transition-all duration-300">
-                        {project.name}
-                      </h4>
-                      <p className="text-gray-300 mb-2">{project.impact}</p>
-                      <p className="text-sm font-medium" style={{ color: '#f72c4f' }}>
-                        Result: {project.result}
-                      </p>
-                    </motion.div>
-                  ))}
-                </div>
-              </InteractiveCard>
-            </motion.div>
-
-            {/* Stats and Education */}
-            <motion.div variants={itemVariants} className="space-y-8">
               {/* Performance Stats */}
               <div className="grid grid-cols-2 gap-6">
                 {stats.map((stat, index) => (
@@ -142,7 +97,10 @@ const About = () => {
                   </motion.div>
                 ))}
               </div>
+            </motion.div>
 
+            {/* Education and Highlights */}
+            <motion.div variants={itemVariants} className="space-y-8">
               {/* Education */}
               <InteractiveCard>
                 <h3 className="text-2xl font-bold mb-6 gradient-text">Education & Achievements</h3>
