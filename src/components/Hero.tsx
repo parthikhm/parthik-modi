@@ -159,6 +159,17 @@ const Hero = () => {
                 <Phone size={20} />
                 <span className="font-medium">Call Now</span>
               </motion.a>
+
+              <motion.a 
+                href="/Parthik_Modi.pdf"
+                download="Parthik_Modi_Resume.pdf"
+                whileHover={{ scale: 1.05, y: -3 }}
+                whileTap={{ scale: 0.95 }}
+                className="flex items-center gap-3 px-6 py-3 glass-effect rounded-full hover:pulse-glow transition-all duration-300 group"
+              >
+                <Download size={20} />
+                <span className="font-medium">Resume</span>
+              </motion.a>
             </motion.div>
 
             <motion.div 
