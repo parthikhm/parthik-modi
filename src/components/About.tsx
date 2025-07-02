@@ -55,81 +55,69 @@ const About = () => {
             <div className="w-24 h-1 gradient-bg mx-auto rounded-full"></div>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
-            {/* Left Side - Main Experience Card */}
-            <motion.div variants={itemVariants}>
-              <InteractiveCard 
-                className="p-8 lg:p-12 relative overflow-hidden"
-                style={{ 
-                  background: 'linear-gradient(135deg, rgba(247, 44, 79, 0.8), rgba(139, 69, 19, 0.6))',
-                  minHeight: '400px'
-                }}
+          {/* Stats Cards Grid */}
+          <motion.div variants={itemVariants} className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+            {stats.map((stat, index) => (
+              <motion.div 
+                key={index}
+                whileHover={{ scale: 1.05, y: -5 }}
+                transition={{ duration: 0.3 }}
               >
-                {/* Background Pattern */}
-                <div className="absolute inset-0 opacity-10">
-                  <div className="absolute top-10 right-10 w-32 h-32 rounded-full border-2 border-white/20"></div>
-                  <div className="absolute bottom-10 left-10 w-24 h-24 rounded-lg rotate-45 border border-white/20"></div>
-                </div>
-                
-                <div className="relative z-10">
-                  <div className="flex items-baseline gap-4 mb-6">
-                    <motion.div 
-                      className="text-8xl lg:text-9xl font-black text-white"
-                      initial={{ scale: 0.5, opacity: 0 }}
-                      animate={inView ? { scale: 1, opacity: 1 } : { scale: 0.5, opacity: 0 }}
-                      transition={{ duration: 1, ease: "easeOut" }}
-                    >
-                      2.5
-                    </motion.div>
-                    <div className="text-white">
-                      <div className="text-2xl lg:text-3xl font-bold">Years Of</div>
-                      <div className="text-2xl lg:text-3xl font-bold">Experience</div>
-                    </div>
-                  </div>
-                  
-                  <p className="text-white/90 text-lg leading-relaxed">
-                    Dedicated Laravel Developer and Automation Specialist providing expert solutions 
-                    to help businesses enhance their performance and operational efficiency through 
-                    cutting-edge web development and intelligent automation systems.
-                  </p>
-                </div>
-              </InteractiveCard>
-            </motion.div>
-
-            {/* Right Side - Stats Grid */}
-            <motion.div variants={itemVariants} className="grid grid-cols-2 gap-6">
-              {stats.slice(1).map((stat, index) => (
-                <motion.div 
-                  key={index}
-                  whileHover={{ scale: 1.05, y: -5 }}
-                  transition={{ duration: 0.3 }}
+                <InteractiveCard 
+                  className={`p-6 text-center h-full flex flex-col justify-center ${
+                    index === 0 ? 'lg:col-span-1' : ''
+                  }`}
+                  style={index === 0 ? { 
+                    background: 'linear-gradient(135deg, rgba(247, 44, 79, 0.8), rgba(139, 69, 19, 0.6))',
+                    minHeight: '160px'
+                  } : { 
+                    background: 'linear-gradient(135deg, rgba(20, 20, 20, 0.9), rgba(40, 40, 40, 0.8))',
+                    minHeight: '160px'
+                  }}
                 >
-                  <InteractiveCard 
-                    className="p-6 lg:p-8 text-center h-full flex flex-col justify-center"
-                    style={{ 
-                      background: 'linear-gradient(135deg, rgba(20, 20, 20, 0.9), rgba(40, 40, 40, 0.8))',
-                      minHeight: '180px'
-                    }}
-                  >
-                    <motion.div 
-                      className="text-4xl lg:text-5xl font-black text-white mb-3"
-                      initial={{ scale: 0, opacity: 0 }}
-                      animate={inView ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
-                      transition={{ duration: 0.8, delay: index * 0.2 + 0.5 }}
-                    >
-                      {stat.value}
-                    </motion.div>
-                    <div className="text-gray-300 text-sm lg:text-base font-medium leading-tight">
-                      {stat.label}
+                  {index === 0 ? (
+                    // Special design for Years Experience card
+                    <div className="relative">
+                      <div className="flex items-center justify-center gap-2 mb-2">
+                        <motion.div 
+                          className="text-4xl lg:text-5xl font-black text-white"
+                          initial={{ scale: 0.5, opacity: 0 }}
+                          animate={inView ? { scale: 1, opacity: 1 } : { scale: 0.5, opacity: 0 }}
+                          transition={{ duration: 1, ease: "easeOut" }}
+                        >
+                          {stat.value}
+                        </motion.div>
+                      </div>
+                      <div className="text-white text-sm lg:text-base font-medium leading-tight">
+                        {stat.label}
+                      </div>
+                      <p className="text-white/80 text-xs mt-2 leading-relaxed">
+                        Professional development expertise
+                      </p>
                     </div>
-                  </InteractiveCard>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
+                  ) : (
+                    // Regular design for other stats
+                    <>
+                      <motion.div 
+                        className="text-3xl lg:text-4xl font-black text-white mb-2"
+                        initial={{ scale: 0, opacity: 0 }}
+                        animate={inView ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
+                        transition={{ duration: 0.8, delay: index * 0.2 }}
+                      >
+                        {stat.value}
+                      </motion.div>
+                      <div className="text-gray-300 text-sm lg:text-base font-medium leading-tight">
+                        {stat.label}
+                      </div>
+                    </>
+                  )}
+                </InteractiveCard>
+              </motion.div>
+            ))}
+          </motion.div>
 
           {/* Professional Summary Section */}
-          <motion.div variants={itemVariants} className="mt-16">
+          <motion.div variants={itemVariants}>
             <div className="grid lg:grid-cols-2 gap-12">
               {/* Professional Summary */}
               <InteractiveCard>
