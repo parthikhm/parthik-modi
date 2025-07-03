@@ -1,0 +1,58 @@
+<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradient definitions matching the website theme -->
+    <linearGradient id="primaryGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f72c4f"/>
+      <stop offset="100%" stop-color="#e91e63"/>
+    </linearGradient>
+    
+    <linearGradient id="secondaryGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e91e63"/>
+      <stop offset="100%" stop-color="#f72c4f"/>
+    </linearGradient>
+    
+    <!-- Glow filter for enhanced visibility -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Dark background circle -->
+  <circle cx="32" cy="32" r="30" fill="#060606" stroke="url(#primaryGradient)" stroke-width="2"/>
+  
+  <!-- Outer decorative ring -->
+  <circle cx="32" cy="32" r="26" fill="none" stroke="url(#primaryGradient)" stroke-width="1" opacity="0.6"/>
+  
+  <!-- Inner background for letters -->
+  <circle cx="32" cy="32" r="22" fill="#0a0a0a" opacity="0.8"/>
+  
+  <!-- P letter stylized -->
+  <path d="M20 16 L20 48 M20 16 L32 16 Q38 16 38 22 Q38 28 32 28 L20 28" 
+        stroke="url(#primaryGradient)" 
+        stroke-width="3" 
+        stroke-linecap="round" 
+        stroke-linejoin="round" 
+        fill="none"
+        filter="url(#glow)"/>
+  
+  <!-- M letter stylized -->
+  <path d="M26 48 L26 32 L32 38 L38 32 L38 48 M26 32 L32 18 L38 32" 
+        stroke="url(#secondaryGradient)" 
+        stroke-width="3" 
+        stroke-linecap="round" 
+        stroke-linejoin="round" 
+        fill="none"
+        filter="url(#glow)"/>
+  
+  <!-- Decorative accent dots -->
+  <circle cx="46" cy="18" r="2" fill="url(#primaryGradient)" opacity="0.8"/>
+  <circle cx="18" cy="46" r="1.5" fill="url(#secondaryGradient)" opacity="0.6"/>
+  <circle cx="46" cy="46" r="1" fill="url(#primaryGradient)" opacity="0.4"/>
+  
+  <!-- Central highlight dot -->
+  <circle cx="32" cy="32" r="1" fill="#ffffff" opacity="0.3"/>
+</svg>
