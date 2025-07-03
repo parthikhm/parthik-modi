@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import Logo from './Logo';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -36,9 +37,8 @@ const Navigation = () => {
         <div className="flex justify-between items-center py-4">
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="text-2xl font-bold gradient-text"
           >
-            Parthik Modi
+            <Logo size="sm" animated={false} />
           </motion.div>
 
           {/* Desktop Menu */}

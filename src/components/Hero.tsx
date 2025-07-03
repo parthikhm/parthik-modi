@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Github, Linkedin, Mail, Phone, Download, ArrowDown, Code2, Sparkles, Zap } from 'lucide-react';
 import InteractiveCard from './InteractiveCard';
+import Logo from './Logo';
 
 const Hero = () => {
   const [currentRole, setCurrentRole] = useState(0);

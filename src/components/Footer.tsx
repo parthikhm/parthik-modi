@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Github, Linkedin, Mail, Heart, ArrowUp } from 'lucide-react';
+import Logo from './Logo';
 
 const Footer = () => {
   const socialLinks = [
@@ -38,8 +39,7 @@ const Footer = () => {
             transition={{ duration: 0.6 }}
             className="mb-6 md:mb-0 text-center md:text-left"
           >
-            <h3 className="text-3xl font-bold gradient-text mb-2">Parthik Modi</h3>
-            <p className="text-gray-400 text-lg">Laravel Developer | Shopify Expert | Automation Specialist</p>
+            <Logo size="md" animated={false} className="justify-center md:justify-start mb-4" />
             <p className="text-gray-500 text-sm mt-2">Building the future, one line of code at a time.</p>
           </motion.div>
           
