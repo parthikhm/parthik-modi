@@ -95,20 +95,6 @@ const Footer = () => {
               </motion.button>
           </div>
         </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="mt-8 text-center"
-        >
-          <div className="glass-effect p-6 rounded-xl max-w-2xl mx-auto">
-            <p className="text-gray-400 text-sm leading-relaxed">
-              "The best way to predict the future is to create it. Let's build something amazing together."
-            </p>
-            <p className="text-gray-500 text-xs mt-2">- Ready for your next project</p>
-          </div>
-        </motion.div>
       </div>
     </footer>
   );
