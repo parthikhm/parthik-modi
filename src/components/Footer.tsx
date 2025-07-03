@@ -86,7 +86,7 @@ const Footer = () => {
                 onClick={scrollToTop}
                 whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.9 }}
-                className="w-10 h-10 glass-effect rounded-full flex items-center mr-auto justify-center hover:pulse-glow transition-all duration-300"
+                className="w-10 h-10 glass-effect rounded-full flex items-center ml-auto justify-center hover:pulse-glow transition-all duration-300"
               >
                 <ArrowUp size={18} />
               </motion.button>
