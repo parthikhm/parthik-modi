@@ -53,8 +53,14 @@ html {
 }
 
 @keyframes pulse-glow {
-  from { box-shadow: 0 0 20px rgba(247, 44, 79, 0.4); }
-  to { box-shadow: 0 0 40px rgba(247, 44, 79, 0.8); }
+  from { 
+    box-shadow: 0 0 20px rgba(247, 44, 79, 0.4);
+    transform: scale(1);
+  }
+  to { 
+    box-shadow: 0 0 40px rgba(247, 44, 79, 0.8), 0 0 60px rgba(233, 30, 99, 0.4);
+    transform: scale(1.02);
+  }
 }
 
 .slide-in-left {
@@ -113,6 +119,143 @@ html {
   100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
 }
 
+/* Enhanced card hover effects */
+.card-hover-glow {
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover-glow::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(45deg, #f72c4f, #e91e63, #f72c4f);
+  border-radius: 14px;
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.4s ease;
+  filter: blur(8px);
+}
+
+.card-hover-glow:hover::before {
+  opacity: 0.7;
+  animation: rotate-border 3s linear infinite;
+}
+
+@keyframes rotate-border {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.card-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-shimmer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transition: left 0.6s ease;
+}
+
+.card-shimmer:hover::after {
+  left: 100%;
+}
+
+/* Enhanced hover states */
+.hover-glow:hover {
+  box-shadow: 
+    0 0 30px rgba(247, 44, 79, 0.5),
+    0 0 60px rgba(233, 30, 99, 0.3),
+    0 0 90px rgba(247, 44, 79, 0.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(-8px) scale(1.02);
+}
+
+.hover-lift {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-12px) rotateX(5deg);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.3),
+    0 0 30px rgba(247, 44, 79, 0.2);
+}
+
+/* Magnetic hover effect */
+.magnetic-hover {
+  transition: transform 0.2s ease-out;
+}
+
+.magnetic-hover:hover {
+  transform: scale(1.05);
+}
+
+/* Ripple effect */
+.ripple-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple-effect::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(247, 44, 79, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.ripple-effect:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* Gradient border animation */
+.gradient-border {
+  position: relative;
+  background: linear-gradient(135deg, #141414, #1a1a1a);
+  border-radius: 12px;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 2px;
+  background: linear-gradient(45deg, #f72c4f, #e91e63, #f72c4f, #e91e63);
+  border-radius: 12px;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.gradient-border:hover::before {
+  opacity: 1;
+  animation: gradient-rotate 2s linear infinite;
+}
+
+@keyframes gradient-rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 /* Additional custom styles for the new color scheme */
 .bg-primary {
   background-color: #060606;
@@ -130,7 +273,36 @@ html {
   border-color: #f72c4f;
 }
 
-.hover-glow:hover {
-  box-shadow: 0 0 30px rgba(247, 44, 79, 0.5);
-  transition: all 0.3s ease;
+/* Enhanced cursor styles */
+.cursor-magnetic {
+  cursor: pointer;
+  transition: transform 0.2s ease-out;
+}
+
+.cursor-magnetic:hover {
+  transform: scale(1.1);
+}
+
+/* Smooth transitions for all interactive elements */
+* {
+  transition-property: transform, box-shadow, background-color, border-color, opacity;
+  transition-duration: 0.3s;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Focus states for accessibility */
+*:focus-visible {
+  outline: 2px solid #f72c4f;
+  outline-offset: 2px;
+}
+
+/* Selection styles */
+::selection {
+  background: rgba(247, 44, 79, 0.3);
+  color: white;
+}
+
+::-moz-selection {
+  background: rgba(247, 44, 79, 0.3);
+  color: white;
 }
