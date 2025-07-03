@@ -82,9 +82,10 @@ const Footer = () => {
                 © {new Date().getFullYear()} Parthik Modi All rights reserved.
               </p>
               
+              
             </div>
-
-            <motion.button
+          </div>
+          <motion.button
                 onClick={scrollToTop}
                 whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.9 }}
@@ -92,8 +93,6 @@ const Footer = () => {
               >
                 <ArrowUp size={18} />
               </motion.button>
-            
-          </div>
         </motion.div>
 
         <motion.div
