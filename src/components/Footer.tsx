@@ -72,10 +72,10 @@ const Footer = () => {
           className="pt-8"
           style={{ borderTop: '1px solid rgba(247, 44, 79, 0.1)' }}
         >
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-400 flex items-center justify-center gap-2 mb-4 md:mb-0">
+          <div className="flex flex-col md:flex-row justify-center items-center">
+            {/* <p className="text-gray-400 flex items-center justify-center gap-2 mb-4 md:mb-0">
               Made with <Heart size={16} style={{ color: '#f72c4f' }} className="animate-pulse" /> by Parthik Modi
-            </p>
+            </p> */}
             
             <div className="flex items-center gap-6">
               <p className="text-gray-500 text-sm">
