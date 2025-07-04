@@ -21,6 +21,17 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Performance optimizations */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
 /* Custom animations */
 .gradient-bg {
   background: linear-gradient(135deg, #f72c4f 0%, #e91e63 100%);
@@ -31,6 +42,13 @@ html {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease-in-out infinite;
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
 .glass-effect {
@@ -98,25 +116,20 @@ html {
   50% { border-color: #f72c4f; }
 }
 
+/* Optimized particle background */
 .particle-bg {
   position: absolute;
   width: 100%;
   height: 100%;
   overflow: hidden;
+  pointer-events: none;
 }
 
 .particle {
   position: absolute;
   background: rgba(247, 44, 79, 0.3);
   border-radius: 50%;
-  animation: particle-float 20s infinite linear;
-}
-
-@keyframes particle-float {
-  0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-  10% { opacity: 1; }
-  90% { opacity: 1; }
-  100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+  will-change: transform, opacity;
 }
 
 /* Enhanced card hover effects */
@@ -283,7 +296,7 @@ html {
   transform: scale(1.1);
 }
 
-/* Smooth transitions for all interactive elements */
+/* Optimized transitions for better performance */
 * {
   transition-property: transform, box-shadow, background-color, border-color, opacity;
   transition-duration: 0.3s;
@@ -305,4 +318,57 @@ html {
 ::-moz-selection {
   background: rgba(247, 44, 79, 0.3);
   color: white;
+}
+
+/* Performance optimizations */
+.will-change-transform {
+  will-change: transform;
+}
+
+.will-change-opacity {
+  will-change: opacity;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Enhanced loading states */
+.loading-shimmer {
+  background: linear-gradient(90deg, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Improved text rendering */
+.text-crisp {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Enhanced backdrop blur support */
+@supports (backdrop-filter: blur(10px)) {
+  .glass-effect {
+    backdrop-filter: blur(10px);
+  }
+}
+
+@supports not (backdrop-filter: blur(10px)) {
+  .glass-effect {
+    background: rgba(247, 44, 79, 0.1);
+  }
 }

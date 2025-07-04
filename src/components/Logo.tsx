@@ -68,7 +68,7 @@ const Logo: React.FC<LogoProps> = ({
     })
   };
 
-  // Logo Icon Component
+  // Enhanced Tech-Style Monogram Logo Icon
   const LogoIcon = () => (
     <motion.div
       className={`${currentSize.icon} relative flex items-center justify-center`}
@@ -77,70 +77,117 @@ const Logo: React.FC<LogoProps> = ({
       animate={animated ? "animate" : false}
       whileHover={animated ? "hover" : {}}
     >
-      {/* Outer ring with gradient */}
-      <div 
+      {/* Outer tech ring with animated gradient */}
+      <motion.div 
         className="absolute inset-0 rounded-full p-0.5"
         style={{ 
           background: 'linear-gradient(135deg, #f72c4f, #e91e63, #f72c4f)',
         }}
+        animate={animated ? {
+          rotate: [0, 360],
+        } : {}}
+        transition={{
+          duration: 20,
+          repeat: Infinity,
+          ease: "linear"
+        }}
       >
         <div 
-          className="w-full h-full rounded-full"
+          className="w-full h-full rounded-full relative overflow-hidden"
           style={{ backgroundColor: '#060606' }}
-        />
-      </div>
+        >
+          {/* Inner glow effect */}
+          <div 
+            className="absolute inset-1 rounded-full"
+            style={{ 
+              background: 'radial-gradient(circle, rgba(247, 44, 79, 0.1) 0%, transparent 70%)',
+            }}
+          />
+        </div>
+      </motion.div>
 
-      {/* Inner content */}
+      {/* Main content container */}
       <div className="relative z-10 flex items-center justify-center w-full h-full">
-        {/* P and M letters stylized */}
+        {/* Enhanced SVG with tech styling */}
         <svg 
           viewBox="0 0 40 40" 
           className="w-3/4 h-3/4"
           fill="none"
         >
-          {/* P letter */}
+          {/* P letter with enhanced styling */}
           <motion.path
             d="M8 6 L8 34 M8 6 L20 6 Q26 6 26 12 Q26 18 20 18 L8 18"
             stroke="url(#gradient1)"
-            strokeWidth="2.5"
+            strokeWidth="2.8"
             strokeLinecap="round"
             strokeLinejoin="round"
-            initial={{ pathLength: 0 }}
-            animate={{ pathLength: 1 }}
+            initial={{ pathLength: 0, opacity: 0 }}
+            animate={{ pathLength: 1, opacity: 1 }}
             transition={{ duration: 1.5, delay: 0.5 }}
+            filter="url(#glow)"
           />
           
-          {/* M letter */}
+          {/* M letter with enhanced styling */}
           <motion.path
             d="M14 34 L14 20 L20 26 L26 20 L26 34 M14 20 L20 6 L26 20"
             stroke="url(#gradient2)"
-            strokeWidth="2.5"
+            strokeWidth="2.8"
             strokeLinecap="round"
             strokeLinejoin="round"
-            initial={{ pathLength: 0 }}
-            animate={{ pathLength: 1 }}
+            initial={{ pathLength: 0, opacity: 0 }}
+            animate={{ pathLength: 1, opacity: 1 }}
             transition={{ duration: 1.5, delay: 0.8 }}
+            filter="url(#glow)"
           />
 
-          {/* Gradient definitions */}
+          {/* Tech accent elements */}
+          <motion.circle
+            cx="30" cy="10" r="1.5"
+            fill="url(#accentGradient)"
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ delay: 1.5, duration: 0.5 }}
+          />
+          <motion.circle
+            cx="10" cy="30" r="1"
+            fill="url(#accentGradient)"
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ delay: 1.7, duration: 0.5 }}
+          />
+
+          {/* Enhanced gradient definitions */}
           <defs>
             <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stopColor="#f72c4f" />
+              <stop offset="50%" stopColor="#ffffff" />
               <stop offset="100%" stopColor="#e91e63" />
             </linearGradient>
             <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stopColor="#e91e63" />
+              <stop offset="50%" stopColor="#ffffff" />
               <stop offset="100%" stopColor="#f72c4f" />
             </linearGradient>
+            <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#ffffff" />
+              <stop offset="100%" stopColor="#f72c4f" />
+            </linearGradient>
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="1" result="coloredBlur"/>
+              <feMerge> 
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
           </defs>
         </svg>
 
-        {/* Decorative dots */}
+        {/* Animated tech corner elements */}
         <motion.div
           className="absolute -top-1 -right-1 w-2 h-2 rounded-full"
           style={{ background: 'linear-gradient(135deg, #f72c4f, #e91e63)' }}
           animate={animated ? {
-            scale: [1, 1.2, 1],
+            scale: [1, 1.3, 1],
             opacity: [0.7, 1, 0.7]
           } : {}}
           transition={{
@@ -153,7 +200,7 @@ const Logo: React.FC<LogoProps> = ({
           className="absolute -bottom-1 -left-1 w-1.5 h-1.5 rounded-full"
           style={{ background: 'linear-gradient(135deg, #e91e63, #f72c4f)' }}
           animate={animated ? {
-            scale: [1, 1.3, 1],
+            scale: [1, 1.4, 1],
             opacity: [0.5, 1, 0.5]
           } : {}}
           transition={{
@@ -163,11 +210,23 @@ const Logo: React.FC<LogoProps> = ({
             delay: 1
           }}
         />
+
+        {/* Tech grid pattern overlay */}
+        <div className="absolute inset-0 opacity-10">
+          <svg viewBox="0 0 40 40" className="w-full h-full">
+            <defs>
+              <pattern id="grid" width="4" height="4" patternUnits="userSpaceOnUse">
+                <path d="M 4 0 L 0 0 0 4" fill="none" stroke="#f72c4f" strokeWidth="0.5"/>
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#grid)" />
+          </svg>
+        </div>
       </div>
     </motion.div>
   );
 
-  // Logo Text Component
+  // Enhanced Logo Text Component
   const LogoText = () => (
     <motion.div
       className="flex flex-col"
@@ -184,6 +243,10 @@ const Logo: React.FC<LogoProps> = ({
             custom={i}
             initial={animated ? "initial" : false}
             animate={animated ? "animate" : false}
+            whileHover={animated ? { 
+              scale: 1.1,
+              textShadow: "0 0 8px rgba(247, 44, 79, 0.8)"
+            } : {}}
           >
             {letter === ' ' ? '\u00A0' : letter}
           </motion.span>
@@ -195,7 +258,9 @@ const Logo: React.FC<LogoProps> = ({
         animate={animated ? { opacity: 1 } : false}
         transition={{ delay: 1.5, duration: 0.5 }}
       >
-        Laravel Developer
+        <span className="bg-gradient-to-r from-gray-400 to-gray-500 bg-clip-text text-transparent">
+          Laravel Developer
+        </span>
       </motion.div>
     </motion.div>
   );
