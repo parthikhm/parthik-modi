@@ -15,18 +15,17 @@ const About = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.3
+        staggerChildren: 0.1
       }
     }
   };
 
   const itemVariants = {
-    hidden: { x: -50, opacity: 0 },
+    hidden: { opacity: 0 },
     visible: {
-      x: 0,
       opacity: 1,
       transition: {
-        duration: 0.8,
+        duration: 0.6,
         ease: "easeOut"
       }
     }
@@ -82,7 +81,7 @@ const About = () => {
             </p>
           </motion.div>
 
-          {/* Stats Cards Grid - Redesigned */}
+          {/* Stats Cards Grid - No scroll animations */}
           <motion.div variants={itemVariants} className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
             {stats.map((stat, index) => (
               <motion.div 
@@ -114,14 +113,9 @@ const About = () => {
                   </motion.div>
 
                   {/* Value */}
-                  <motion.div 
-                    className="text-3xl lg:text-4xl font-black text-white mb-2"
-                    initial={{ scale: 0, opacity: 0 }}
-                    animate={inView ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
-                    transition={{ duration: 0.8, delay: index * 0.2 }}
-                  >
+                  <div className="text-3xl lg:text-4xl font-black text-white mb-2">
                     {stat.value}
-                  </motion.div>
+                  </div>
 
                   {/* Label */}
                   <div className="text-gray-300 text-sm lg:text-base font-semibold mb-2">
@@ -137,7 +131,7 @@ const About = () => {
             ))}
           </motion.div>
 
-          {/* Main Content - Redesigned */}
+          {/* Main Content - No scroll animations */}
           <motion.div variants={itemVariants}>
             <div className="grid lg:grid-cols-3 gap-8">
               {/* Professional Journey - Spans 2 columns */}

@@ -46,18 +46,17 @@ const Contact = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.3
+        staggerChildren: 0.1
       }
     }
   };
 
   const itemVariants = {
-    hidden: { y: 50, opacity: 0 },
+    hidden: { opacity: 0 },
     visible: {
-      y: 0,
       opacity: 1,
       transition: {
-        duration: 0.8,
+        duration: 0.6,
         ease: "easeOut"
       }
     }
@@ -103,7 +102,7 @@ const Contact = () => {
             </p>
           </motion.div>
           
-          {/* Main Contact Card */}
+          {/* Main Contact Card - No scroll animations */}
           <motion.div variants={itemVariants}>
             <InteractiveCard className="overflow-hidden">
               <div className="grid lg:grid-cols-2 gap-0">

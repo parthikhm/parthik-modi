@@ -116,24 +116,11 @@ const Skills = () => {
   };
 
   const itemVariants = {
-    hidden: { y: 30, opacity: 0 },
+    hidden: { opacity: 0 },
     visible: {
-      y: 0,
       opacity: 1,
       transition: {
         duration: 0.6,
-        ease: "easeOut"
-      }
-    }
-  };
-
-  const skillVariants = {
-    hidden: { x: -20, opacity: 0 },
-    visible: {
-      x: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.5,
         ease: "easeOut"
       }
     }
@@ -222,15 +209,11 @@ const Skills = () => {
                     </div>
                   </motion.div>
 
-                  {/* Skills Grid */}
+                  {/* Skills Grid - No scroll animations */}
                   <div className="grid lg:grid-cols-2 gap-8 mb-12">
                     {category.skills.map((skill, skillIndex) => (
                       <motion.div
                         key={skill.name}
-                        variants={skillVariants}
-                        initial="hidden"
-                        animate="visible"
-                        transition={{ delay: skillIndex * 0.1 }}
                         whileHover={{ y: -5 }}
                       >
                         <InteractiveCard className="h-full group">
@@ -249,9 +232,6 @@ const Skills = () => {
                                 <motion.div 
                                   className="flex items-center gap-2 px-3 py-1 rounded-full text-white text-sm font-bold"
                                   style={{ background: 'linear-gradient(135deg, #f72c4f, #e91e63)' }}
-                                  initial={{ scale: 0 }}
-                                  animate={{ scale: 1 }}
-                                  transition={{ delay: skillIndex * 0.1 + 0.3 }}
                                 >
                                   <TrendingUp size={14} />
                                   {skill.level}%
@@ -279,13 +259,9 @@ const Skills = () => {
                             >
                               <motion.div
                                 className="h-full rounded-full relative overflow-hidden"
-                                style={{ background: `linear-gradient(135deg, #f72c4f, #e91e63)` }}
-                                initial={{ width: 0 }}
-                                animate={{ width: `${skill.level}%` }}
-                                transition={{ 
-                                  duration: 1.5, 
-                                  delay: skillIndex * 0.1 + 0.5,
-                                  ease: "easeOut"
+                                style={{ 
+                                  background: `linear-gradient(135deg, #f72c4f, #e91e63)`,
+                                  width: `${skill.level}%`
                                 }}
                               >
                                 {/* Animated shine effect */}
@@ -385,9 +361,6 @@ const Skills = () => {
                       className="group cursor-pointer"
                       whileHover={{ scale: 1.05, y: -10 }}
                       transition={{ duration: 0.3 }}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: index * 0.1 + 1 }}
                     >
                       <div className="p-6 rounded-2xl group-hover:shadow-2xl transition-all duration-300" style={{ background: 'rgba(247, 44, 79, 0.05)' }}>
                         <motion.div 
