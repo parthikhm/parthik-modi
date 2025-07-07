@@ -5,6 +5,7 @@ export type Theme = 'light' | 'dark' | 'system';
 interface UseThemeReturn {
   theme: Theme;
   resolvedTheme: 'light' | 'dark';
+  systemTheme: 'light' | 'dark';
   setTheme: (theme: Theme) => void;
   toggleTheme: () => void;
 }
@@ -80,6 +81,7 @@ export const useTheme = (): UseThemeReturn => {
   return {
     theme,
     resolvedTheme,
+    systemTheme,
     setTheme,
     toggleTheme,
   };

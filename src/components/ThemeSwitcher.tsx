@@ -17,7 +17,7 @@ const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({
   showLabel = false,
   className = ''
 }) => {
-  const { theme, resolvedTheme, setTheme, toggleTheme } = useThemeContext();
+  const { theme, resolvedTheme, systemTheme, setTheme, toggleTheme } = useThemeContext();
   const [isOpen, setIsOpen] = useState(false);
 
   const themes: Array<{ key: Theme; label: string; icon: React.ComponentType<any>; description: string }> = [

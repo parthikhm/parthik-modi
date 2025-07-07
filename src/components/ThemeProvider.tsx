@@ -4,6 +4,7 @@ import { useTheme, Theme } from '../hooks/useTheme';
 interface ThemeContextType {
   theme: Theme;
   resolvedTheme: 'light' | 'dark';
+  systemTheme: 'light' | 'dark';
   setTheme: (theme: Theme) => void;
   toggleTheme: () => void;
 }
