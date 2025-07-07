@@ -1,5 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
 
 interface InteractiveCardProps {
   children: React.ReactNode;
@@ -19,10 +18,11 @@ const InteractiveCard: React.FC<InteractiveCardProps> = ({
       ref={cardRef}
       className={`relative overflow-hidden transition-all duration-300 cursor-pointer ${className}`}
       style={{
-        backgroundColor: '#141414',
+        backgroundColor: 'var(--bg-card)',
         borderRadius: '12px',
         padding: '20px',
-        border: '1px solid rgba(247, 44, 79, 0.1)',
+        border: '1px solid var(--border-primary)',
+        boxShadow: '0 4px 6px -1px var(--shadow-color), 0 2px 4px -1px var(--shadow-color)',
         ...style,
       }}
     >
@@ -30,7 +30,7 @@ const InteractiveCard: React.FC<InteractiveCardProps> = ({
       <div
         className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-500"
         style={{
-          background: 'radial-gradient(600px circle at 50% 50%, rgba(247, 44, 79, 0.03), transparent 40%)',
+          background: 'radial-gradient(600px circle at 50% 50%, var(--glass-bg), transparent 40%)',
           borderRadius: '12px',
         }}
       />

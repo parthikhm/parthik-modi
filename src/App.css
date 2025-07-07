@@ -4,7 +4,7 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #060606;
+  background: var(--scrollbar-track);
 }
 
 ::-webkit-scrollbar-thumb {
@@ -21,6 +21,71 @@ html {
   scroll-behavior: smooth;
 }
 
+/* CSS Variables for theme colors */
+:root {
+  /* Dark theme (default) */
+  --bg-primary: #060606;
+  --bg-secondary: #0a0a0a;
+  --bg-tertiary: #141414;
+  --bg-card: #1a1a1a;
+  --text-primary: #ffffff;
+  --text-secondary: #e5e5e5;
+  --text-tertiary: #a3a3a3;
+  --text-muted: #737373;
+  --border-primary: rgba(247, 44, 79, 0.1);
+  --border-secondary: rgba(255, 255, 255, 0.1);
+  --glass-bg: rgba(247, 44, 79, 0.05);
+  --glass-border: rgba(247, 44, 79, 0.1);
+  --scrollbar-track: #060606;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --selection-bg: rgba(247, 44, 79, 0.3);
+}
+
+/* Light theme */
+.light {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --bg-tertiary: #f1f5f9;
+  --bg-card: #ffffff;
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-tertiary: #64748b;
+  --text-muted: #94a3b8;
+  --border-primary: rgba(247, 44, 79, 0.2);
+  --border-secondary: rgba(0, 0, 0, 0.1);
+  --glass-bg: rgba(247, 44, 79, 0.08);
+  --glass-border: rgba(247, 44, 79, 0.15);
+  --scrollbar-track: #f1f5f9;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --selection-bg: rgba(247, 44, 79, 0.2);
+}
+
+/* Dark theme explicit */
+.dark {
+  --bg-primary: #060606;
+  --bg-secondary: #0a0a0a;
+  --bg-tertiary: #141414;
+  --bg-card: #1a1a1a;
+  --text-primary: #ffffff;
+  --text-secondary: #e5e5e5;
+  --text-tertiary: #a3a3a3;
+  --text-muted: #737373;
+  --border-primary: rgba(247, 44, 79, 0.1);
+  --border-secondary: rgba(255, 255, 255, 0.1);
+  --glass-bg: rgba(247, 44, 79, 0.05);
+  --glass-border: rgba(247, 44, 79, 0.1);
+  --scrollbar-track: #060606;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --selection-bg: rgba(247, 44, 79, 0.3);
+}
+
+/* Theme transition */
+* {
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+  transition-duration: 0.3s;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 /* Performance optimizations */
 * {
   box-sizing: border-box;
@@ -30,6 +95,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
 }
 
 /* Custom animations */
@@ -52,9 +119,9 @@ body {
 }
 
 .glass-effect {
-  background: rgba(247, 44, 79, 0.05);
+  background: var(--glass-bg);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(247, 44, 79, 0.1);
+  border: 1px solid var(--glass-border);
 }
 
 .floating-animation {
@@ -97,28 +164,45 @@ body {
   will-change: transform, opacity;
 }
 
-/* Additional custom styles for the new color scheme */
+/* Theme-aware utility classes */
 .bg-primary {
-  background-color: #060606;
+  background-color: var(--bg-primary);
 }
 
 .bg-secondary {
-  background-color: #0a0a0a;
+  background-color: var(--bg-secondary);
+}
+
+.bg-tertiary {
+  background-color: var(--bg-tertiary);
+}
+
+.bg-card {
+  background-color: var(--bg-card);
 }
 
 .text-primary {
-  color: #f72c4f;
+  color: var(--text-primary);
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+.text-tertiary {
+  color: var(--text-tertiary);
+}
+
+.text-muted {
+  color: var(--text-muted);
 }
 
 .border-primary {
-  border-color: #f72c4f;
+  border-color: var(--border-primary);
 }
 
-/* Optimized transitions for better performance */
-* {
-  transition-property: transform, box-shadow, background-color, border-color, opacity;
-  transition-duration: 0.2s;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+.border-secondary {
+  border-color: var(--border-secondary);
 }
 
 /* Focus states for accessibility */
@@ -129,13 +213,13 @@ body {
 
 /* Selection styles */
 ::selection {
-  background: rgba(247, 44, 79, 0.3);
-  color: white;
+  background: var(--selection-bg);
+  color: var(--text-primary);
 }
 
 ::-moz-selection {
-  background: rgba(247, 44, 79, 0.3);
-  color: white;
+  background: var(--selection-bg);
+  color: var(--text-primary);
 }
 
 /* Performance optimizations */
@@ -161,7 +245,7 @@ body {
 
 /* Enhanced loading states */
 .loading-shimmer {
-  background: linear-gradient(90deg, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%);
+  background: linear-gradient(90deg, var(--bg-card) 25%, var(--bg-tertiary) 50%, var(--bg-card) 75%);
   background-size: 200% 100%;
   animation: shimmer 2s infinite;
 }
@@ -187,6 +271,46 @@ body {
 
 @supports not (backdrop-filter: blur(10px)) {
   .glass-effect {
-    background: rgba(247, 44, 79, 0.1);
+    background: var(--glass-bg);
   }
+}
+
+/* Light theme specific adjustments */
+.light .particle {
+  background: rgba(247, 44, 79, 0.2);
+}
+
+.light .glass-effect {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 4px 6px -1px var(--shadow-color), 0 2px 4px -1px var(--shadow-color);
+}
+
+.light .pulse-glow {
+  animation: pulse-glow-light 2s ease-in-out infinite alternate;
+}
+
+@keyframes pulse-glow-light {
+  from { 
+    box-shadow: 0 0 20px rgba(247, 44, 79, 0.2);
+    transform: scale(1);
+  }
+  to { 
+    box-shadow: 0 0 40px rgba(247, 44, 79, 0.4), 0 0 60px rgba(233, 30, 99, 0.2);
+    transform: scale(1.02);
+  }
+}
+
+/* Theme transition for no-flash */
+html {
+  color-scheme: dark;
+}
+
+html.light {
+  color-scheme: light;
+}
+
+/* Prevent flash of unstyled content */
+.theme-transition-disable * {
+  transition: none !important;
 }

@@ -7,20 +7,23 @@ import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Navigation from './components/Navigation';
+import { ThemeProvider } from './components/ThemeProvider';
 import './App.css';
 
 function App() {
   return (
-    <div className="bg-primary text-white overflow-x-hidden" style={{ backgroundColor: '#060606' }}>
-      <Navigation />
-      <Hero />
-      <About />
-      <Skills />
-      <Experience />
-      <Projects />
-      <Contact />
-      <Footer />
-    </div>
+    <ThemeProvider>
+      <div className="bg-primary text-primary overflow-x-hidden">
+        <Navigation />
+        <Hero />
+        <About />
+        <Skills />
+        <Experience />
+        <Projects />
+        <Contact />
+        <Footer />
+      </div>
+    </ThemeProvider>
   );
 }
 

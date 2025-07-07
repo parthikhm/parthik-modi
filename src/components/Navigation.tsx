@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import Logo from './Logo';
+import ThemeSwitcher from './ThemeSwitcher';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -65,13 +66,13 @@ const Navigation = () => {
         scrolled ? 'glass-effect shadow-2xl backdrop-blur-xl' : 'bg-transparent'
       }`}
       style={{ 
-        backgroundColor: scrolled ? 'rgba(6, 6, 6, 0.95)' : 'transparent',
-        borderBottom: scrolled ? '1px solid rgba(247, 44, 79, 0.1)' : 'none'
+        backgroundColor: scrolled ? 'var(--glass-bg)' : 'transparent',
+        borderBottom: scrolled ? '1px solid var(--border-primary)' : 'none'
       }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
-          {/* Enhanced Logo */}
+          {/* Logo */}
           <motion.div
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -79,8 +80,8 @@ const Navigation = () => {
             <Logo size="sm" animated={false} />
           </motion.div>
 
-          {/* Enhanced Desktop Menu */}
-          <div className="hidden md:flex space-x-8">
+          {/* Desktop Menu */}
+          <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
               <motion.a
                 key={item.name}
@@ -93,13 +94,13 @@ const Navigation = () => {
                 whileTap={{ scale: 0.95 }}
                 className={`relative group transition-all duration-300 ${
                   activeSection === item.href.substring(1)
-                    ? 'text-white font-semibold'
-                    : 'text-gray-300 hover:text-white'
+                    ? 'text-primary font-semibold'
+                    : 'text-tertiary hover:text-primary'
                 }`}
               >
                 {item.name}
                 
-                {/* Enhanced active indicator */}
+                {/* Active indicator */}
                 <motion.span 
                   className="absolute -bottom-1 left-0 h-0.5 rounded-full transition-all duration-300"
                   style={{ 
@@ -119,15 +120,20 @@ const Navigation = () => {
                 />
               </motion.a>
             ))}
+            
+            {/* Theme Switcher */}
+            <ThemeSwitcher variant="dropdown" size="md" />
           </div>
 
-          {/* Enhanced Mobile Menu Button */}
-          <div className="md:hidden">
+          {/* Mobile Menu Button */}
+          <div className="md:hidden flex items-center gap-3">
+            <ThemeSwitcher variant="button" size="sm" />
+            
             <motion.button
               onClick={() => setIsOpen(!isOpen)}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              className="text-white p-2 rounded-lg glass-effect hover:pulse-glow transition-all duration-300"
+              className="text-primary p-2 rounded-lg glass-effect hover:shadow-lg transition-all duration-300"
             >
               <motion.div
                 animate={{ rotate: isOpen ? 180 : 0 }}
@@ -139,7 +145,7 @@ const Navigation = () => {
           </div>
         </div>
 
-        {/* Enhanced Mobile Menu */}
+        {/* Mobile Menu */}
         <AnimatePresence>
           {isOpen && (
             <motion.div
@@ -147,8 +153,8 @@ const Navigation = () => {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -20, scale: 0.95 }}
               transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-              className="md:hidden glass-effect rounded-xl mt-2 p-6 border border-pink-500/20"
-              style={{ background: 'rgba(20, 20, 20, 0.95)' }}
+              className="md:hidden glass-effect rounded-xl mt-2 p-6 border border-primary/20"
+              style={{ background: 'var(--bg-card)' }}
             >
               <div className="space-y-4">
                 {navItems.map((item, index) => (
@@ -166,8 +172,8 @@ const Navigation = () => {
                     whileTap={{ scale: 0.95 }}
                     className={`block py-3 px-4 rounded-lg transition-all duration-300 relative overflow-hidden ${
                       activeSection === item.href.substring(1)
-                        ? 'text-white font-semibold gradient-bg'
-                        : 'text-gray-300 hover:text-white hover:bg-gray-800/50'
+                        ? 'text-primary font-semibold gradient-bg'
+                        : 'text-tertiary hover:text-primary hover:bg-tertiary/50'
                     }`}
                   >
                     <span className="relative z-10">{item.name}</span>
@@ -180,6 +186,11 @@ const Navigation = () => {
                     />
                   </motion.a>
                 ))}
+                
+                {/* Mobile Theme Switcher */}
+                <div className="pt-4 border-t border-secondary">
+                  <ThemeSwitcher variant="dropdown" size="md" showLabel />
+                </div>
               </div>
             </motion.div>
           )}
