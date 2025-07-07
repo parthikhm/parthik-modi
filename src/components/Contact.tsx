@@ -56,7 +56,7 @@ const Contact = () => {
     visible: {
       opacity: 1,
       transition: {
-        duration: 0.6,
+        duration: 0.4,
         ease: "easeOut"
       }
     }
@@ -102,19 +102,19 @@ const Contact = () => {
             </p>
           </motion.div>
           
-          {/* Main Contact Card - No scroll animations */}
+          {/* Main Contact Card */}
           <motion.div variants={itemVariants}>
             <InteractiveCard className="overflow-hidden">
               <div className="grid lg:grid-cols-2 gap-0">
                 {/* Left Side - Get In Touch */}
                 <div className="p-8 lg:p-12" style={{ background: 'linear-gradient(135deg, rgba(247, 44, 79, 0.1), rgba(233, 30, 99, 0.05))' }}>
                   <div className="mb-8">
-                    <motion.div 
+                    <div 
                       className="inline-block px-4 py-2 rounded-full mb-6"
                       style={{ background: 'linear-gradient(135deg, #f72c4f, #e91e63)', color: 'white' }}
                     >
                       <span className="text-sm font-medium tracking-wider uppercase">Get In Touch</span>
-                    </motion.div>
+                    </div>
                     
                     <h3 className="text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
                       Elevate your brand with Me
@@ -129,20 +129,19 @@ const Contact = () => {
                   {/* Contact Info */}
                   <div className="space-y-6 mb-8">
                     {contactInfo.map((info, index) => (
-                      <motion.a
+                      <a
                         key={index}
                         href={info.href}
-                        whileHover={{ x: 10 }}
                         className="flex items-center gap-4 text-gray-300 hover:text-white transition-all duration-300 group"
                       >
-                        <div className="w-12 h-12 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300" style={{ background: 'rgba(247, 44, 79, 0.2)' }}>
+                        <div className="w-12 h-12 rounded-full flex items-center justify-center transition-transform duration-300" style={{ background: 'rgba(247, 44, 79, 0.2)' }}>
                           <info.icon size={20} style={{ color: '#f72c4f' }} />
                         </div>
                         <div>
                           <p className="font-medium">{info.title}</p>
                           <p className="text-sm text-gray-400">{info.value}</p>
                         </div>
-                      </motion.a>
+                      </a>
                     ))}
                   </div>
 

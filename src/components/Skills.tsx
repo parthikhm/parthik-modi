@@ -110,7 +110,7 @@ const Skills = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1
+        staggerChildren: 0.05
       }
     }
   };
@@ -120,7 +120,7 @@ const Skills = () => {
     visible: {
       opacity: 1,
       transition: {
-        duration: 0.6,
+        duration: 0.4,
         ease: "easeOut"
       }
     }
@@ -182,9 +182,9 @@ const Skills = () => {
           {/* Active Category Content */}
           <motion.div
             key={activeCategory}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3 }}
           >
             {skillCategories.map((category, categoryIndex) => (
               activeCategory === categoryIndex && (
@@ -195,13 +195,11 @@ const Skills = () => {
                     className="text-center mb-12"
                   >
                     <div className="flex items-center justify-center gap-4 mb-6">
-                      <motion.div 
+                      <div 
                         className={`w-20 h-20 rounded-3xl flex items-center justify-center bg-gradient-to-br ${category.color}`}
-                        whileHover={{ rotate: 5, scale: 1.1 }}
-                        transition={{ duration: 0.3 }}
                       >
                         <category.icon size={32} className="text-white" />
-                      </motion.div>
+                      </div>
                       <div className="text-left">
                         <h3 className="text-3xl font-bold text-white">{category.title}</h3>
                         <p className="text-gray-400">{category.subtitle}</p>
@@ -209,33 +207,30 @@ const Skills = () => {
                     </div>
                   </motion.div>
 
-                  {/* Skills Grid - No scroll animations */}
+                  {/* Skills Grid */}
                   <div className="grid lg:grid-cols-2 gap-8 mb-12">
                     {category.skills.map((skill, skillIndex) => (
-                      <motion.div
-                        key={skill.name}
-                        whileHover={{ y: -5 }}
-                      >
-                        <InteractiveCard className="h-full group">
+                      <div key={skill.name}>
+                        <InteractiveCard className="h-full">
                           <div className="flex items-start gap-4 mb-6">
-                            <motion.div 
-                              className="w-14 h-14 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300"
+                            <div 
+                              className="w-14 h-14 rounded-2xl flex items-center justify-center"
                               style={{ background: `linear-gradient(135deg, rgba(247, 44, 79, 0.2), rgba(233, 30, 99, 0.1))` }}
                             >
                               <skill.icon size={24} style={{ color: '#f72c4f' }} />
-                            </motion.div>
+                            </div>
                             <div className="flex-1">
                               <div className="flex items-center justify-between mb-2">
-                                <h4 className="text-xl font-bold text-white group-hover:gradient-text transition-all duration-300">
+                                <h4 className="text-xl font-bold text-white">
                                   {skill.name}
                                 </h4>
-                                <motion.div 
+                                <div 
                                   className="flex items-center gap-2 px-3 py-1 rounded-full text-white text-sm font-bold"
                                   style={{ background: 'linear-gradient(135deg, #f72c4f, #e91e63)' }}
                                 >
                                   <TrendingUp size={14} />
                                   {skill.level}%
-                                </motion.div>
+                                </div>
                               </div>
                               <p className="text-gray-400 text-sm mb-3 leading-relaxed">
                                 {skill.description}
@@ -247,7 +242,7 @@ const Skills = () => {
                             </div>
                           </div>
 
-                          {/* Enhanced Progress Bar */}
+                          {/* Progress Bar */}
                           <div className="relative">
                             <div className="flex justify-between items-center mb-2">
                               <span className="text-xs text-gray-500">Proficiency Level</span>
@@ -263,25 +258,16 @@ const Skills = () => {
                                   background: `linear-gradient(135deg, #f72c4f, #e91e63)`,
                                   width: `${skill.level}%`
                                 }}
+                                initial={{ width: 0 }}
+                                animate={{ width: `${skill.level}%` }}
+                                transition={{ duration: 1, delay: skillIndex * 0.1 }}
                               >
-                                {/* Animated shine effect */}
-                                <motion.div
-                                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
-                                  initial={{ x: '-100%' }}
-                                  animate={{ x: '100%' }}
-                                  transition={{
-                                    duration: 2,
-                                    delay: skillIndex * 0.1 + 1.5,
-                                    ease: "easeInOut"
-                                  }}
-                                />
-                                {/* Pulse effect */}
-                                <div className="absolute inset-0 bg-white/10 animate-pulse"></div>
+                                <div className="absolute inset-0 bg-white/10"></div>
                               </motion.div>
                             </div>
                           </div>
                         </InteractiveCard>
-                      </motion.div>
+                      </div>
                     ))}
                   </div>
 
@@ -290,7 +276,7 @@ const Skills = () => {
                     variants={itemVariants}
                     initial="hidden"
                     animate="visible"
-                    transition={{ delay: 0.8 }}
+                    transition={{ delay: 0.5 }}
                   >
                     <InteractiveCard>
                       <div className="text-center">
@@ -330,14 +316,12 @@ const Skills = () => {
             <InteractiveCard>
               <div className="text-center">
                 <div className="flex items-center justify-center gap-3 mb-8">
-                  <motion.div 
+                  <div 
                     className="w-16 h-16 rounded-2xl flex items-center justify-center"
                     style={{ background: 'linear-gradient(135deg, #f72c4f, #e91e63)' }}
-                    whileHover={{ rotate: 360 }}
-                    transition={{ duration: 0.8 }}
                   >
                     <Settings size={28} className="text-white" />
-                  </motion.div>
+                  </div>
                   <div className="text-left">
                     <h3 className="text-3xl font-bold gradient-text">Technology Ecosystem</h3>
                     <p className="text-gray-400">Comprehensive technical stack</p>
@@ -356,25 +340,19 @@ const Skills = () => {
                     { icon: Zap, label: 'Automation', count: '4+', description: 'Workflow Tools' },
                     { icon: Database, label: 'Integration', count: '10+', description: 'API Connections' }
                   ].map((tech, index) => (
-                    <motion.div
-                      key={index}
-                      className="group cursor-pointer"
-                      whileHover={{ scale: 1.05, y: -10 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <div className="p-6 rounded-2xl group-hover:shadow-2xl transition-all duration-300" style={{ background: 'rgba(247, 44, 79, 0.05)' }}>
-                        <motion.div 
-                          className="w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center group-hover:pulse-glow transition-all duration-300"
+                    <div key={index} className="group cursor-pointer">
+                      <div className="p-6 rounded-2xl transition-all duration-300" style={{ background: 'rgba(247, 44, 79, 0.05)' }}>
+                        <div 
+                          className="w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center transition-all duration-300"
                           style={{ background: 'rgba(247, 44, 79, 0.1)' }}
-                          whileHover={{ rotate: 5 }}
                         >
                           <tech.icon size={28} style={{ color: '#f72c4f' }} />
-                        </motion.div>
+                        </div>
                         <div className="text-2xl font-bold gradient-text mb-2">{tech.count}</div>
                         <h4 className="font-semibold text-white mb-1">{tech.label}</h4>
                         <p className="text-xs text-gray-400">{tech.description}</p>
                       </div>
-                    </motion.div>
+                    </div>
                   ))}
                 </div>
               </div>
