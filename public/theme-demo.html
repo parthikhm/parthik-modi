@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Theme Switcher Demo</title>
+    <meta name="description" content="A complete, accessible theme switcher with light, dark, and system modes">
+    
+    <!-- Theme color for mobile browsers -->
+    <meta name="theme-color" content="#060606">
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Prevent flash of unstyled content -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const theme = savedTheme || 'system';
+            const resolvedTheme = theme === 'system' ? (systemPrefersDark ? 'dark' : 'light') : theme;
+            
+            document.documentElement.classList.remove('light', 'dark');
+            document.documentElement.classList.add(resolvedTheme);
+            
+            // Update theme-color meta tag
+            const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+            if (metaThemeColor) {
+                metaThemeColor.setAttribute('content', resolvedTheme === 'dark' ? '#060606' : '#ffffff');
+            }
+        })();
+    </script>
+    
+    <style>
+        /* Theme CSS Variables */
+        :root {
+            color-scheme: dark;
+            --bg-primary: #060606;
+            --bg-secondary: #0a0a0a;
+            --bg-tertiary: #141414;
+            --bg-card: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: #e5e5e5;
+            --text-tertiary: #a3a3a3;
+            --text-muted: #737373;
+            --border-primary: rgba(247, 44, 79, 0.1);
+            --border-secondary: rgba(255, 255, 255, 0.1);
+            --glass-bg: rgba(247, 44, 79, 0.05);
+            --glass-border: rgba(247, 44, 79, 0.1);
+            --shadow-color: rgba(0, 0, 0, 0.3);
+            --selection-bg: rgba(247, 44, 79, 0.3);
+            --input-bg: rgba(255, 255, 255, 0.05);
+            --input-border: rgba(255, 255, 255, 0.1);
+            --input-focus: rgba(247, 44, 79, 0.3);
+        }
+
+        .light {
+            color-scheme: light;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-tertiary: #f1f5f9;
+            --bg-card: #ffffff;
+            --text-primary: #0f172a;
+            --text-secondary: #334155;
+            --text-tertiary: #64748b;
+            --text-muted: #94a3b8;
+            --border-primary: rgba(247, 44, 79, 0.2);
+            --border-secondary: rgba(0, 0, 0, 0.1);
+            --glass-bg: rgba(247, 44, 79, 0.08);
+            --glass-border: rgba(247, 44, 79, 0.15);
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --selection-bg: rgba(247, 44, 79, 0.2);
+            --input-bg: rgba(0, 0, 0, 0.02);
+            --input-border: rgba(0, 0, 0, 0.1);
+            --input-focus: rgba(247, 44, 79, 0.2);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+                        color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .theme-transition-disable * {
+            transition: none !important;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #f72c4f, #e91e63);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .theme-switcher {
+            position: relative;
+        }
+
+        .theme-button {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.5rem 1rem;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 0.5rem;
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .theme-button:hover {
+            box-shadow: 0 4px 6px -1px var(--shadow-color);
+            transform: translateY(-1px);
+        }
+
+        .theme-button:focus {
+            outline: 2px solid #f72c4f;
+            outline-offset: 2px;
+        }
+
+        .theme-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            margin-top: 0.5rem;
+            min-width: 220px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-secondary);
+            border-radius: 0.75rem;
+            box-shadow: 0 20px 25px -5px var(--shadow-color);
+            backdrop-filter: blur(10px);
+            z-index: 50;
+            opacity: 0;
+            transform: translateY(-10px) scale(0.95);
+            transition: all 0.2s ease-out;
+            pointer-events: none;
+        }
+
+        .theme-dropdown.open {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            pointer-events: auto;
+        }
+
+        .theme-option {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            width: 100%;
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s ease-out;
+            text-align: left;
+        }
+
+        .theme-option:hover {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+        }
+
+        .theme-option.active {
+            color: var(--text-primary);
+            background: var(--glass-bg);
+        }
+
+        .theme-option:first-child {
+            border-radius: 0.75rem 0.75rem 0 0;
+        }
+
+        .theme-option:last-child {
+            border-radius: 0 0 0.75rem 0.75rem;
+        }
+
+        .icon {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+        }
+
+        .chevron {
+            width: 16px;
+            height: 16px;
+            transition: transform 0.2s ease-out;
+        }
+
+        .chevron.rotated {
+            transform: rotate(180deg);
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-secondary);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px -1px var(--shadow-color);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px var(--shadow-color);
+        }
+
+        h1, h2, h3 {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-size: 1.875rem;
+            font-weight: 700;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            color: var(--text-primary);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 0.75rem;
+            background: var(--input-bg);
+            border: 1px solid var(--input-border);
+            border-radius: 0.5rem;
+            color: var(--text-primary);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #f72c4f;
+            box-shadow: 0 0 0 3px var(--input-focus);
+        }
+
+        input::placeholder, textarea::placeholder {
+            color: var(--text-muted);
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(135deg, #f72c4f, #e91e63);
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+        }
+
+        .button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 10px 15px -3px rgba(247, 44, 79, 0.3);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 0;
+            color: var(--text-secondary);
+        }
+
+        .feature-list li::before {
+            content: "✓";
+            color: #10b981;
+            font-weight: bold;
+        }
+
+        ::selection {
+            background: var(--selection-bg);
+            color: var(--text-primary);
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #f72c4f;
+            border-radius: 4px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .header {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">Theme Switcher Demo</div>
+        <div class="theme-switcher">
+            <button class="theme-button" id="themeButton" aria-label="Theme selector" aria-expanded="false" aria-haspopup="listbox">
+                <svg class="icon" id="themeIcon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                </svg>
+                <span id="themeLabel">Dark</span>
+                <svg class="chevron" id="chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+            </button>
+            <div class="theme-dropdown" id="themeDropdown" role="listbox" aria-label="Theme options">
+                <button class="theme-option" data-theme="light" role="option" aria-selected="false">
+                    <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                    </svg>
+                    <div>
+                        <div>Light</div>
+                        <div style="font-size: 0.75rem; color: var(--text-muted);">Light mode for bright environments</div>
+                    </div>
+                </button>
+                <button class="theme-option active" data-theme="dark" role="option" aria-selected="true">
+                    <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                    </svg>
+                    <div>
+                        <div>Dark</div>
+                        <div style="font-size: 0.75rem; color: var(--text-muted);">Dark mode for low-light environments</div>
+                    </div>
+                </button>
+                <button class="theme-option" data-theme="system" role="option" aria-selected="false">
+                    <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                    </svg>
+                    <div>
+                        <div>System</div>
+                        <div style="font-size: 0.75rem; color: var(--text-muted);">Follows your system preference</div>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>Complete Theme Switcher</h1>
+
+        <div class="grid">
+            <div class="card">
+                <h2>Features</h2>
+                <ul class="feature-list">
+                    <li>Detects system color scheme preference</li>
+                    <li>Manual theme toggle with persistence</li>
+                    <li>Real-time system preference updates</li>
+                    <li>Smooth transitions without flickering</li>
+                    <li>Full accessibility support</li>
+                    <li>WCAG AA compliant contrast ratios</li>
+                    <li>CSS custom properties for easy theming</li>
+                    <li>Responsive design</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>Theme Options</h2>
+                <p>Choose from three theme options:</p>
+                <ul class="feature-list">
+                    <li><strong>Light:</strong> Optimized for bright environments</li>
+                    <li><strong>Dark:</strong> Easy on the eyes in low light</li>
+                    <li><strong>System:</strong> Automatically follows your OS preference</li>
+                </ul>
+                <p>Your preference is saved and will persist across sessions.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Sample Form</h2>
+            <p>Test how form elements adapt to different themes:</p>
+            
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" placeholder="Enter your full name">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" placeholder="your.email@example.com">
+            </div>
+
+            <div class="form-group">
+                <label for="theme-preference">Preferred Theme</label>
+                <select id="theme-preference">
+                    <option value="system">System Default</option>
+                    <option value="light">Light Mode</option>
+                    <option value="dark">Dark Mode</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" rows="4" placeholder="Tell us what you think about the theme switcher..."></textarea>
+            </div>
+
+            <button class="button" type="submit">
+                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                </svg>
+                Send Message
+            </button>
+        </div>
+
+        <div class="card">
+            <h2>Technical Implementation</h2>
+            <p>This theme switcher includes:</p>
+            <ul class="feature-list">
+                <li>CSS custom properties for all theme variables</li>
+                <li>JavaScript for theme detection and switching</li>
+                <li>LocalStorage for preference persistence</li>
+                <li>MediaQuery listener for system changes</li>
+                <li>Accessible ARIA attributes and keyboard navigation</li>
+                <li>Smooth transitions with proper timing</li>
+                <li>Mobile-optimized meta theme-color updates</li>
+                <li>Reduced motion support for accessibility</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        class ThemeSwitcher {
+            constructor() {
+                this.theme = 'system';
+                this.resolvedTheme = 'dark';
+                this.systemTheme = 'dark';
+                this.isTransitioning = false;
+                
+                this.button = document.getElementById('themeButton');
+                this.dropdown = document.getElementById('themeDropdown');
+                this.icon = document.getElementById('themeIcon');
+                this.label = document.getElementById('themeLabel');
+                this.chevron = document.getElementById('chevron');
+                this.options = document.querySelectorAll('.theme-option');
+                
+                this.init();
+                this.bindEvents();
+            }
+            
+            init() {
+                // Get system preference
+                const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                this.systemTheme = systemPrefersDark ? 'dark' : 'light';
+                
+                // Get saved theme or default to system
+                const savedTheme = localStorage.getItem('theme') || 'system';
+                this.theme = savedTheme;
+                
+                // Resolve theme
+                this.resolvedTheme = this.theme === 'system' ? this.systemTheme : this.theme;
+                
+                // Apply theme
+                this.applyTheme(this.resolvedTheme);
+                this.updateUI();
+                
+                // Listen for system changes
+                window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+                    this.systemTheme = e.matches ? 'dark' : 'light';
+                    if (this.theme === 'system') {
+                        this.resolvedTheme = this.systemTheme;
+                        this.applyTheme(this.resolvedTheme);
+                        this.updateUI();
+                    }
+                });
+            }
+            
+            bindEvents() {
+                // Toggle dropdown
+                this.button.addEventListener('click', () => {
+                    this.toggleDropdown();
+                });
+                
+                // Close dropdown when clicking outside
+                document.addEventListener('click', (e) => {
+                    if (!this.button.contains(e.target) && !this.dropdown.contains(e.target)) {
+                        this.closeDropdown();
+                    }
+                });
+                
+                // Handle theme selection
+                this.options.forEach(option => {
+                    option.addEventListener('click', () => {
+                        const newTheme = option.dataset.theme;
+                        this.setTheme(newTheme);
+                    });
+                });
+                
+                // Keyboard navigation
+                this.button.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        this.toggleDropdown();
+                    }
+                });
+                
+                this.dropdown.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape') {
+                        this.closeDropdown();
+                        this.button.focus();
+                    }
+                });
+            }
+            
+            setTheme(newTheme) {
+                if (this.isTransitioning) return;
+                
+                this.theme = newTheme;
+                localStorage.setItem('theme', newTheme);
+                
+                this.resolvedTheme = newTheme === 'system' ? this.systemTheme : newTheme;
+                this.applyTheme(this.resolvedTheme);
+                this.updateUI();
+                this.closeDropdown();
+            }
+            
+            applyTheme(theme) {
+                this.isTransitioning = true;
+                
+                // Temporarily disable transitions
+                document.documentElement.classList.add('theme-transition-disable');
+                
+                // Apply theme
+                document.documentElement.classList.remove('light', 'dark');
+                document.documentElement.classList.add(theme);
+                
+                // Update meta theme-color
+                const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+                if (metaThemeColor) {
+                    metaThemeColor.setAttribute('content', theme === 'dark' ? '#060606' : '#ffffff');
+                }
+                
+                // Re-enable transitions
+                setTimeout(() => {
+                    document.documentElement.classList.remove('theme-transition-disable');
+                    this.isTransitioning = false;
+                }, 50);
+            }
+            
+            updateUI() {
+                const themes = {
+                    light: { 
+                        label: 'Light', 
+                        icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>' 
+                    },
+                    dark: { 
+                        label: 'Dark', 
+                        icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>' 
+                    },
+                    system: { 
+                        label: 'System', 
+                        icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>' 
+                    }
+                };
+                
+                const currentTheme = themes[this.theme];
+                const resolvedIcon = themes[this.resolvedTheme];
+                
+                // Update button
+                this.icon.innerHTML = resolvedIcon.icon;
+                this.label.textContent = this.theme === 'system' ? `${currentTheme.label} (${this.systemTheme})` : currentTheme.label;
+                
+                // Update options
+                this.options.forEach(option => {
+                    const isActive = option.dataset.theme === this.theme;
+                    option.classList.toggle('active', isActive);
+                    option.setAttribute('aria-selected', isActive.toString());
+                });
+                
+                // Update button aria-label
+                this.button.setAttribute('aria-label', `Current theme: ${currentTheme.label}. Click to change theme.`);
+            }
+            
+            toggleDropdown() {
+                const isOpen = this.dropdown.classList.contains('open');
+                if (isOpen) {
+                    this.closeDropdown();
+                } else {
+                    this.openDropdown();
+                }
+            }
+            
+            openDropdown() {
+                this.dropdown.classList.add('open');
+                this.chevron.classList.add('rotated');
+                this.button.setAttribute('aria-expanded', 'true');
+                
+                // Focus first option
+                const activeOption = this.dropdown.querySelector('.theme-option.active');
+                if (activeOption) {
+                    activeOption.focus();
+                }
+            }
+            
+            closeDropdown() {
+                this.dropdown.classList.remove('open');
+                this.chevron.classList.remove('rotated');
+                this.button.setAttribute('aria-expanded', 'false');
+            }
+        }
+        
+        // Initialize theme switcher when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            new ThemeSwitcher();
+        });
+    </script>
+</body>
+</html>
