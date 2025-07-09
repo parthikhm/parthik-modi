@@ -63,7 +63,7 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-20 px-4" style={{ background: 'linear-gradient(to bottom, #060606, #0a0a0a)' }}>
+    <section id="about" className="py-20 px-4 bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 transition-colors duration-300">
       <div className="max-w-7xl mx-auto">
         <motion.div
           ref={ref}
@@ -76,7 +76,7 @@ const About = () => {
               About <span className="gradient-text">Me</span>
             </h2>
             <div className="w-24 h-1 gradient-bg mx-auto rounded-full"></div>
-            <p className="text-xl text-gray-400 mt-6 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-600 dark:text-gray-400 mt-6 max-w-3xl mx-auto">
               Passionate developer crafting exceptional digital experiences with cutting-edge technology
             </p>
           </motion.div>
@@ -87,32 +87,28 @@ const About = () => {
               <div key={index}>
                 <InteractiveCard 
                   className="p-6 text-center h-full relative overflow-hidden"
-                  style={{ 
-                    background: 'linear-gradient(135deg, rgba(20, 20, 20, 0.95), rgba(40, 40, 40, 0.9))',
-                    minHeight: '180px',
-                    border: '1px solid rgba(247, 44, 79, 0.1)'
-                  }}
+                  style={{ minHeight: '180px' }}
                 >
                   {/* Icon */}
                   <div 
                     className="w-12 h-12 mx-auto mb-4 rounded-full flex items-center justify-center"
-                    style={{ background: 'rgba(247, 44, 79, 0.1)' }}
+                    className="bg-pink-500/10 dark:bg-pink-500/20"
                   >
                     <stat.icon size={24} style={{ color: '#f72c4f' }} />
                   </div>
 
                   {/* Value */}
-                  <div className="text-3xl lg:text-4xl font-black text-white mb-2">
+                  <div className="text-3xl lg:text-4xl font-black text-gray-900 dark:text-white mb-2">
                     {stat.value}
                   </div>
 
                   {/* Label */}
-                  <div className="text-gray-300 text-sm lg:text-base font-semibold mb-2">
+                  <div className="text-gray-700 dark:text-gray-300 text-sm lg:text-base font-semibold mb-2">
                     {stat.label}
                   </div>
 
                   {/* Description */}
-                  <p className="text-gray-400 text-xs leading-relaxed">
+                  <p className="text-gray-600 dark:text-gray-400 text-xs leading-relaxed">
                     {stat.description}
                   </p>
                 </InteractiveCard>
@@ -127,17 +123,17 @@ const About = () => {
               <div className="lg:col-span-2">
                 <InteractiveCard className="h-full">
                   <div className="flex items-center gap-3 mb-6">
-                    <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #f72c4f, #e91e63)' }}>
+                    <div className="w-12 h-12 rounded-full flex items-center justify-center bg-gradient-to-br from-pink-500 to-red-500">
                       <Users size={24} className="text-white" />
                     </div>
                     <h3 className="text-3xl font-bold gradient-text">Professional Journey</h3>
                   </div>
                   
-                  <div className="space-y-6 text-gray-300 leading-relaxed">
+                  <div className="space-y-6 text-gray-700 dark:text-gray-300 leading-relaxed">
                     <p className="text-lg">
                       As a dedicated <strong className="text-white">Laravel Developer and Automation Specialist</strong> with 
                       <strong className="gradient-text"> 2.5+ years of intensive experience</strong>, I've successfully delivered 
-                      <strong className="text-white"> 25+ projects</strong> across diverse industries, maintaining a 
+                      <strong className="text-gray-900 dark:text-white"> 25+ projects</strong> across diverse industries, maintaining a 
                       <strong className="gradient-text"> 100% client satisfaction rate</strong> and perfect project success record.
                     </p>
                     
@@ -162,7 +158,7 @@ const About = () => {
                       'High-performance solutions',
                       'Expert automation integration'
                     ].map((strength, index) => (
-                      <div key={index} className="flex items-center gap-3 text-gray-300">
+                      <div key={index} className="flex items-center gap-3 text-gray-700 dark:text-gray-300">
                         <div className="w-2 h-2 gradient-bg rounded-full"></div>
                         <span className="text-sm">{strength}</span>
                       </div>
@@ -176,22 +172,22 @@ const About = () => {
                 {/* Education */}
                 <InteractiveCard>
                   <div className="flex items-center gap-3 mb-6">
-                    <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ background: 'rgba(247, 44, 79, 0.2)' }}>
+                    <div className="w-10 h-10 rounded-full flex items-center justify-center bg-pink-500/20">
                       <Award size={20} style={{ color: '#f72c4f' }} />
                     </div>
                     <h3 className="text-xl font-bold gradient-text">Education</h3>
                   </div>
                   
                   <div className="space-y-4">
-                    <div className="border-l-2 pl-4" style={{ borderColor: '#f72c4f' }}>
-                      <h4 className="font-semibold text-white text-sm">Master of Computer Applications</h4>
-                      <p className="text-gray-400 text-xs">HNGU University</p>
+                    <div className="border-l-2 border-pink-500 pl-4">
+                      <h4 className="font-semibold text-gray-900 dark:text-white text-sm">Master of Computer Applications</h4>
+                      <p className="text-gray-600 dark:text-gray-400 text-xs">HNGU University</p>
                       <p className="font-semibold text-xs mt-1" style={{ color: '#f72c4f' }}>CGPA: 9.00</p>
                     </div>
                     
-                    <div className="border-l-2 pl-4" style={{ borderColor: '#e91e63' }}>
-                      <h4 className="font-semibold text-white text-sm">Bachelor of Computer Applications</h4>
-                      <p className="text-gray-400 text-xs">HNGU University</p>
+                    <div className="border-l-2 border-red-500 pl-4">
+                      <h4 className="font-semibold text-gray-900 dark:text-white text-sm">Bachelor of Computer Applications</h4>
+                      <p className="text-gray-600 dark:text-gray-400 text-xs">HNGU University</p>
                       <p className="font-semibold text-xs mt-1" style={{ color: '#e91e63' }}>CGPA: 7.50</p>
                     </div>
                   </div>
@@ -200,22 +196,22 @@ const About = () => {
                 {/* Quick Facts */}
                 <InteractiveCard>
                   <div className="flex items-center gap-3 mb-6">
-                    <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ background: 'rgba(247, 44, 79, 0.2)' }}>
+                    <div className="w-10 h-10 rounded-full flex items-center justify-center bg-pink-500/20">
                       <TrendingUp size={20} style={{ color: '#f72c4f' }} />
                     </div>
                     <h3 className="text-xl font-bold gradient-text">Quick Facts</h3>
                   </div>
                   
                   <div className="space-y-3">
-                    <div className="flex items-center gap-3 text-gray-300 text-sm">
+                    <div className="flex items-center gap-3 text-gray-700 dark:text-gray-300 text-sm">
                       <MapPin size={16} style={{ color: '#f72c4f' }} />
                       <span>Remote Work Specialist</span>
                     </div>
-                    <div className="flex items-center gap-3 text-gray-300 text-sm">
+                    <div className="flex items-center gap-3 text-gray-700 dark:text-gray-300 text-sm">
                       <Code size={16} style={{ color: '#f72c4f' }} />
                       <span>Full-Stack Development</span>
                     </div>
-                    <div className="flex items-center gap-3 text-gray-300 text-sm">
+                    <div className="flex items-center gap-3 text-gray-700 dark:text-gray-300 text-sm">
                       <Zap size={16} style={{ color: '#f72c4f' }} />
                       <span>Automation Expert</span>
                     </div>

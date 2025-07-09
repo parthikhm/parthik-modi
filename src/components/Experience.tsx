@@ -64,7 +64,7 @@ const Experience = () => {
   };
 
   return (
-    <section id="experience" className="py-20 px-4" style={{ background: 'linear-gradient(to bottom, #060606, #0a0a0a)' }}>
+    <section id="experience" className="py-20 px-4 bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 transition-colors duration-300">
       <div className="max-w-7xl mx-auto">
         <motion.div
           ref={ref}
@@ -77,14 +77,14 @@ const Experience = () => {
               Work <span className="gradient-text">Experience</span>
             </h2>
             <div className="w-24 h-1 gradient-bg mx-auto rounded-full"></div>
-            <p className="text-xl text-gray-400 mt-6 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-600 dark:text-gray-400 mt-6 max-w-3xl mx-auto">
               My professional journey in building exceptional web applications and automation solutions.
             </p>
           </motion.div>
           
           <div className="relative max-w-4xl mx-auto">
             {/* Timeline line */}
-            <div className="absolute left-8 top-0 bottom-0 w-1 rounded-full hidden md:block" style={{ background: 'linear-gradient(to bottom, #f72c4f, #e91e63)' }} />
+            <div className="absolute left-8 top-0 bottom-0 w-1 rounded-full hidden md:block bg-gradient-to-b from-pink-500 to-red-500" />
             
             <div className="space-y-12">
               {experiences.map((exp, index) => (
@@ -96,7 +96,7 @@ const Experience = () => {
                   {/* Timeline dot */}
                   <div 
                     className="absolute left-6 top-8 w-6 h-6 rounded-full hidden md:block"
-                    style={{ background: 'linear-gradient(135deg, #f72c4f, #e91e63)' }}
+                    className="bg-gradient-to-br from-pink-500 to-red-500"
                   />
                   
                   <div className="md:ml-20">
@@ -106,7 +106,7 @@ const Experience = () => {
                           <h3 className="text-2xl font-bold text-white mb-2">
                             {exp.title}
                           </h3>
-                          <h4 className="text-xl text-gray-300 mb-3">{exp.company}</h4>
+                          <h4 className="text-xl text-gray-700 dark:text-gray-300 mb-3">{exp.company}</h4>
                         </div>
                         {exp.current && (
                           <span 
@@ -118,7 +118,7 @@ const Experience = () => {
                         )}
                       </div>
                       
-                      <div className="flex flex-wrap gap-6 mb-6 text-gray-400">
+                      <div className="flex flex-wrap gap-6 mb-6 text-gray-600 dark:text-gray-400">
                         <div className="flex items-center gap-2">
                           <Calendar size={18} style={{ color: '#f72c4f' }} />
                           <span>{exp.period}</span>
@@ -129,18 +129,18 @@ const Experience = () => {
                         </div>
                       </div>
                       
-                      <p className="text-gray-300 leading-relaxed mb-6">
+                      <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
                         {exp.description}
                       </p>
 
                       <div>
-                        <h5 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                        <h5 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
                           <Briefcase size={18} style={{ color: '#f72c4f' }} />
                           Key Achievements
                         </h5>
                         <ul className="space-y-2">
                           {exp.achievements.map((achievement, achIndex) => (
-                            <li key={achIndex} className="flex items-start gap-3 text-gray-300">
+                            <li key={achIndex} className="flex items-start gap-3 text-gray-700 dark:text-gray-300">
                               <ArrowRight size={16} className="mt-1 flex-shrink-0" style={{ color: '#f72c4f' }} />
                               <span>{achievement}</span>
                             </li>

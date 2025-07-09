@@ -16,13 +16,15 @@ const InteractiveCard: React.FC<InteractiveCardProps> = ({
   return (
     <div
       ref={cardRef}
-      className={`relative overflow-hidden transition-all duration-300 cursor-pointer ${className}`}
+      className={`
+        relative overflow-hidden transition-all duration-300 cursor-pointer
+        bg-white dark:bg-gray-800 
+        border border-gray-200 dark:border-gray-700
+        shadow-lg hover:shadow-xl dark:shadow-gray-900/50
+        rounded-xl p-6
+        ${className}
+      `}
       style={{
-        backgroundColor: 'var(--bg-card)',
-        borderRadius: '12px',
-        padding: '20px',
-        border: '1px solid var(--border-primary)',
-        boxShadow: '0 4px 6px -1px var(--shadow-color), 0 2px 4px -1px var(--shadow-color)',
         ...style,
       }}
     >
@@ -30,7 +32,7 @@ const InteractiveCard: React.FC<InteractiveCardProps> = ({
       <div
         className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-500"
         style={{
-          background: 'radial-gradient(600px circle at 50% 50%, var(--glass-bg), transparent 40%)',
+          background: 'radial-gradient(600px circle at 50% 50%, rgba(247, 44, 79, 0.05), transparent 40%)',
           borderRadius: '12px',
         }}
       />

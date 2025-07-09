@@ -50,7 +50,7 @@
       (function() {
         const savedTheme = localStorage.getItem('theme');
         const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const theme = savedTheme || 'dark'; // Default to dark if no preference
+        const theme = savedTheme || 'system'; // Default to system preference
         const resolvedTheme = theme === 'system' ? (systemPrefersDark ? 'dark' : 'light') : theme;
         
         document.documentElement.classList.remove('light', 'dark');

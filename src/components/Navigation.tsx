@@ -63,12 +63,10 @@ const Navigation = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? 'glass-effect shadow-2xl backdrop-blur-xl' : 'bg-transparent'
+        scrolled 
+          ? 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl shadow-2xl border-b border-gray-200 dark:border-gray-700' 
+          : 'bg-transparent'
       }`}
-      style={{ 
-        backgroundColor: scrolled ? 'var(--glass-bg)' : 'transparent',
-        borderBottom: scrolled ? '1px solid var(--border-primary)' : 'none'
-      }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
@@ -94,8 +92,8 @@ const Navigation = () => {
                 whileTap={{ scale: 0.95 }}
                 className={`relative group transition-all duration-300 ${
                   activeSection === item.href.substring(1)
-                    ? 'text-primary font-semibold'
-                    : 'text-tertiary hover:text-primary'
+                    ? 'text-gray-900 dark:text-white font-semibold'
+                    : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'
                 }`}
               >
                 {item.name}
@@ -133,7 +131,7 @@ const Navigation = () => {
               onClick={() => setIsOpen(!isOpen)}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              className="text-primary p-2 rounded-lg glass-effect hover:shadow-lg transition-all duration-300"
+              className="text-gray-900 dark:text-white p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:shadow-lg transition-all duration-300"
             >
               <motion.div
                 animate={{ rotate: isOpen ? 180 : 0 }}
@@ -153,8 +151,7 @@ const Navigation = () => {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -20, scale: 0.95 }}
               transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-              className="md:hidden glass-effect rounded-xl mt-2 p-6 border border-primary/20"
-              style={{ background: 'var(--bg-card)' }}
+              className="md:hidden bg-white dark:bg-gray-800 rounded-xl mt-2 p-6 border border-gray-200 dark:border-gray-700 shadow-xl"
             >
               <div className="space-y-4">
                 {navItems.map((item, index) => (
@@ -172,8 +169,8 @@ const Navigation = () => {
                     whileTap={{ scale: 0.95 }}
                     className={`block py-3 px-4 rounded-lg transition-all duration-300 relative overflow-hidden ${
                       activeSection === item.href.substring(1)
-                        ? 'text-primary font-semibold gradient-bg'
-                        : 'text-tertiary hover:text-primary hover:bg-tertiary/50'
+                        ? 'text-white font-semibold gradient-bg'
+                        : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700'
                     }`}
                   >
                     <span className="relative z-10">{item.name}</span>
@@ -188,7 +185,7 @@ const Navigation = () => {
                 ))}
                 
                 {/* Mobile Theme Switcher */}
-                <div className="pt-4 border-t border-secondary">
+                <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
                   <ThemeSwitcher variant="dropdown" size="md" showLabel />
                 </div>
               </div>

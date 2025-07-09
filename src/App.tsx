@@ -13,7 +13,7 @@ import './App.css';
 function App() {
   return (
     <ThemeProvider>
-      <div className="bg-primary text-primary overflow-x-hidden">
+      <div className="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 overflow-x-hidden min-h-screen transition-colors duration-300">
         <Navigation />
         <Hero />
         <About />

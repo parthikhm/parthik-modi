@@ -9,31 +9,18 @@ export default {
       },
       colors: {
         // Theme-aware colors using CSS variables
-        primary: {
-          DEFAULT: 'var(--text-primary)',
-          50: 'var(--text-muted)',
-          100: 'var(--text-tertiary)',
-          200: 'var(--text-secondary)',
-          300: 'var(--text-primary)',
-        },
-        secondary: {
-          DEFAULT: 'var(--text-secondary)',
-        },
-        tertiary: {
-          DEFAULT: 'var(--text-tertiary)',
-        },
-        muted: {
-          DEFAULT: 'var(--text-muted)',
-        },
-        background: {
-          primary: 'var(--bg-primary)',
-          secondary: 'var(--bg-secondary)',
-          tertiary: 'var(--bg-tertiary)',
-          card: 'var(--bg-card)',
-        },
-        border: {
-          primary: 'var(--border-primary)',
-          secondary: 'var(--border-secondary)',
+        // Using Tailwind's built-in gray scale for better theme support
+        gray: {
+          50: '#f9fafb',
+          100: '#f3f4f6',
+          200: '#e5e7eb',
+          300: '#d1d5db',
+          400: '#9ca3af',
+          500: '#6b7280',
+          600: '#4b5563',
+          700: '#374151',
+          800: '#1f2937',
+          900: '#111827',
         }
       },
       animation: {
