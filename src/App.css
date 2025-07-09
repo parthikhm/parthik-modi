@@ -4,7 +4,7 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--bg-secondary);
+  background: #060606;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -19,13 +19,6 @@
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
-}
-
-/* Theme transition */
-* {
-  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
-  transition-duration: 0.3s;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Performance optimizations */
@@ -56,6 +49,12 @@ body {
 @keyframes gradient-shift {
   0%, 100% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
+}
+
+.glass-effect {
+  background: rgba(247, 44, 79, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(247, 44, 79, 0.1);
 }
 
 .floating-animation {
@@ -98,6 +97,30 @@ body {
   will-change: transform, opacity;
 }
 
+/* Additional custom styles for the new color scheme */
+.bg-primary {
+  background-color: #060606;
+}
+
+.bg-secondary {
+  background-color: #0a0a0a;
+}
+
+.text-primary {
+  color: #f72c4f;
+}
+
+.border-primary {
+  border-color: #f72c4f;
+}
+
+/* Optimized transitions for better performance */
+* {
+  transition-property: transform, box-shadow, background-color, border-color, opacity;
+  transition-duration: 0.2s;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 /* Focus states for accessibility */
 *:focus-visible {
   outline: 2px solid #f72c4f;
@@ -107,12 +130,12 @@ body {
 /* Selection styles */
 ::selection {
   background: rgba(247, 44, 79, 0.3);
-  color: inherit;
+  color: white;
 }
 
 ::-moz-selection {
   background: rgba(247, 44, 79, 0.3);
-  color: inherit;
+  color: white;
 }
 
 /* Performance optimizations */
@@ -138,7 +161,7 @@ body {
 
 /* Enhanced loading states */
 .loading-shimmer {
-  background: linear-gradient(90deg, #1a1a1a 25%, #141414 50%, #1a1a1a 75%);
+  background: linear-gradient(90deg, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%);
   background-size: 200% 100%;
   animation: shimmer 2s infinite;
 }
@@ -155,7 +178,15 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Prevent flash of unstyled content */
-.theme-transition-disable * {
-  transition: none !important;
+/* Enhanced backdrop blur support */
+@supports (backdrop-filter: blur(10px)) {
+  .glass-effect {
+    backdrop-filter: blur(10px);
+  }
+}
+
+@supports not (backdrop-filter: blur(10px)) {
+  .glass-effect {
+    background: rgba(247, 44, 79, 0.1);
+  }
 }

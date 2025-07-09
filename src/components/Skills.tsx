@@ -127,7 +127,7 @@ const Skills = () => {
   };
 
   return (
-    <section id="skills" className="py-20 px-4 bg-gradient-to-b from-gray-100 to-gray-50 dark:from-gray-800 dark:to-gray-900 transition-colors duration-300">
+    <section id="skills" className="py-20 px-4" style={{ background: 'linear-gradient(to bottom, #0a0a0a, #060606)' }}>
       <div className="max-w-7xl mx-auto">
         <motion.div
           ref={ref}
@@ -139,24 +139,24 @@ const Skills = () => {
           <motion.div variants={itemVariants} className="text-center mb-16">
             <motion.div 
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
-              className="bg-pink-500/10 dark:bg-pink-500/20 border border-pink-500/20 dark:border-pink-500/30"
+              style={{ background: 'rgba(247, 44, 79, 0.1)', border: '1px solid rgba(247, 44, 79, 0.2)' }}
             >
               <Star size={16} style={{ color: '#f72c4f' }} />
-              <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Technical Expertise</span>
+              <span className="text-sm font-medium text-gray-300">Technical Expertise</span>
             </motion.div>
 
             <h2 className="text-5xl md:text-6xl font-bold mb-6">
               Skills & <span className="gradient-text">Technologies</span>
             </h2>
             <div className="w-24 h-1 gradient-bg mx-auto rounded-full"></div>
-            <p className="text-xl text-gray-600 dark:text-gray-400 mt-6 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-gray-400 mt-6 max-w-3xl mx-auto leading-relaxed">
               Mastering cutting-edge technologies to build exceptional digital solutions that drive business growth
             </p>
           </motion.div>
 
           {/* Category Tabs */}
           <motion.div variants={itemVariants} className="flex justify-center mb-12">
-            <div className="flex gap-2 p-2 rounded-2xl bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200 dark:border-gray-700">
+            <div className="flex gap-2 p-2 rounded-2xl" style={{ background: 'rgba(20, 20, 20, 0.8)' }}>
               {skillCategories.map((category, index) => (
                 <motion.button
                   key={category.id}
@@ -166,7 +166,7 @@ const Skills = () => {
                   className={`flex items-center gap-3 px-6 py-3 rounded-xl transition-all duration-300 ${
                     activeCategory === index
                       ? 'text-white shadow-lg'
-                      : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+                      : 'text-gray-400 hover:text-white'
                   }`}
                   style={activeCategory === index ? { 
                     background: 'linear-gradient(135deg, #f72c4f, #e91e63)' 
@@ -201,8 +201,8 @@ const Skills = () => {
                         <category.icon size={32} className="text-white" />
                       </div>
                       <div className="text-left">
-                        <h3 className="text-3xl font-bold text-gray-900 dark:text-white">{category.title}</h3>
-                        <p className="text-gray-600 dark:text-gray-400">{category.subtitle}</p>
+                        <h3 className="text-3xl font-bold text-white">{category.title}</h3>
+                        <p className="text-gray-400">{category.subtitle}</p>
                       </div>
                     </div>
                   </motion.div>
@@ -215,13 +215,13 @@ const Skills = () => {
                           <div className="flex items-start gap-4 mb-6">
                             <div 
                               className="w-14 h-14 rounded-2xl flex items-center justify-center"
-                              className="bg-gradient-to-br from-pink-500/20 to-red-500/10 dark:from-pink-500/30 dark:to-red-500/20"
+                              style={{ background: `linear-gradient(135deg, rgba(247, 44, 79, 0.2), rgba(233, 30, 99, 0.1))` }}
                             >
                               <skill.icon size={24} style={{ color: '#f72c4f' }} />
                             </div>
                             <div className="flex-1">
                               <div className="flex items-center justify-between mb-2">
-                                <h4 className="text-xl font-bold text-gray-900 dark:text-white">
+                                <h4 className="text-xl font-bold text-white">
                                   {skill.name}
                                 </h4>
                                 <div 
@@ -232,10 +232,10 @@ const Skills = () => {
                                   {skill.level}%
                                 </div>
                               </div>
-                              <p className="text-gray-600 dark:text-gray-400 text-sm mb-3 leading-relaxed">
+                              <p className="text-gray-400 text-sm mb-3 leading-relaxed">
                                 {skill.description}
                               </p>
-                              <div className="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-500">
+                              <div className="flex items-center gap-2 text-xs text-gray-500">
                                 <ChevronRight size={12} />
                                 <span>{skill.projects}</span>
                               </div>
@@ -245,12 +245,12 @@ const Skills = () => {
                           {/* Progress Bar */}
                           <div className="relative">
                             <div className="flex justify-between items-center mb-2">
-                              <span className="text-xs text-gray-500 dark:text-gray-500">Proficiency Level</span>
-                              <span className="text-xs text-gray-500 dark:text-gray-500">Expert</span>
+                              <span className="text-xs text-gray-500">Proficiency Level</span>
+                              <span className="text-xs text-gray-500">Expert</span>
                             </div>
                             <div 
                               className="w-full rounded-full h-3 overflow-hidden relative"
-                              className="bg-gray-200 dark:bg-gray-700"
+                              style={{ backgroundColor: '#1a1a1a' }}
                             >
                               <motion.div
                                 className="h-full rounded-full relative overflow-hidden"
@@ -285,19 +285,19 @@ const Skills = () => {
                             <div className="text-3xl font-bold gradient-text mb-2">
                               {Math.round(category.skills.reduce((acc, skill) => acc + skill.level, 0) / category.skills.length)}%
                             </div>
-                            <p className="text-gray-600 dark:text-gray-400 text-sm">Average Proficiency</p>
+                            <p className="text-gray-400 text-sm">Average Proficiency</p>
                           </div>
                           <div>
                             <div className="text-3xl font-bold gradient-text mb-2">
                               {category.skills.length}
                             </div>
-                            <p className="text-gray-600 dark:text-gray-400 text-sm">Core Technologies</p>
+                            <p className="text-gray-400 text-sm">Core Technologies</p>
                           </div>
                           <div>
                             <div className="text-3xl font-bold gradient-text mb-2">
                               {category.id === 'development' ? '2.5+' : '1.5+'}
                             </div>
-                            <p className="text-gray-600 dark:text-gray-400 text-sm">Years Experience</p>
+                            <p className="text-gray-400 text-sm">Years Experience</p>
                           </div>
                         </div>
                       </div>
@@ -324,11 +324,11 @@ const Skills = () => {
                   </div>
                   <div className="text-left">
                     <h3 className="text-3xl font-bold gradient-text">Technology Ecosystem</h3>
-                    <p className="text-gray-600 dark:text-gray-400">Comprehensive technical stack</p>
+                    <p className="text-gray-400">Comprehensive technical stack</p>
                   </div>
                 </div>
                 
-                <p className="text-gray-700 dark:text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
+                <p className="text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
                   Leveraging modern technologies and industry best practices to deliver scalable, 
                   maintainable, and high-performance solutions that exceed client expectations
                 </p>
@@ -341,16 +341,16 @@ const Skills = () => {
                     { icon: Database, label: 'Integration', count: '10+', description: 'API Connections' }
                   ].map((tech, index) => (
                     <div key={index} className="group cursor-pointer">
-                      <div className="p-6 rounded-2xl transition-all duration-300 bg-pink-500/5 dark:bg-pink-500/10">
+                      <div className="p-6 rounded-2xl transition-all duration-300" style={{ background: 'rgba(247, 44, 79, 0.05)' }}>
                         <div 
                           className="w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center transition-all duration-300"
-                          className="bg-pink-500/10 dark:bg-pink-500/20"
+                          style={{ background: 'rgba(247, 44, 79, 0.1)' }}
                         >
                           <tech.icon size={28} style={{ color: '#f72c4f' }} />
                         </div>
                         <div className="text-2xl font-bold gradient-text mb-2">{tech.count}</div>
-                        <h4 className="font-semibold text-gray-900 dark:text-white mb-1">{tech.label}</h4>
-                        <p className="text-xs text-gray-600 dark:text-gray-400">{tech.description}</p>
+                        <h4 className="font-semibold text-white mb-1">{tech.label}</h4>
+                        <p className="text-xs text-gray-400">{tech.description}</p>
                       </div>
                     </div>
                   ))}

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import Logo from './Logo';
-import ThemeSwitcher from './ThemeSwitcher';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -63,14 +62,16 @@ const Navigation = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled 
-          ? 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl shadow-2xl border-b border-gray-200 dark:border-gray-700' 
-          : 'bg-transparent'
+        scrolled ? 'glass-effect shadow-2xl backdrop-blur-xl' : 'bg-transparent'
       }`}
+      style={{ 
+        backgroundColor: scrolled ? 'rgba(6, 6, 6, 0.95)' : 'transparent',
+        borderBottom: scrolled ? '1px solid rgba(247, 44, 79, 0.1)' : 'none'
+      }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
-          {/* Logo */}
+          {/* Enhanced Logo */}
           <motion.div
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -78,8 +79,8 @@ const Navigation = () => {
             <Logo size="sm" animated={false} />
           </motion.div>
 
-          {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-8">
+          {/* Enhanced Desktop Menu */}
+          <div className="hidden md:flex space-x-8">
             {navItems.map((item) => (
               <motion.a
                 key={item.name}
@@ -92,13 +93,13 @@ const Navigation = () => {
                 whileTap={{ scale: 0.95 }}
                 className={`relative group transition-all duration-300 ${
                   activeSection === item.href.substring(1)
-                    ? 'text-gray-900 dark:text-white font-semibold'
-                    : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'
+                    ? 'text-white font-semibold'
+                    : 'text-gray-300 hover:text-white'
                 }`}
               >
                 {item.name}
                 
-                {/* Active indicator */}
+                {/* Enhanced active indicator */}
                 <motion.span 
                   className="absolute -bottom-1 left-0 h-0.5 rounded-full transition-all duration-300"
                   style={{ 
@@ -118,20 +119,15 @@ const Navigation = () => {
                 />
               </motion.a>
             ))}
-            
-            {/* Theme Switcher */}
-            <ThemeSwitcher variant="dropdown" size="md" />
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center gap-3">
-            <ThemeSwitcher variant="button" size="sm" />
-            
+          {/* Enhanced Mobile Menu Button */}
+          <div className="md:hidden">
             <motion.button
               onClick={() => setIsOpen(!isOpen)}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              className="text-gray-900 dark:text-white p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:shadow-lg transition-all duration-300"
+              className="text-white p-2 rounded-lg glass-effect hover:pulse-glow transition-all duration-300"
             >
               <motion.div
                 animate={{ rotate: isOpen ? 180 : 0 }}
@@ -143,7 +139,7 @@ const Navigation = () => {
           </div>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Enhanced Mobile Menu */}
         <AnimatePresence>
           {isOpen && (
             <motion.div
@@ -151,7 +147,8 @@ const Navigation = () => {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -20, scale: 0.95 }}
               transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-              className="md:hidden bg-white dark:bg-gray-800 rounded-xl mt-2 p-6 border border-gray-200 dark:border-gray-700 shadow-xl"
+              className="md:hidden glass-effect rounded-xl mt-2 p-6 border border-pink-500/20"
+              style={{ background: 'rgba(20, 20, 20, 0.95)' }}
             >
               <div className="space-y-4">
                 {navItems.map((item, index) => (
@@ -170,7 +167,7 @@ const Navigation = () => {
                     className={`block py-3 px-4 rounded-lg transition-all duration-300 relative overflow-hidden ${
                       activeSection === item.href.substring(1)
                         ? 'text-white font-semibold gradient-bg'
-                        : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700'
+                        : 'text-gray-300 hover:text-white hover:bg-gray-800/50'
                     }`}
                   >
                     <span className="relative z-10">{item.name}</span>
@@ -183,11 +180,6 @@ const Navigation = () => {
                     />
                   </motion.a>
                 ))}
-                
-                {/* Mobile Theme Switcher */}
-                <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
-                  <ThemeSwitcher variant="dropdown" size="md" showLabel />
-                </div>
               </div>
             </motion.div>
           )}

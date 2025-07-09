@@ -136,7 +136,7 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="py-20 px-4 bg-gradient-to-b from-gray-100 to-gray-50 dark:from-gray-800 dark:to-gray-900 transition-colors duration-300">
+    <section id="projects" className="py-20 px-4" style={{ background: 'linear-gradient(to bottom, #0a0a0a, #060606)' }}>
       <div className="max-w-7xl mx-auto">
         <motion.div
           ref={ref}
@@ -148,17 +148,17 @@ const Projects = () => {
           <motion.div variants={itemVariants} className="text-center mb-16">
             <motion.div 
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
-              className="bg-pink-500/10 dark:bg-pink-500/20 border border-pink-500/20 dark:border-pink-500/30"
+              style={{ background: 'rgba(247, 44, 79, 0.1)', border: '1px solid rgba(247, 44, 79, 0.2)' }}
             >
               <Award size={16} style={{ color: '#f72c4f' }} />
-              <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Portfolio Showcase</span>
+              <span className="text-sm font-medium text-gray-300">Portfolio Showcase</span>
             </motion.div>
 
             <h2 className="text-5xl md:text-6xl font-bold mb-6">
               Featured <span className="gradient-text">Projects</span>
             </h2>
             <div className="w-24 h-1 gradient-bg mx-auto rounded-full"></div>
-            <p className="text-xl text-gray-600 dark:text-gray-400 mt-6 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-gray-400 mt-6 max-w-3xl mx-auto leading-relaxed">
               A showcase of my recent work in web development, automation, and AI integration with measurable results and impact.
             </p>
           </motion.div>
@@ -174,7 +174,7 @@ const Projects = () => {
                 className={`flex items-center gap-3 px-6 py-3 rounded-full transition-all duration-300 relative overflow-hidden ${
                   filter === filterItem.key
                     ? 'text-white'
-                    : 'bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'
+                    : 'glass-effect text-gray-300 hover:text-white'
                 }`}
                 style={filter === filterItem.key ? { background: 'linear-gradient(135deg, #f72c4f, #e91e63)' } : {}}
               >
@@ -182,7 +182,7 @@ const Projects = () => {
                 <span className="font-medium">{filterItem.label}</span>
                 <span 
                   className={`text-xs px-2 py-1 rounded-full ${
-                    filter === filterItem.key ? 'bg-white/20' : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300'
+                    filter === filterItem.key ? 'bg-white/20' : 'bg-gray-700'
                   }`}
                 >
                   {filterItem.count}
@@ -255,7 +255,7 @@ const Projects = () => {
                     {/* Project Content */}
                     <div className="flex-1 flex flex-col">
                       <div className="flex justify-between items-start mb-4">
-                        <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+                        <h3 className="text-xl font-bold text-white">
                           {project.title}
                         </h3>
                         <div className="flex gap-2">
@@ -264,7 +264,7 @@ const Projects = () => {
                               href={project.url}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="p-2 bg-gray-100 dark:bg-gray-700 rounded-full hover:text-pink-400 transition-all duration-300 text-gray-700 dark:text-gray-300"
+                              className="p-2 glass-effect rounded-full hover:text-pink-400 transition-all duration-300"
                             >
                               <ExternalLink size={16} />
                             </a>
@@ -272,7 +272,7 @@ const Projects = () => {
                         </div>
                       </div>
                       
-                      <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed text-sm flex-1">
+                      <p className="text-gray-300 mb-6 leading-relaxed text-sm flex-1">
                         {project.description}
                       </p>
                       
@@ -281,7 +281,7 @@ const Projects = () => {
                         {project.tech.map((tech, techIndex) => (
                           <span
                             key={techIndex}
-                            className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-xs font-medium"
+                            className="px-3 py-1 glass-effect text-gray-300 rounded-full text-xs font-medium"
                           >
                             {tech}
                           </span>
@@ -289,8 +289,8 @@ const Projects = () => {
                       </div>
 
                       {/* Project Stats */}
-                      <div className="mt-auto pt-4 border-t border-gray-200 dark:border-gray-700">
-                        <div className="flex items-center justify-between text-xs text-gray-600 dark:text-gray-400">
+                      <div className="mt-auto pt-4 border-t border-gray-700/50">
+                        <div className="flex items-center justify-between text-xs text-gray-400">
                           <div className="flex items-center gap-1">
                             <TrendingUp size={12} />
                             <span>High Performance</span>
@@ -316,8 +316,8 @@ const Projects = () => {
               className="text-center py-12"
             >
               <div className="w-16 h-16 mx-auto mb-4 rounded-full border-2 border-pink-500/30 border-t-pink-500 animate-spin" />
-              <p className="text-gray-600 dark:text-gray-400 text-lg">No projects found in this category.</p>
-              <p className="text-gray-500 dark:text-gray-500 text-sm mt-2">Try selecting a different filter above.</p>
+              <p className="text-gray-400 text-lg">No projects found in this category.</p>
+              <p className="text-gray-500 text-sm mt-2">Try selecting a different filter above.</p>
             </motion.div>
           )}
 
@@ -342,14 +342,14 @@ const Projects = () => {
                     <div key={index} className="group cursor-pointer">
                       <div 
                         className="w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center transition-all duration-300"
-                        className="bg-pink-500/10 dark:bg-pink-500/20"
+                        style={{ background: 'rgba(247, 44, 79, 0.1)' }}
                       >
                         <stat.icon size={28} style={{ color: '#f72c4f' }} />
                       </div>
                       <div className="text-3xl font-bold gradient-text mb-2">
                         {stat.value}
                       </div>
-                      <h4 className="font-semibold text-gray-900 dark:text-white text-sm">{stat.label}</h4>
+                      <h4 className="font-semibold text-white text-sm">{stat.label}</h4>
                     </div>
                   ))}
                 </div>

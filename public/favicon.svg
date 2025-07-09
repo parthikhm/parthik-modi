@@ -4,49 +4,33 @@
   
   <!-- P letter -->
   <path d="M8 6 L8 26 M8 6 L16 6 Q20 6 20 10 Q20 14 16 14 L8 14" 
-        stroke="url(#letterGradient)" 
-        stroke-width="2.2" 
+        stroke="#ffffff" 
+        stroke-width="2.5" 
         stroke-linecap="round" 
         stroke-linejoin="round" 
         fill="none"/>
   
   <!-- M letter -->
   <path d="M12 26 L12 16 L16 20 L20 16 L20 26 M12 16 L16 8 L20 16" 
-        stroke="url(#letterGradient)" 
-        stroke-width="2.2" 
+        stroke="#ffffff" 
+        stroke-width="2.5" 
         stroke-linecap="round" 
         stroke-linejoin="round" 
         fill="none"/>
   
   <!-- Tech accent dots -->
-  <circle cx="24" cy="8" r="1.2" fill="url(#accentGradient)"/>
-  <circle cx="8" cy="24" r="0.8" fill="url(#accentGradient)"/>
+  <circle cx="24" cy="8" r="1.5" fill="#ffffff" opacity="0.8"/>
+  <circle cx="8" cy="24" r="1" fill="#ffffff" opacity="0.6"/>
   
+  <!-- Gradient definitions -->
   <defs>
-    <!-- Background gradient -->
-    <radialGradient id="bgGradient" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#1a1a1a"/>
-      <stop offset="100%" stop-color="#060606"/>
-    </radialGradient>
-    
-    <!-- Border gradient -->
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f72c4f"/>
+      <stop offset="100%" stop-color="#e91e63"/>
+    </linearGradient>
     <linearGradient id="borderGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#f72c4f"/>
-      <stop offset="50%" stop-color="#e91e63"/>
-      <stop offset="100%" stop-color="#f72c4f"/>
-    </linearGradient>
-    
-    <!-- Letter gradient -->
-    <linearGradient id="letterGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#ffffff"/>
-      <stop offset="50%" stop-color="#f72c4f"/>
-      <stop offset="100%" stop-color="#e91e63"/>
-    </linearGradient>
-    
-    <!-- Accent gradient -->
-    <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#f72c4f"/>
-      <stop offset="100%" stop-color="#e91e63"/>
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.1"/>
     </linearGradient>
   </defs>
 </svg>
