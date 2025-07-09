@@ -107,30 +107,31 @@ const Projects = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.05
+        staggerChildren: 0.1
       }
     }
   };
 
   const itemVariants = {
-    hidden: { opacity: 0 },
+    hidden: { y: 60, opacity: 0 },
     visible: {
+      y: 0,
       opacity: 1,
       transition: {
-        duration: 0.4,
-        ease: "easeOut"
+        duration: 0.8,
+        ease: [0.6, -0.05, 0.01, 0.99]
       }
     }
   };
 
   const cardVariants = {
-    hidden: { scale: 0.95, opacity: 0 },
+    hidden: { scale: 0.8, opacity: 0 },
     visible: {
       scale: 1,
       opacity: 1,
       transition: {
-        duration: 0.4,
-        ease: "easeOut"
+        duration: 0.6,
+        ease: [0.6, -0.05, 0.01, 0.99]
       }
     }
   };
@@ -144,11 +145,12 @@ const Projects = () => {
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
         >
-          {/* Section Header */}
+          {/* Enhanced Section Header */}
           <motion.div variants={itemVariants} className="text-center mb-16">
             <motion.div 
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
               style={{ background: 'rgba(247, 44, 79, 0.1)', border: '1px solid rgba(247, 44, 79, 0.2)' }}
+              whileHover={{ scale: 1.05 }}
             >
               <Award size={16} style={{ color: '#f72c4f' }} />
               <span className="text-sm font-medium text-gray-300">Portfolio Showcase</span>
@@ -163,35 +165,46 @@ const Projects = () => {
             </p>
           </motion.div>
 
-          {/* Filter Buttons */}
+          {/* Enhanced Filter Buttons */}
           <motion.div variants={itemVariants} className="flex flex-wrap justify-center gap-4 mb-12">
             {filters.map((filterItem) => (
               <motion.button
                 key={filterItem.key}
                 onClick={() => setFilter(filterItem.key)}
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 className={`flex items-center gap-3 px-6 py-3 rounded-full transition-all duration-300 relative overflow-hidden ${
                   filter === filterItem.key
-                    ? 'text-white'
+                    ? 'text-white pulse-glow'
                     : 'glass-effect text-gray-300 hover:text-white'
                 }`}
                 style={filter === filterItem.key ? { background: 'linear-gradient(135deg, #f72c4f, #e91e63)' } : {}}
               >
                 <filterItem.icon size={18} />
                 <span className="font-medium">{filterItem.label}</span>
-                <span 
+                <motion.span 
                   className={`text-xs px-2 py-1 rounded-full ${
                     filter === filterItem.key ? 'bg-white/20' : 'bg-gray-700'
                   }`}
+                  whileHover={{ scale: 1.1 }}
                 >
                   {filterItem.count}
-                </span>
+                </motion.span>
+                
+                {/* Shine effect for active filter */}
+                {filter === filterItem.key && (
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+                    initial={{ x: '-100%' }}
+                    animate={{ x: '100%' }}
+                    transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
+                  />
+                )}
               </motion.button>
             ))}
           </motion.div>
           
-          {/* Projects Grid */}
+          {/* Enhanced Projects Grid */}
           <AnimatePresence mode="wait">
             <motion.div 
               key={filter}
@@ -205,69 +218,89 @@ const Projects = () => {
                 <motion.div
                   key={`${filter}-${index}`}
                   variants={cardVariants}
+                  whileHover={{ y: -10, scale: 1.02 }}
+                  transition={{ duration: 0.3 }}
                 >
-                  <InteractiveCard className="overflow-hidden h-full flex flex-col">
-                    {/* Project Image */}
+                  <InteractiveCard className="overflow-hidden group h-full flex flex-col">
+                    {/* Enhanced Project Image */}
                     {project.image && (
                       <div className="relative overflow-hidden h-48 -m-5 mb-5">
-                        <img 
+                        <motion.img 
                           src={project.image} 
                           alt={project.title}
-                          className="w-full h-full object-cover"
+                          className="w-full h-full object-cover transition-transform duration-700"
+                          whileHover={{ scale: 1.1 }}
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                         
-                        {/* Badges */}
+                        {/* Enhanced badges */}
                         <div className="absolute top-4 left-4 right-4 flex justify-between items-start">
                           {project.featured && (
-                            <div 
+                            <motion.div 
                               className="px-3 py-1 rounded-full text-xs font-medium text-white flex items-center gap-1"
                               style={{ background: 'linear-gradient(135deg, #f72c4f, #e91e63)' }}
+                              whileHover={{ scale: 1.05 }}
                             >
                               <Star size={12} />
                               Featured
-                            </div>
+                            </motion.div>
                           )}
                           
-                          <div 
+                          <motion.div 
                             className="px-3 py-1 rounded-full text-xs font-medium bg-black/50 text-white backdrop-blur-sm"
+                            whileHover={{ scale: 1.05 }}
                           >
                             {project.category.toUpperCase()}
-                          </div>
+                          </motion.div>
                         </div>
 
                         {/* Hover overlay with metrics */}
-                        <div className="absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+                        <motion.div 
+                          className="absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                          initial={{ opacity: 0 }}
+                          whileHover={{ opacity: 1 }}
+                        >
                           <div className="text-center text-white">
                             <div className="grid grid-cols-3 gap-4 text-xs">
                               {Object.entries(project.metrics).map(([key, value], i) => (
-                                <div key={key} className="text-center">
+                                <motion.div 
+                                  key={key}
+                                  className="text-center"
+                                  initial={{ y: 20, opacity: 0 }}
+                                  whileHover={{ y: 0, opacity: 1 }}
+                                  transition={{ delay: i * 0.1 }}
+                                >
                                   <div className="font-bold text-pink-400">{value}</div>
                                   <div className="capitalize">{key}</div>
-                                </div>
+                                </motion.div>
                               ))}
                             </div>
                           </div>
-                        </div>
+                        </motion.div>
                       </div>
                     )}
                     
-                    {/* Project Content */}
+                    {/* Enhanced Project Content */}
                     <div className="flex-1 flex flex-col">
                       <div className="flex justify-between items-start mb-4">
-                        <h3 className="text-xl font-bold text-white">
+                        <motion.h3 
+                          className="text-xl font-bold text-white group-hover:gradient-text transition-all duration-300"
+                          whileHover={{ scale: 1.02 }}
+                        >
                           {project.title}
-                        </h3>
+                        </motion.h3>
                         <div className="flex gap-2">
                           {project.url && (
-                            <a
+                            <motion.a
                               href={project.url}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="p-2 glass-effect rounded-full hover:text-pink-400 transition-all duration-300"
+                              whileHover={{ scale: 1.2, rotate: 5 }}
+                              whileTap={{ scale: 0.9 }}
+                              className="p-2 glass-effect rounded-full hover:pulse-glow transition-all duration-300 group/link"
                             >
-                              <ExternalLink size={16} />
-                            </a>
+                              <ExternalLink size={16} className="group-hover/link:text-pink-400 transition-colors duration-300" />
+                            </motion.a>
                           )}
                         </div>
                       </div>
@@ -276,20 +309,29 @@ const Projects = () => {
                         {project.description}
                       </p>
                       
-                      {/* Tech Stack */}
+                      {/* Enhanced Tech Stack */}
                       <div className="flex flex-wrap gap-2 mb-4">
                         {project.tech.map((tech, techIndex) => (
-                          <span
+                          <motion.span
                             key={techIndex}
-                            className="px-3 py-1 glass-effect text-gray-300 rounded-full text-xs font-medium"
+                            whileHover={{ scale: 1.05, y: -2 }}
+                            className="px-3 py-1 glass-effect text-gray-300 rounded-full text-xs font-medium hover:gradient-text transition-all duration-300 cursor-pointer"
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: techIndex * 0.1 }}
                           >
                             {tech}
-                          </span>
+                          </motion.span>
                         ))}
                       </div>
 
                       {/* Project Stats */}
-                      <div className="mt-auto pt-4 border-t border-gray-700/50">
+                      <motion.div 
+                        className="mt-auto pt-4 border-t border-gray-700/50"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.5 }}
+                      >
                         <div className="flex items-center justify-between text-xs text-gray-400">
                           <div className="flex items-center gap-1">
                             <TrendingUp size={12} />
@@ -300,7 +342,7 @@ const Projects = () => {
                             <span>Client Approved</span>
                           </div>
                         </div>
-                      </div>
+                      </motion.div>
                     </div>
                   </InteractiveCard>
                 </motion.div>
@@ -308,29 +350,36 @@ const Projects = () => {
             </motion.div>
           </AnimatePresence>
 
-          {/* Empty State */}
+          {/* Enhanced Empty State */}
           {filteredProjects.length === 0 && (
             <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
               className="text-center py-12"
             >
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full border-2 border-pink-500/30 border-t-pink-500 animate-spin" />
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                className="w-16 h-16 mx-auto mb-4 rounded-full border-2 border-pink-500/30 border-t-pink-500"
+              />
               <p className="text-gray-400 text-lg">No projects found in this category.</p>
               <p className="text-gray-500 text-sm mt-2">Try selecting a different filter above.</p>
             </motion.div>
           )}
 
-          {/* Project Summary */}
+          {/* Enhanced Project Summary */}
           <motion.div 
             variants={itemVariants}
             className="mt-16"
           >
             <InteractiveCard>
               <div className="text-center">
-                <h3 className="text-3xl font-bold gradient-text mb-6">
+                <motion.h3 
+                  className="text-3xl font-bold gradient-text mb-6"
+                  whileHover={{ scale: 1.05 }}
+                >
                   Project Impact & Results
-                </h3>
+                </motion.h3>
                 
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
                   {[
@@ -339,18 +388,30 @@ const Projects = () => {
                     { label: 'Technologies Used', value: '15+', icon: Database, color: 'from-purple-500 to-violet-500' },
                     { label: 'Success Rate', value: '100%', icon: TrendingUp, color: 'from-pink-500 to-red-500' }
                   ].map((stat, index) => (
-                    <div key={index} className="group cursor-pointer">
-                      <div 
-                        className="w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center transition-all duration-300"
-                        style={{ background: 'rgba(247, 44, 79, 0.1)' }}
+                    <motion.div
+                      key={index}
+                      className="group cursor-pointer"
+                      whileHover={{ scale: 1.05, y: -10 }}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.1 + 0.5 }}
+                    >
+                      <motion.div 
+                        className="w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center group-hover:pulse-glow transition-all duration-300"
+                        style={{ background: `linear-gradient(135deg, rgba(247, 44, 79, 0.2), rgba(233, 30, 99, 0.1))` }}
+                        whileHover={{ rotate: 5 }}
                       >
                         <stat.icon size={28} style={{ color: '#f72c4f' }} />
-                      </div>
-                      <div className="text-3xl font-bold gradient-text mb-2">
+                      </motion.div>
+                      <motion.div 
+                        className="text-3xl font-bold gradient-text mb-2"
+                        animate={{ scale: [1, 1.05, 1] }}
+                        transition={{ duration: 2, repeat: Infinity, delay: index * 0.5 }}
+                      >
                         {stat.value}
-                      </div>
+                      </motion.div>
                       <h4 className="font-semibold text-white text-sm">{stat.label}</h4>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
               </div>

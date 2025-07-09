@@ -25,7 +25,7 @@ const About = () => {
     visible: {
       opacity: 1,
       transition: {
-        duration: 0.4,
+        duration: 0.6,
         ease: "easeOut"
       }
     }
@@ -81,25 +81,36 @@ const About = () => {
             </p>
           </motion.div>
 
-          {/* Stats Cards Grid */}
+          {/* Stats Cards Grid - No scroll animations */}
           <motion.div variants={itemVariants} className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
             {stats.map((stat, index) => (
-              <div key={index}>
+              <motion.div 
+                key={index}
+                whileHover={{ scale: 1.05, y: -10 }}
+                transition={{ duration: 0.3 }}
+              >
                 <InteractiveCard 
-                  className="p-6 text-center h-full relative overflow-hidden"
+                  className="p-6 text-center h-full relative overflow-hidden group"
                   style={{ 
                     background: 'linear-gradient(135deg, rgba(20, 20, 20, 0.95), rgba(40, 40, 40, 0.9))',
                     minHeight: '180px',
                     border: '1px solid rgba(247, 44, 79, 0.1)'
                   }}
                 >
-                  {/* Icon */}
+                  {/* Background gradient overlay */}
                   <div 
+                    className={`absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500 bg-gradient-to-br ${stat.color}`}
+                  />
+                  
+                  {/* Icon */}
+                  <motion.div 
                     className="w-12 h-12 mx-auto mb-4 rounded-full flex items-center justify-center"
                     style={{ background: 'rgba(247, 44, 79, 0.1)' }}
+                    whileHover={{ rotate: 360 }}
+                    transition={{ duration: 0.6 }}
                   >
                     <stat.icon size={24} style={{ color: '#f72c4f' }} />
-                  </div>
+                  </motion.div>
 
                   {/* Value */}
                   <div className="text-3xl lg:text-4xl font-black text-white mb-2">
@@ -116,11 +127,11 @@ const About = () => {
                     {stat.description}
                   </p>
                 </InteractiveCard>
-              </div>
+              </motion.div>
             ))}
           </motion.div>
 
-          {/* Main Content */}
+          {/* Main Content - No scroll animations */}
           <motion.div variants={itemVariants}>
             <div className="grid lg:grid-cols-3 gap-8">
               {/* Professional Journey - Spans 2 columns */}

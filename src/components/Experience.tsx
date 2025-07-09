@@ -57,7 +57,7 @@ const Experience = () => {
     visible: {
       opacity: 1,
       transition: {
-        duration: 0.4,
+        duration: 0.6,
         ease: "easeOut"
       }
     }
@@ -94,27 +94,30 @@ const Experience = () => {
                   className="relative"
                 >
                   {/* Timeline dot */}
-                  <div 
-                    className="absolute left-6 top-8 w-6 h-6 rounded-full hidden md:block"
+                  <motion.div 
+                    className="absolute left-6 top-8 w-6 h-6 rounded-full hidden md:block pulse-glow"
                     style={{ background: 'linear-gradient(135deg, #f72c4f, #e91e63)' }}
+                    whileHover={{ scale: 1.2 }}
                   />
                   
-                  <div className="md:ml-20">
+                  <motion.div className="md:ml-20" whileHover={{ scale: 1.02, y: -5 }}>
                     <InteractiveCard>
                       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-6">
                         <div>
-                          <h3 className="text-2xl font-bold text-white mb-2">
+                          <h3 className="text-2xl font-bold text-white mb-2 group-hover:gradient-text transition-all duration-300">
                             {exp.title}
                           </h3>
                           <h4 className="text-xl text-gray-300 mb-3">{exp.company}</h4>
                         </div>
                         {exp.current && (
-                          <span 
-                            className="inline-block px-4 py-2 text-white rounded-full text-sm font-medium"
+                          <motion.span 
+                            className="inline-block px-4 py-2 text-white rounded-full text-sm font-medium pulse-glow"
                             style={{ background: 'linear-gradient(135deg, #f72c4f, #e91e63)' }}
+                            animate={{ scale: [1, 1.05, 1] }}
+                            transition={{ duration: 2, repeat: Infinity }}
                           >
                             Current Position
-                          </span>
+                          </motion.span>
                         )}
                       </div>
                       
@@ -148,7 +151,7 @@ const Experience = () => {
                         </ul>
                       </div>
                     </InteractiveCard>
-                  </div>
+                  </motion.div>
                 </motion.div>
               ))}
             </div>
