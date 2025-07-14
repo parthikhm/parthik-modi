@@ -24,12 +24,35 @@ html {
 /* Performance optimizations */
 * {
   box-sizing: border-box;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* GPU acceleration for animations */
+.will-change-transform {
+  will-change: transform;
+}
+
+.will-change-opacity {
+  will-change: opacity;
+}
+
+/* Optimize animations */
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 /* Custom animations */
@@ -59,6 +82,7 @@ body {
 
 .floating-animation {
   animation: floating 6s ease-in-out infinite;
+  will-change: transform;
 }
 
 @keyframes floating {
@@ -68,6 +92,7 @@ body {
 
 .pulse-glow {
   animation: pulse-glow 2s ease-in-out infinite alternate;
+  will-change: transform, box-shadow;
 }
 
 @keyframes pulse-glow {
@@ -123,6 +148,7 @@ body {
   height: 100%;
   overflow: hidden;
   pointer-events: none;
+  will-change: transform;
 }
 
 .particle {
@@ -130,143 +156,8 @@ body {
   background: rgba(247, 44, 79, 0.3);
   border-radius: 50%;
   will-change: transform, opacity;
-}
-
-/* Enhanced card hover effects */
-.card-hover-glow {
-  position: relative;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.card-hover-glow::before {
-  content: '';
-  position: absolute;
-  inset: -2px;
-  background: linear-gradient(45deg, #f72c4f, #e91e63, #f72c4f);
-  border-radius: 14px;
-  opacity: 0;
-  z-index: -1;
-  transition: opacity 0.4s ease;
-  filter: blur(8px);
-}
-
-.card-hover-glow:hover::before {
-  opacity: 0.7;
-  animation: rotate-border 3s linear infinite;
-}
-
-@keyframes rotate-border {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-.card-shimmer {
-  position: relative;
-  overflow: hidden;
-}
-
-.card-shimmer::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.1),
-    transparent
-  );
-  transition: left 0.6s ease;
-}
-
-.card-shimmer:hover::after {
-  left: 100%;
-}
-
-/* Enhanced hover states */
-.hover-glow:hover {
-  box-shadow: 
-    0 0 30px rgba(247, 44, 79, 0.5),
-    0 0 60px rgba(233, 30, 99, 0.3),
-    0 0 90px rgba(247, 44, 79, 0.1);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  transform: translateY(-8px) scale(1.02);
-}
-
-.hover-lift {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.hover-lift:hover {
-  transform: translateY(-12px) rotateX(5deg);
-  box-shadow: 
-    0 20px 40px rgba(0, 0, 0, 0.3),
-    0 0 30px rgba(247, 44, 79, 0.2);
-}
-
-/* Magnetic hover effect */
-.magnetic-hover {
-  transition: transform 0.2s ease-out;
-}
-
-.magnetic-hover:hover {
-  transform: scale(1.05);
-}
-
-/* Ripple effect */
-.ripple-effect {
-  position: relative;
-  overflow: hidden;
-}
-
-.ripple-effect::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  border-radius: 50%;
-  background: rgba(247, 44, 79, 0.3);
-  transform: translate(-50%, -50%);
-  transition: width 0.6s, height 0.6s;
-}
-
-.ripple-effect:hover::before {
-  width: 300px;
-  height: 300px;
-}
-
-/* Gradient border animation */
-.gradient-border {
-  position: relative;
-  background: linear-gradient(135deg, #141414, #1a1a1a);
-  border-radius: 12px;
-}
-
-.gradient-border::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  padding: 2px;
-  background: linear-gradient(45deg, #f72c4f, #e91e63, #f72c4f, #e91e63);
-  border-radius: 12px;
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask-composite: exclude;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-
-.gradient-border:hover::before {
-  opacity: 1;
-  animation: gradient-rotate 2s linear infinite;
-}
-
-@keyframes gradient-rotate {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 /* Additional custom styles for the new color scheme */
@@ -286,21 +177,11 @@ body {
   border-color: #f72c4f;
 }
 
-/* Enhanced cursor styles */
-.cursor-magnetic {
-  cursor: pointer;
-  transition: transform 0.2s ease-out;
-}
-
-.cursor-magnetic:hover {
-  transform: scale(1.1);
-}
-
 /* Optimized transitions for better performance */
-* {
-  transition-property: transform, box-shadow, background-color, border-color, opacity;
-  transition-duration: 0.3s;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+.transition-optimized {
+  transition-property: opacity, transform;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-out;
 }
 
 /* Focus states for accessibility */
@@ -320,15 +201,6 @@ body {
   color: white;
 }
 
-/* Performance optimizations */
-.will-change-transform {
-  will-change: transform;
-}
-
-.will-change-opacity {
-  will-change: opacity;
-}
-
 /* Reduce motion for accessibility */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -341,11 +213,11 @@ body {
   }
 }
 
-/* Enhanced loading states */
+/* Optimized loading states */
 .loading-shimmer {
   background: linear-gradient(90deg, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%);
   background-size: 200% 100%;
-  animation: shimmer 2s infinite;
+  animation: shimmer 1.5s infinite;
 }
 
 @keyframes shimmer {
@@ -360,10 +232,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Enhanced backdrop blur support */
+/* Optimized backdrop blur support */
 @supports (backdrop-filter: blur(10px)) {
   .glass-effect {
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
   }
 }
 
@@ -371,4 +244,23 @@ body {
   .glass-effect {
     background: rgba(247, 44, 79, 0.1);
   }
+}
+
+/* Image optimization */
+img {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+/* Scroll optimization */
+html {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Container optimization */
+.container-optimized {
+  contain: layout style paint;
 }

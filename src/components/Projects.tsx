@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { ExternalLink, Github, Globe, Code, Zap, Database, Star, TrendingUp, Award } from 'lucide-react';
 import InteractiveCard from './InteractiveCard';
+import OptimizedImage from './OptimizedImage';
 
 const Projects = () => {
   const [ref, inView] = useInView({
@@ -223,10 +224,12 @@ const Projects = () => {
                     {/* Enhanced Project Image */}
                     {project.image && (
                       <div className="relative overflow-hidden h-48 -m-5 mb-5">
-                        <img 
+                        <OptimizedImage
                           src={project.image} 
                           alt={project.title}
                           className="w-full h-full object-cover"
+                          width={400}
+                          height={192}
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                         

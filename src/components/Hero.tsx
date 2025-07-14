@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Github, Linkedin, Mail, Phone, Download, ArrowDown, Code2, Sparkles, Zap } from 'lucide-react';
 import InteractiveCard from './InteractiveCard';
-import Logo from './Logo';
+import OptimizedImage from './OptimizedImage';
 
 const Hero = () => {
   const [currentRole, setCurrentRole] = useState(0);
@@ -100,7 +100,7 @@ const Hero = () => {
       <div className="absolute inset-0" style={{ backgroundColor: '#060606' }}>
         {/* Optimized particle system */}
         <div className="particle-bg">
-          {[...Array(40)].map((_, i) => (
+          {[...Array(20)].map((_, i) => (
             <motion.div
               key={i}
               className="absolute rounded-full"
@@ -116,16 +116,16 @@ const Hero = () => {
                 scale: [0, 1, 1, 0]
               }}
               transition={{
-                duration: Math.random() * 10 + 15,
+                duration: Math.random() * 8 + 12,
                 repeat: Infinity,
-                delay: Math.random() * 20,
+                delay: Math.random() * 15,
                 ease: "linear"
               }}
             />
           ))}
         </div>
         
-        {/* Enhanced geometric shapes with better animations */}
+        {/* Reduced geometric shapes for better performance */}
         <motion.div 
           className="absolute top-20 left-10 w-20 h-20 rounded-full border border-pink-500/30"
           animate={{ 
@@ -133,34 +133,9 @@ const Hero = () => {
             opacity: [0.3, 0.6, 0.3]
           }}
           transition={{ 
-            duration: 4, 
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-        <motion.div 
-          className="absolute top-40 right-20 w-16 h-16 rounded-lg rotate-45"
-          style={{ background: 'linear-gradient(135deg, rgba(247, 44, 79, 0.2), rgba(233, 30, 99, 0.2))' }}
-          animate={{ 
-            rotate: [45, 225, 45],
-            y: [-20, 20, -20]
-          }}
-          transition={{ 
             duration: 6, 
             repeat: Infinity,
             ease: "easeInOut"
-          }}
-        />
-        <motion.div 
-          className="absolute bottom-40 left-20 w-12 h-12 border-2 border-pink-400/40"
-          animate={{ 
-            rotate: [0, 360],
-            scale: [1, 1.3, 1]
-          }}
-          transition={{ 
-            duration: 8, 
-            repeat: Infinity,
-            ease: "linear"
           }}
         />
       </div>
@@ -355,10 +330,12 @@ const Hero = () => {
                   style={{ borderRadius: '50%' }}
                 >
                   <div className="w-full h-full rounded-full overflow-hidden flex items-center justify-center relative" style={{ background: 'linear-gradient(135deg, rgba(247, 44, 79, 0.2), rgba(233, 30, 99, 0.2))' }}>
-                    <img 
+                    <OptimizedImage
                       src="/1732172836245.jpeg"
                       alt="Parthik Modi - Laravel Developer"
                       className="w-full h-full object-cover rounded-full"
+                      width={384}
+                      height={384}
                     />
                     {/* Image overlay effect */}
                     <div className="absolute inset-0 rounded-full bg-gradient-to-t from-black/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300" />
@@ -366,14 +343,13 @@ const Hero = () => {
                 </InteractiveCard>
               </motion.div>
                 
-              {/* Enhanced floating tech icons */}
+              {/* Reduced floating tech icons for better performance */}
               <motion.div 
                 className="absolute -top-4 -right-4 w-16 h-16 glass-effect rounded-full flex items-center justify-center"
                 animate={{ 
                   y: [-10, 10, -10],
-                  rotate: [0, 5, 0]
                 }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
                 whileHover={{ scale: 1.1 }}
               >
                 <Code2 size={24} style={{ color: '#f72c4f' }} />
@@ -383,25 +359,13 @@ const Hero = () => {
                 className="absolute -bottom-4 -left-4 w-14 h-14 glass-effect rounded-full flex items-center justify-center"
                 animate={{ 
                   y: [10, -10, 10],
-                  rotate: [0, -5, 0]
                 }}
-                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
                 whileHover={{ scale: 1.1 }}
               >
                 <Zap size={20} style={{ color: '#f72c4f' }} />
               </motion.div>
               
-              <motion.div 
-                className="absolute top-1/2 -right-6 w-12 h-12 glass-effect rounded-full flex items-center justify-center"
-                animate={{ 
-                  x: [-5, 5, -5],
-                  scale: [1, 1.1, 1]
-                }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-                whileHover={{ scale: 1.2 }}
-              >
-                <Sparkles size={18} style={{ color: '#f72c4f' }} />
-              </motion.div>
 
               {/* Enhanced stats floating cards */}
               <motion.div 
@@ -414,8 +378,6 @@ const Hero = () => {
                   <div className="text-center">
                     <motion.div 
                       className="text-2xl font-bold gradient-text"
-                      animate={{ scale: [1, 1.05, 1] }}
-                      transition={{ duration: 2, repeat: Infinity }}
                     >
                       2.5+
                     </motion.div>
@@ -434,8 +396,6 @@ const Hero = () => {
                   <div className="text-center">
                     <motion.div 
                       className="text-2xl font-bold gradient-text"
-                      animate={{ scale: [1, 1.05, 1] }}
-                      transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
                     >
                       25+
                     </motion.div>
