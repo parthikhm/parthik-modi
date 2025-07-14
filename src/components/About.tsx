@@ -88,18 +88,13 @@ const About = () => {
                 key={index}
               >
                 <InteractiveCard 
-                  className="p-6 text-center h-full relative overflow-hidden group"
+                  className="p-6 text-center h-full relative overflow-hidden"
                   style={{ 
                     background: 'linear-gradient(135deg, rgba(20, 20, 20, 0.95), rgba(40, 40, 40, 0.9))',
                     minHeight: '180px',
                     border: '1px solid rgba(247, 44, 79, 0.1)'
                   }}
                 >
-                  {/* Background gradient overlay */}
-                  <div 
-                    className={`absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500 bg-gradient-to-br ${stat.color}`}
-                  />
-                  
                   {/* Icon */}
                   <div 
                     className="w-12 h-12 mx-auto mb-4 rounded-full flex items-center justify-center"
