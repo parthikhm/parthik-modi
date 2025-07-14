@@ -190,24 +190,6 @@ const Skills = () => {
               activeCategory === categoryIndex && (
                 <div key={category.id}>
                   {/* Category Header */}
-                  <motion.div 
-                    variants={itemVariants}
-                    className="text-center mb-12"
-                  >
-                    <div className="flex items-center justify-center gap-4 mb-6">
-                      <motion.div 
-                        className={`w-20 h-20 rounded-3xl flex items-center justify-center bg-gradient-to-br ${category.color}`}
-                        whileHover={{ rotate: 5, scale: 1.1 }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        <category.icon size={32} className="text-white" />
-                      </motion.div>
-                      <div className="text-left">
-                        <h3 className="text-3xl font-bold text-white">{category.title}</h3>
-                        <p className="text-gray-400">{category.subtitle}</p>
-                      </div>
-                    </div>
-                  </motion.div>
 
                   {/* Skills Grid - No scroll animations */}
                   <div className="grid lg:grid-cols-2 gap-8 mb-12">
