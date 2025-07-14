@@ -86,8 +86,6 @@ const About = () => {
             {stats.map((stat, index) => (
               <motion.div 
                 key={index}
-                whileHover={{ scale: 1.05, y: -10 }}
-                transition={{ duration: 0.3 }}
               >
                 <InteractiveCard 
                   className="p-6 text-center h-full relative overflow-hidden group"
@@ -103,14 +101,12 @@ const About = () => {
                   />
                   
                   {/* Icon */}
-                  <motion.div 
+                  <div 
                     className="w-12 h-12 mx-auto mb-4 rounded-full flex items-center justify-center"
                     style={{ background: 'rgba(247, 44, 79, 0.1)' }}
-                    whileHover={{ rotate: 360 }}
-                    transition={{ duration: 0.6 }}
                   >
                     <stat.icon size={24} style={{ color: '#f72c4f' }} />
-                  </motion.div>
+                  </div>
 
                   {/* Value */}
                   <div className="text-3xl lg:text-4xl font-black text-white mb-2">

@@ -132,10 +132,9 @@ const Contact = () => {
                       <motion.a
                         key={index}
                         href={info.href}
-                        whileHover={{ x: 10 }}
-                        className="flex items-center gap-4 text-gray-300 hover:text-white transition-all duration-300 group"
+                        className="flex items-center gap-4 text-gray-300 transition-all duration-300 group"
                       >
-                        <div className="w-12 h-12 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300" style={{ background: 'rgba(247, 44, 79, 0.2)' }}>
+                        <div className="w-12 h-12 rounded-full flex items-center justify-center transition-transform duration-300" style={{ background: 'rgba(247, 44, 79, 0.2)' }}>
                           <info.icon size={20} style={{ color: '#f72c4f' }} />
                         </div>
                         <div>

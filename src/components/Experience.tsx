@@ -94,13 +94,12 @@ const Experience = () => {
                   className="relative"
                 >
                   {/* Timeline dot */}
-                  <motion.div 
+                  <div 
                     className="absolute left-6 top-8 w-6 h-6 rounded-full hidden md:block pulse-glow"
                     style={{ background: 'linear-gradient(135deg, #f72c4f, #e91e63)' }}
-                    whileHover={{ scale: 1.2 }}
                   />
                   
-                  <motion.div className="md:ml-20" whileHover={{ scale: 1.02, y: -5 }}>
+                  <div className="md:ml-20">
                     <InteractiveCard>
                       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-6">
                         <div>
@@ -151,7 +150,7 @@ const Experience = () => {
                         </ul>
                       </div>
                     </InteractiveCard>
-                  </motion.div>
+                  </div>
                 </motion.div>
               ))}
             </div>

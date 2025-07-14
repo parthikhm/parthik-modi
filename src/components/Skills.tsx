@@ -214,19 +214,18 @@ const Skills = () => {
                     {category.skills.map((skill, skillIndex) => (
                       <motion.div
                         key={skill.name}
-                        whileHover={{ y: -5 }}
                       >
                         <InteractiveCard className="h-full group">
                           <div className="flex items-start gap-4 mb-6">
-                            <motion.div 
-                              className="w-14 h-14 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300"
+                            <div 
+                              className="w-14 h-14 rounded-2xl flex items-center justify-center transition-transform duration-300"
                               style={{ background: `linear-gradient(135deg, rgba(247, 44, 79, 0.2), rgba(233, 30, 99, 0.1))` }}
                             >
                               <skill.icon size={24} style={{ color: '#f72c4f' }} />
-                            </motion.div>
+                            </div>
                             <div className="flex-1">
                               <div className="flex items-center justify-between mb-2">
-                                <h4 className="text-xl font-bold text-white group-hover:gradient-text transition-all duration-300">
+                                <h4 className="text-xl font-bold text-white transition-all duration-300">
                                   {skill.name}
                                 </h4>
                                 <motion.div 
@@ -359,17 +358,14 @@ const Skills = () => {
                     <motion.div
                       key={index}
                       className="group cursor-pointer"
-                      whileHover={{ scale: 1.05, y: -10 }}
-                      transition={{ duration: 0.3 }}
                     >
-                      <div className="p-6 rounded-2xl group-hover:shadow-2xl transition-all duration-300" style={{ background: 'rgba(247, 44, 79, 0.05)' }}>
-                        <motion.div 
-                          className="w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center group-hover:pulse-glow transition-all duration-300"
+                      <div className="p-6 rounded-2xl transition-all duration-300" style={{ background: 'rgba(247, 44, 79, 0.05)' }}>
+                        <div 
+                          className="w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center transition-all duration-300"
                           style={{ background: 'rgba(247, 44, 79, 0.1)' }}
-                          whileHover={{ rotate: 5 }}
                         >
                           <tech.icon size={28} style={{ color: '#f72c4f' }} />
-                        </motion.div>
+                        </div>
                         <div className="text-2xl font-bold gradient-text mb-2">{tech.count}</div>
                         <h4 className="font-semibold text-white mb-1">{tech.label}</h4>
                         <p className="text-xs text-gray-400">{tech.description}</p>

@@ -218,18 +218,15 @@ const Projects = () => {
                 <motion.div
                   key={`${filter}-${index}`}
                   variants={cardVariants}
-                  whileHover={{ y: -10, scale: 1.02 }}
-                  transition={{ duration: 0.3 }}
                 >
                   <InteractiveCard className="overflow-hidden group h-full flex flex-col">
                     {/* Enhanced Project Image */}
                     {project.image && (
                       <div className="relative overflow-hidden h-48 -m-5 mb-5">
-                        <motion.img 
+                        <img 
                           src={project.image} 
                           alt={project.title}
-                          className="w-full h-full object-cover transition-transform duration-700"
-                          whileHover={{ scale: 1.1 }}
+                          className="w-full h-full object-cover"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                         
@@ -283,24 +280,21 @@ const Projects = () => {
                     {/* Enhanced Project Content */}
                     <div className="flex-1 flex flex-col">
                       <div className="flex justify-between items-start mb-4">
-                        <motion.h3 
-                          className="text-xl font-bold text-white group-hover:gradient-text transition-all duration-300"
-                          whileHover={{ scale: 1.02 }}
+                        <h3 
+                          className="text-xl font-bold text-white transition-all duration-300"
                         >
                           {project.title}
-                        </motion.h3>
+                        </h3>
                         <div className="flex gap-2">
                           {project.url && (
-                            <motion.a
+                            <a
                               href={project.url}
                               target="_blank"
                               rel="noopener noreferrer"
-                              whileHover={{ scale: 1.2, rotate: 5 }}
-                              whileTap={{ scale: 0.9 }}
-                              className="p-2 glass-effect rounded-full hover:pulse-glow transition-all duration-300 group/link"
+                              className="p-2 glass-effect rounded-full transition-all duration-300 group/link"
                             >
-                              <ExternalLink size={16} className="group-hover/link:text-pink-400 transition-colors duration-300" />
-                            </motion.a>
+                              <ExternalLink size={16} className="transition-colors duration-300" />
+                            </a>
                           )}
                         </div>
                       </div>
@@ -312,16 +306,15 @@ const Projects = () => {
                       {/* Enhanced Tech Stack */}
                       <div className="flex flex-wrap gap-2 mb-4">
                         {project.tech.map((tech, techIndex) => (
-                          <motion.span
+                          <span
                             key={techIndex}
-                            whileHover={{ scale: 1.05, y: -2 }}
-                            className="px-3 py-1 glass-effect text-gray-300 rounded-full text-xs font-medium hover:gradient-text transition-all duration-300 cursor-pointer"
+                            className="px-3 py-1 glass-effect text-gray-300 rounded-full text-xs font-medium transition-all duration-300"
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: techIndex * 0.1 }}
                           >
                             {tech}
-                          </motion.span>
+                          </span>
                         ))}
                       </div>
 
@@ -391,18 +384,16 @@ const Projects = () => {
                     <motion.div
                       key={index}
                       className="group cursor-pointer"
-                      whileHover={{ scale: 1.05, y: -10 }}
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: index * 0.1 + 0.5 }}
                     >
-                      <motion.div 
-                        className="w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center group-hover:pulse-glow transition-all duration-300"
+                      <div 
+                        className="w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center transition-all duration-300"
                         style={{ background: `linear-gradient(135deg, rgba(247, 44, 79, 0.2), rgba(233, 30, 99, 0.1))` }}
-                        whileHover={{ rotate: 5 }}
                       >
                         <stat.icon size={28} style={{ color: '#f72c4f' }} />
-                      </motion.div>
+                      </div>
                       <motion.div 
                         className="text-3xl font-bold gradient-text mb-2"
                         animate={{ scale: [1, 1.05, 1] }}

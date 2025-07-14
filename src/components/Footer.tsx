@@ -90,13 +90,7 @@ const Footer = () => {
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  whileHover={{ 
-                    scale: 1.2, 
-                    y: -5,
-                    boxShadow: "0 10px 25px rgba(247, 44, 79, 0.3)"
-                  }}
-                  whileTap={{ scale: 0.9 }}
-                  className={`group relative w-12 h-12 glass-effect rounded-full flex items-center justify-center hover:pulse-glow transition-all duration-300 ${link.color} ${link.hoverBg}`}
+                  className={`group relative w-12 h-12 glass-effect rounded-full flex items-center justify-center transition-all duration-300 ${link.color} ${link.hoverBg}`}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 + 0.3 }}
@@ -106,20 +100,15 @@ const Footer = () => {
                   {/* Tooltip */}
                   <motion.div
                     className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-black/90 text-white text-xs px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap"
-                    initial={{ opacity: 0, y: 10 }}
-                    whileHover={{ opacity: 1, y: 0 }}
                   >
                     {link.description}
                     <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-black/90" />
                   </motion.div>
 
                   {/* Ripple effect */}
-                  <motion.div
+                  <div
                     className="absolute inset-0 rounded-full"
                     style={{ background: 'rgba(247, 44, 79, 0.2)' }}
-                    initial={{ scale: 0, opacity: 0 }}
-                    whileHover={{ scale: 1, opacity: 1 }}
-                    transition={{ duration: 0.3 }}
                   />
                 </motion.a>
               ))}
@@ -145,12 +134,10 @@ const Footer = () => {
                       e.preventDefault();
                       handleNavClick(link.href);
                     }}
-                    whileHover={{ x: 5, color: '#f72c4f' }}
                     className="text-gray-400 hover:text-white transition-all duration-300 text-sm flex items-center gap-2 group"
                   >
-                    <motion.div
-                      className="w-1 h-1 rounded-full bg-gray-600 group-hover:bg-pink-500 transition-colors duration-300"
-                      whileHover={{ scale: 1.5 }}
+                    <div
+                      className="w-1 h-1 rounded-full bg-gray-600 transition-colors duration-300"
                     />
                     {link.name}
                   </motion.a>
@@ -172,11 +159,10 @@ const Footer = () => {
             <div className="space-y-4">
               <motion.a
                 href="mailto:parthikmodi43@gmail.com"
-                whileHover={{ scale: 1.02, x: 5 }}
                 className="block text-gray-400 hover:text-white transition-all duration-300 text-sm group"
               >
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg glass-effect flex items-center justify-center group-hover:pulse-glow transition-all duration-300">
+                  <div className="w-8 h-8 rounded-lg glass-effect flex items-center justify-center transition-all duration-300">
                     <Mail size={14} />
                   </div>
                   <div>
@@ -187,11 +173,10 @@ const Footer = () => {
               </motion.a>
               
               <motion.div
-                whileHover={{ scale: 1.02, x: 5 }}
                 className="text-gray-400 text-sm group"
               >
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg glass-effect flex items-center justify-center group-hover:pulse-glow transition-all duration-300">
+                  <div className="w-8 h-8 rounded-lg glass-effect flex items-center justify-center transition-all duration-300">
                     <ExternalLink size={14} />
                   </div>
                   <div>
@@ -215,14 +200,12 @@ const Footer = () => {
             <div className="flex items-center gap-6">
               <motion.p 
                 className="text-gray-500 text-sm flex items-center gap-2"
-                whileHover={{ scale: 1.02 }}
               >
                 © {new Date().getFullYear()} Parthik Modi. All rights reserved.
               </motion.p>
               
               <motion.p 
                 className="text-gray-600 text-xs flex items-center gap-2"
-                whileHover={{ scale: 1.02 }}
               >
                 Made with <Heart size={12} style={{ color: '#f72c4f' }} className="animate-pulse" /> and lots of ☕
               </motion.p>
@@ -231,19 +214,13 @@ const Footer = () => {
             {/* Enhanced Scroll to Top Button */}
             <motion.button
               onClick={scrollToTop}
-              whileHover={{ 
-                scale: 1.1, 
-                y: -2,
-                boxShadow: "0 10px 25px rgba(247, 44, 79, 0.3)"
-              }}
-              whileTap={{ scale: 0.9 }}
-              className="w-12 h-12 glass-effect rounded-full flex items-center justify-center hover:pulse-glow transition-all duration-300 group"
+              className="w-12 h-12 glass-effect rounded-full flex items-center justify-center transition-all duration-300 group"
             >
               <motion.div
                 animate={{ y: [0, -2, 0] }}
                 transition={{ duration: 2, repeat: Infinity }}
               >
-                <ArrowUp size={18} className="group-hover:text-pink-400 transition-colors duration-300" />
+                <ArrowUp size={18} className="transition-colors duration-300" />
               </motion.div>
             </motion.button>
           </div>

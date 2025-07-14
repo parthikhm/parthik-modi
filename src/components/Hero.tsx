@@ -252,8 +252,6 @@ const Hero = () => {
             >
               <motion.a 
                 href="mailto:parthikmodi43@gmail.com"
-                whileHover={{ scale: 1.05, y: -3 }}
-                whileTap={{ scale: 0.95 }}
                 className="flex items-center gap-3 px-6 py-3 gradient-bg rounded-full hover:shadow-2xl transition-all duration-300 group text-white relative overflow-hidden"
               >
                 <Mail size={20} />
@@ -275,8 +273,6 @@ const Hero = () => {
               
               <motion.a 
                 href="tel:+919173281097"
-                whileHover={{ scale: 1.05, y: -3 }}
-                whileTap={{ scale: 0.95 }}
                 className="flex items-center gap-3 px-6 py-3 glass-effect rounded-full hover:pulse-glow transition-all duration-300"
               >
                 <Phone size={20} />
@@ -286,8 +282,6 @@ const Hero = () => {
               <motion.a 
                 href="/Parthik_Modi.pdf"
                 download="Parthik_Modi_Resume.pdf"
-                whileHover={{ scale: 1.05, y: -3 }}
-                whileTap={{ scale: 0.95 }}
                 className="flex items-center gap-3 px-6 py-3 glass-effect rounded-full hover:pulse-glow transition-all duration-300 group"
               >
                 <motion.div
@@ -311,14 +305,7 @@ const Hero = () => {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  whileHover={{ 
-                    scale: 1.2, 
-                    rotate: 5, 
-                    y: -5,
-                    boxShadow: "0 10px 25px rgba(247, 44, 79, 0.3)"
-                  }}
-                  whileTap={{ scale: 0.9 }}
-                  className={`w-12 h-12 glass-effect rounded-full flex items-center justify-center hover:pulse-glow transition-all duration-300 ${social.color} ${social.hoverBg} relative overflow-hidden group`}
+                  className={`w-12 h-12 glass-effect rounded-full flex items-center justify-center transition-all duration-300 ${social.color} ${social.hoverBg} relative overflow-hidden group`}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 1 + index * 0.1 }}
@@ -371,7 +358,7 @@ const Hero = () => {
                     <img 
                       src="/1732172836245.jpeg"
                       alt="Parthik Modi - Laravel Developer"
-                      className="w-full h-full object-cover rounded-full transition-transform duration-500 hover:scale-110"
+                      className="w-full h-full object-cover rounded-full"
                     />
                     {/* Image overlay effect */}
                     <div className="absolute inset-0 rounded-full bg-gradient-to-t from-black/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300" />
@@ -422,7 +409,6 @@ const Hero = () => {
                 initial={{ opacity: 0, x: -50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 1.5, duration: 0.8 }}
-                whileHover={{ scale: 1.05, y: -5 }}
               >
                 <InteractiveCard className="p-4">
                   <div className="text-center">
@@ -443,7 +429,6 @@ const Hero = () => {
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 1.8, duration: 0.8 }}
-                whileHover={{ scale: 1.05, y: -5 }}
               >
                 <InteractiveCard className="p-4">
                   <div className="text-center">
@@ -467,8 +452,6 @@ const Hero = () => {
           variants={itemVariants}
           className="absolute bottom-8 left-1/2 transform -translate-x-1/2 cursor-pointer"
           onClick={scrollToNextSection}
-          whileHover={{ scale: 1.1, y: -5 }}
-          whileTap={{ scale: 0.95 }}
         >
           <motion.div 
             className="flex flex-col items-center gap-2 group"

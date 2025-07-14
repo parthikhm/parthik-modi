@@ -73,8 +73,6 @@ const Navigation = () => {
         <div className="flex justify-between items-center py-4">
           {/* Enhanced Logo */}
           <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
           >
             <Logo size="sm" animated={false} />
           </motion.div>
@@ -89,8 +87,6 @@ const Navigation = () => {
                   e.preventDefault();
                   handleNavClick(item.href);
                 }}
-                whileHover={{ scale: 1.1, y: -2 }}
-                whileTap={{ scale: 0.95 }}
                 className={`relative group transition-all duration-300 ${
                   activeSection === item.href.substring(1)
                     ? 'text-white font-semibold'
@@ -110,8 +106,8 @@ const Navigation = () => {
                 />
                 
                 {/* Hover glow effect */}
-                <motion.div
-                  className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                <div
+                  className="absolute inset-0 rounded-lg opacity-0 transition-opacity duration-300"
                   style={{ 
                     background: 'radial-gradient(circle, rgba(247, 44, 79, 0.1) 0%, transparent 70%)',
                     transform: 'scale(1.5)'
@@ -125,9 +121,7 @@ const Navigation = () => {
           <div className="md:hidden">
             <motion.button
               onClick={() => setIsOpen(!isOpen)}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              className="text-white p-2 rounded-lg glass-effect hover:pulse-glow transition-all duration-300"
+              className="text-white p-2 rounded-lg glass-effect transition-all duration-300"
             >
               <motion.div
                 animate={{ rotate: isOpen ? 180 : 0 }}
@@ -162,8 +156,6 @@ const Navigation = () => {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}
-                    whileHover={{ scale: 1.05, x: 10 }}
-                    whileTap={{ scale: 0.95 }}
                     className={`block py-3 px-4 rounded-lg transition-all duration-300 relative overflow-hidden ${
                       activeSection === item.href.substring(1)
                         ? 'text-white font-semibold gradient-bg'
@@ -173,10 +165,8 @@ const Navigation = () => {
                     <span className="relative z-10">{item.name}</span>
                     
                     {/* Ripple effect */}
-                    <motion.div
+                    <div
                       className="absolute inset-0 bg-gradient-to-r from-pink-500/20 to-red-500/20 opacity-0"
-                      whileHover={{ opacity: 1, scale: 1.1 }}
-                      transition={{ duration: 0.3 }}
                     />
                   </motion.a>
                 ))}
