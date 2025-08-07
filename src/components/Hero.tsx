@@ -352,12 +352,12 @@ const Hero = () => {
                     boxShadow: '0 0 60px rgba(247, 44, 79, 0.3), inset 0 0 60px rgba(247, 44, 79, 0.1)'
                   }}
                 >
-                  <div className="w-full h-full rounded-full overflow-hidden relative border-2 border-white/10" 
+                  <div className="w-full h-full rounded-full overflow-hidden flex items-center justify-center relative border-2 border-white/10" 
                        style={{ background: 'linear-gradient(135deg, rgba(247, 44, 79, 0.15), rgba(233, 30, 99, 0.15), rgba(156, 39, 176, 0.1))' }}>
                     <OptimizedImage
                       src="/1732172836245.jpeg"
                       alt="Parthik Modi - Laravel Developer"
-                      className="w-full h-full object-cover object-center rounded-full transition-all duration-500 group-hover:scale-110"
+                      className="w-full h-full object-cover rounded-full transition-all duration-500 group-hover:scale-110"
                       width={384}
                       height={384}
                     />
@@ -376,53 +376,6 @@ const Hero = () => {
                       animate={{ rotate: 360 }}
                       transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
                     />
-
-                    {/* Stats floating cards - moved inside image container */}
-                    <motion.div 
-                      className="absolute -left-16 top-16"
-                      initial={{ opacity: 0, x: -50 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 1.5, duration: 0.8 }}
-                    >
-                      <InteractiveCard 
-                        className="p-4 shadow-2xl border border-pink-500/20 backdrop-blur-sm"
-                        style={{ background: 'rgba(20, 20, 20, 0.95)' }}
-                      >
-                        <div className="text-center">
-                          <motion.div 
-                            className="text-2xl font-bold gradient-text mb-1"
-                            animate={{ scale: [1, 1.05, 1] }}
-                            transition={{ duration: 2, repeat: Infinity, delay: 2 }}
-                          >
-                            2.5+
-                          </motion.div>
-                          <div className="text-xs text-gray-400 font-medium">Years Exp</div>
-                        </div>
-                      </InteractiveCard>
-                    </motion.div>
-
-                    <motion.div 
-                      className="absolute -right-16 bottom-16"
-                      initial={{ opacity: 0, x: 50 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 1.8, duration: 0.8 }}
-                    >
-                      <InteractiveCard 
-                        className="p-4 shadow-2xl border border-pink-500/20 backdrop-blur-sm"
-                        style={{ background: 'rgba(20, 20, 20, 0.95)' }}
-                      >
-                        <div className="text-center">
-                          <motion.div 
-                            className="text-2xl font-bold gradient-text mb-1"
-                            animate={{ scale: [1, 1.05, 1] }}
-                            transition={{ duration: 2, repeat: Infinity, delay: 3 }}
-                          >
-                            25+
-                          </motion.div>
-                          <div className="text-xs text-gray-400 font-medium">Projects</div>
-                        </div>
-                      </InteractiveCard>
-                    </motion.div>
                   </div>
                 </InteractiveCard>
               </motion.div>
@@ -481,6 +434,53 @@ const Hero = () => {
                 whileHover={{ scale: 1.15 }}
               >
                 <Globe size={16} style={{ color: '#f72c4f' }} />
+              </motion.div>
+
+              {/* Enhanced stats floating cards */}
+              <motion.div 
+                className="absolute -left-12 top-20"
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 1.5, duration: 0.8 }}
+              >
+                <InteractiveCard 
+                  className="p-5 shadow-2xl border border-pink-500/20"
+                  style={{ background: 'linear-gradient(135deg, rgba(20, 20, 20, 0.95), rgba(40, 40, 40, 0.9))' }}
+                >
+                  <div className="text-center">
+                    <motion.div 
+                      className="text-3xl font-bold gradient-text mb-1"
+                      animate={{ scale: [1, 1.05, 1] }}
+                      transition={{ duration: 2, repeat: Infinity, delay: 2 }}
+                    >
+                      2.5+
+                    </motion.div>
+                    <div className="text-xs text-gray-400 font-medium">Years Exp</div>
+                  </div>
+                </InteractiveCard>
+              </motion.div>
+
+              <motion.div 
+                className="absolute -right-12 bottom-20"
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 1.8, duration: 0.8 }}
+              >
+                <InteractiveCard 
+                  className="p-5 shadow-2xl border border-pink-500/20"
+                  style={{ background: 'linear-gradient(135deg, rgba(20, 20, 20, 0.95), rgba(40, 40, 40, 0.9))' }}
+                >
+                  <div className="text-center">
+                    <motion.div 
+                      className="text-3xl font-bold gradient-text mb-1"
+                      animate={{ scale: [1, 1.05, 1] }}
+                      transition={{ duration: 2, repeat: Infinity, delay: 3 }}
+                    >
+                      25+
+                    </motion.div>
+                    <div className="text-xs text-gray-400 font-medium">Projects</div>
+                  </div>
+                </InteractiveCard>
               </motion.div>
               
               {/* Additional decorative elements */}
