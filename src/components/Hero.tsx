@@ -302,207 +302,91 @@ const Hero = () => {
           {/* Enhanced Right Content - Developer Image */}
           <motion.div 
             variants={imageVariants}
-            className="relative flex justify-center lg:justify-end"
+            className="relative flex justify-center lg:justify-end order-first lg:order-last"
           >
-            <div className="relative group">
-              {/* Enhanced background decorative elements */}
-              <motion.div 
-                className="absolute -inset-12 rounded-full blur-3xl opacity-60"
-                style={{ background: 'linear-gradient(135deg, rgba(247, 44, 79, 0.4), rgba(233, 30, 99, 0.3), rgba(156, 39, 176, 0.2))' }}
-                animate={{ 
-                  scale: [1, 1.15, 1],
-                  opacity: [0.4, 0.7, 0.4],
-                  rotate: [0, 180, 360]
-                }}
-                transition={{ 
-                  duration: 8, 
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              />
+            <div className="relative group w-full max-w-lg">
+              {/* Background glow effect */}
+              <div className="absolute inset-0 bg-gradient-to-br from-pink-500/20 via-red-500/10 to-purple-500/20 rounded-full blur-3xl"></div>
               
-              {/* Additional glow layers */}
-              <motion.div 
-                className="absolute -inset-6 rounded-full blur-2xl opacity-40"
-                style={{ background: 'linear-gradient(45deg, rgba(247, 44, 79, 0.3), rgba(233, 30, 99, 0.2))' }}
-                animate={{ 
-                  scale: [1.1, 1, 1.1],
-                  opacity: [0.2, 0.4, 0.2]
-                }}
-                transition={{ 
-                  duration: 6, 
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: 1
-                }}
-              />
-              
-              {/* Main image container with Enhanced Interactive Card */}
+              {/* Main image container */}
               <motion.div
-                whileHover={{ scale: 1.05, rotate: 2 }}
+                whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.4, ease: "easeOut" }}
-                className="relative z-10"
+                className="relative z-10 mx-auto"
               >
-                <InteractiveCard 
-                  className="w-80 h-80 lg:w-96 lg:h-96 p-3 relative overflow-hidden shadow-2xl"
-                  style={{ 
-                    borderRadius: '50%',
-                    background: 'linear-gradient(135deg, rgba(20, 20, 20, 0.9), rgba(40, 40, 40, 0.8))',
-                    border: '2px solid rgba(247, 44, 79, 0.3)',
-                    boxShadow: '0 0 60px rgba(247, 44, 79, 0.3), inset 0 0 60px rgba(247, 44, 79, 0.1)'
-                  }}
-                >
-                  <div className="w-full h-full rounded-full overflow-hidden flex items-center justify-center relative border-2 border-white/10" 
-                       style={{ background: 'linear-gradient(135deg, rgba(247, 44, 79, 0.15), rgba(233, 30, 99, 0.15), rgba(156, 39, 176, 0.1))' }}>
-                    <OptimizedImage
-                      src="/1732172836245.jpeg"
-                      alt="Parthik Modi - Laravel Developer"
-                      className="w-full h-full object-cover rounded-full transition-all duration-500 group-hover:scale-110"
-                      width={384}
-                      height={384}
-                    />
-                    {/* Enhanced image overlay effects */}
-                    <div className="absolute inset-0 rounded-full bg-gradient-to-t from-black/30 via-transparent to-white/5 opacity-0 group-hover:opacity-100 transition-all duration-500" />
-                    <div className="absolute inset-0 rounded-full bg-gradient-to-br from-pink-500/10 via-transparent to-purple-500/10 opacity-0 group-hover:opacity-100 transition-all duration-500" />
-                    
-                    {/* Animated border effect */}
-                    <motion.div
-                      className="absolute inset-0 rounded-full"
-                      style={{
-                        background: 'conic-gradient(from 0deg, transparent, rgba(247, 44, 79, 0.5), transparent, rgba(233, 30, 99, 0.5), transparent)',
-                        mask: 'radial-gradient(circle, transparent 98%, black 100%)',
-                        WebkitMask: 'radial-gradient(circle, transparent 98%, black 100%)'
-                      }}
-                      animate={{ rotate: 360 }}
-                      transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-                    />
-                  </div>
-                </InteractiveCard>
-              </motion.div>
-                
-              {/* Enhanced floating tech icons */}
-              <motion.div 
-                className="absolute -top-6 -right-6 w-20 h-20 glass-effect rounded-2xl flex items-center justify-center shadow-xl border border-pink-500/20"
-                style={{ background: 'linear-gradient(135deg, rgba(20, 20, 20, 0.9), rgba(40, 40, 40, 0.8))' }}
-                animate={{ 
-                  y: [-10, 10, -10],
-                  rotate: [0, 5, -5, 0]
-                }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                whileHover={{ scale: 1.2, rotate: 15 }}
-              >
-                <Code2 size={28} style={{ color: '#f72c4f' }} />
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-pink-500/20 to-purple-500/20 opacity-0 hover:opacity-100 transition-opacity duration-300" />
+                <div className="w-80 h-80 lg:w-96 lg:h-96 mx-auto rounded-full overflow-hidden border-4 border-pink-500/30 shadow-2xl relative">
+                  <OptimizedImage
+                    src="/1732172836245.jpeg"
+                    alt="Parthik Modi - Laravel Developer"
+                    className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
+                    width={384}
+                    height={384}
+                  />
+                  {/* Overlay gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
+                </div>
               </motion.div>
               
-              <motion.div 
-                className="absolute -bottom-6 -left-6 w-18 h-18 glass-effect rounded-2xl flex items-center justify-center shadow-xl border border-pink-500/20"
-                style={{ background: 'linear-gradient(135deg, rgba(20, 20, 20, 0.9), rgba(40, 40, 40, 0.8))' }}
-                animate={{ 
-                  y: [10, -10, 10],
-                  rotate: [0, -5, 5, 0]
-                }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                whileHover={{ scale: 1.2, rotate: -15 }}
-              >
-                <Zap size={24} style={{ color: '#f72c4f' }} />
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-pink-500/20 to-purple-500/20 opacity-0 hover:opacity-100 transition-opacity duration-300" />
-              </motion.div>
-              
-              {/* New floating elements */}
-              <motion.div 
-                className="absolute top-1/2 -left-12 w-12 h-12 glass-effect rounded-xl flex items-center justify-center shadow-lg border border-pink-500/20"
-                style={{ background: 'linear-gradient(135deg, rgba(20, 20, 20, 0.9), rgba(40, 40, 40, 0.8))' }}
-                animate={{ 
-                  x: [-5, 5, -5],
-                  rotate: [0, 10, -10, 0]
-                }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-                whileHover={{ scale: 1.15 }}
-              >
-                <Database size={18} style={{ color: '#f72c4f' }} />
-              </motion.div>
-
-              <motion.div 
-                className="absolute top-1/4 -right-10 w-10 h-10 glass-effect rounded-lg flex items-center justify-center shadow-lg border border-pink-500/20"
-                style={{ background: 'linear-gradient(135deg, rgba(20, 20, 20, 0.9), rgba(40, 40, 40, 0.8))' }}
-                animate={{ 
-                  x: [5, -5, 5],
-                  y: [-3, 3, -3]
-                }}
-                transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                whileHover={{ scale: 1.15 }}
-              >
-                <Globe size={16} style={{ color: '#f72c4f' }} />
-              </motion.div>
-
-              {/* Enhanced stats floating cards */}
-              <motion.div 
-                className="absolute -left-12 top-20"
+              {/* Large Text Overlays - Like Reference Image */}
+              <motion.div
+                className="absolute -top-16 -left-20 text-6xl lg:text-8xl font-black text-white/10 select-none pointer-events-none"
                 initial={{ opacity: 0, x: -50 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 1.5, duration: 0.8 }}
+                transition={{ delay: 1.2, duration: 0.8 }}
               >
-                <InteractiveCard 
-                  className="p-5 shadow-2xl border border-pink-500/20"
-                  style={{ background: 'linear-gradient(135deg, rgba(20, 20, 20, 0.95), rgba(40, 40, 40, 0.9))' }}
-                >
-                  <div className="text-center">
-                    <motion.div 
-                      className="text-3xl font-bold gradient-text mb-1"
-                      animate={{ scale: [1, 1.05, 1] }}
-                      transition={{ duration: 2, repeat: Infinity, delay: 2 }}
-                    >
-                      2.5+
-                    </motion.div>
-                    <div className="text-xs text-gray-400 font-medium">Years Exp</div>
-                  </div>
-                </InteractiveCard>
+                LARAVEL
+              </motion.div>
+              
+              <motion.div
+                className="absolute -bottom-20 -right-16 text-6xl lg:text-8xl font-black text-white/10 select-none pointer-events-none"
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 1.4, duration: 0.8 }}
+              >
+                DEVELOPER
+              </motion.div>
+              
+              {/* Floating Stats Cards - Cleaner Design */}
+              <motion.div 
+                className="absolute -left-16 top-16"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 1.6, duration: 0.6 }}
+              >
+                <div className="bg-black/80 backdrop-blur-sm border border-pink-500/30 rounded-xl p-4 shadow-xl">
+                  <div className="text-2xl font-bold text-pink-400 mb-1">2.5+</div>
+                  <div className="text-xs text-gray-300 font-medium">Years</div>
+                </div>
+              </motion.div>
+              
+              <motion.div 
+                className="absolute -right-16 bottom-16"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 1.8, duration: 0.6 }}
+              >
+                <div className="bg-black/80 backdrop-blur-sm border border-pink-500/30 rounded-xl p-4 shadow-xl">
+                  <div className="text-2xl font-bold text-pink-400 mb-1">25+</div>
+                  <div className="text-xs text-gray-300 font-medium">Projects</div>
+                </div>
+              </motion.div>
+
+              {/* Small floating icons */}
+              <motion.div 
+                className="absolute top-8 -right-8 w-12 h-12 bg-black/60 backdrop-blur-sm border border-pink-500/30 rounded-lg flex items-center justify-center"
+                animate={{ y: [-5, 5, -5] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <Code2 size={20} className="text-pink-400" />
               </motion.div>
 
               <motion.div 
-                className="absolute -right-12 bottom-20"
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 1.8, duration: 0.8 }}
+                className="absolute bottom-8 -left-8 w-10 h-10 bg-black/60 backdrop-blur-sm border border-pink-500/30 rounded-lg flex items-center justify-center"
+                animate={{ y: [5, -5, 5] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1 }}
               >
-                <InteractiveCard 
-                  className="p-5 shadow-2xl border border-pink-500/20"
-                  style={{ background: 'linear-gradient(135deg, rgba(20, 20, 20, 0.95), rgba(40, 40, 40, 0.9))' }}
-                >
-                  <div className="text-center">
-                    <motion.div 
-                      className="text-3xl font-bold gradient-text mb-1"
-                      animate={{ scale: [1, 1.05, 1] }}
-                      transition={{ duration: 2, repeat: Infinity, delay: 3 }}
-                    >
-                      25+
-                    </motion.div>
-                    <div className="text-xs text-gray-400 font-medium">Projects</div>
-                  </div>
-                </InteractiveCard>
+                <Database size={16} className="text-pink-400" />
               </motion.div>
-              
-              {/* Additional decorative elements */}
-              <motion.div
-                className="absolute top-8 left-8 w-3 h-3 rounded-full"
-                style={{ background: 'linear-gradient(135deg, #f72c4f, #e91e63)' }}
-                animate={{
-                  scale: [1, 1.5, 1],
-                  opacity: [0.5, 1, 0.5]
-                }}
-                transition={{ duration: 3, repeat: Infinity, delay: 1 }}
-              />
-              
-              <motion.div
-                className="absolute bottom-12 right-12 w-2 h-2 rounded-full"
-                style={{ background: 'linear-gradient(135deg, #e91e63, #f72c4f)' }}
-                animate={{
-                  scale: [1, 1.3, 1],
-                  opacity: [0.7, 1, 0.7]
-                }}
-                transition={{ duration: 4, repeat: Infinity, delay: 2 }}
-              />
             </div>
           </motion.div>
         </div>
