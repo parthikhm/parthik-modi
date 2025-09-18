@@ -3,6 +3,7 @@ import { Suspense, lazy } from 'react';
 import Hero from './components/Hero';
 import Navigation from './components/Navigation';
 import LazySection from './components/LazySection';
+import StatsTools from './components/StatsTools';
 import './App.css';
 
 // Lazy load components for better performance
@@ -18,6 +19,7 @@ function App() {
     <div className="bg-primary text-white overflow-x-hidden" style={{ backgroundColor: '#060606' }}>
       <Navigation />
       <Hero />
+      <StatsTools />
       <LazySection>
         <About />
       </LazySection>
